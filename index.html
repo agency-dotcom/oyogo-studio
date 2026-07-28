@@ -251,7 +251,7 @@
   .cal-day{display:flex;flex-direction:column;align-items:center;gap:8px;background:none;border:none;cursor:pointer;padding:2px 0;font-family:var(--sans)}
   .cal-wd{font-size:13px;color:var(--muted)}
   .cal-circle{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:15px;color:var(--ink);transition:all .15s}
-  .cal-dot{width:4px;height:4px;border-radius:50%;background:var(--olive);margin-top:2px}
+  .cal-dot{width:5px;height:5px;border-radius:50%;background:var(--yellow);margin-top:2px}
   .cal-day:hover .cal-circle{border-color:var(--ink)}
   .cal-day.on .cal-wd{color:var(--ink);font-weight:700}
   .cal-day.on .cal-circle{background:var(--ink);color:var(--cream);border-color:var(--ink)}
@@ -267,6 +267,24 @@
   .cal-book{background:var(--yellow);color:var(--ink);font-size:13px;font-weight:700;padding:9px 18px;border-radius:22px;white-space:nowrap}
   .cal-book:hover{opacity:.9}
   .cal-empty{padding:26px 0;border-top:1px solid var(--line);color:var(--muted);font-size:16px}
+  /* Resort groups, roster + special weeks */
+  .cal-group+.cal-group{margin-top:12px}
+  .cal-grp-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:20px 0 4px;border-top:1px solid var(--line)}
+  .cal-grp-name{font-family:var(--serif);font-size:19px;letter-spacing:-0.3px}
+  .cal-grp-desc{font-size:13px;color:var(--olive);margin-top:3px}
+  .cal-cols{display:grid;grid-template-columns:1fr;gap:0 44px}
+  .cal-cols.two{grid-template-columns:1fr 1fr}
+  @media(max-width:640px){.cal-cols.two{grid-template-columns:1fr}}
+  .cal-col{min-width:0}
+  .cal-badge{background:var(--yellow);color:var(--ink);font-size:11px;font-weight:700;letter-spacing:0.5px;padding:4px 11px;border-radius:20px}
+  .cal-roster{padding:14px 0 4px}
+  .cal-roster-lab{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+  .cal-roster-list{display:flex;flex-wrap:wrap;gap:8px}
+  .cal-roster-list a,.cal-roster-list .rn{font-size:14px;border:1px solid var(--line);border-radius:20px;padding:8px 15px;color:var(--ink)}
+  .cal-roster-list a span,.cal-roster-list .rn span{color:var(--muted);font-size:12px;margin-left:7px}
+  .cal-roster-list a:hover{border-color:var(--ink)}
+  .cal-cell.special .cal-dot,.cal-day.special .cal-dot{background:#B4542E}
+  .cal-cell.special:not(.sel) .cal-circle,.cal-day.special:not(.on) .cal-circle{border-color:#B4542E;color:#B4542E;background:rgba(180,84,46,0.10)}
   /* Calendar + rolling residency gallery */
   .cal-layout{display:grid;grid-template-columns:720px 1fr;gap:48px;align-items:start;margin-top:24px}
   .cal-gallery{position:relative;overflow:hidden;border-radius:14px;height:560px;width:100%;max-width:600px;justify-self:end;background:#e5e0d6}
@@ -365,14 +383,6 @@
     <div class="wrap about-grid">
       <h2 class="about-h">Female-founded.<br>Wellbeing-led.</h2>
       <p class="about-body">Oyogo is a female-founded wellbeing tourism consultancy, redefining how the world experiences wellness-travel destinations. We elevate your wellness offering and put it in front of a global audience of high-spending, health-conscious travellers — positioning you as a leader in the evolving wellness-tourism market.</p>
-    </div>
-  </section>
-
-  <!-- 02 Opportunity — sage block -->
-  <section class="opp">
-    <div class="wrap">
-      <div class="label"><span class="i">02</span>The opportunity</div>
-      <p class="opp-stmt"><span class="l1">Fit people stay longer,</span><br><span class="l2">fit people book more,</span><br><span class="l3">fit people spend more.</span></p>
     </div>
   </section>
 
@@ -614,7 +624,7 @@
   (function(){
     var SCHEDULE=[
       {
-        hotel:'Zelia', loc:'Halkidiki, GR', web:'https://www.instagram.com/zeliahalkidiki/',
+        hotel:'Zelia', loc:'Halkidiki, GR', web:'https://www.zeliaresort.gr/',
         slots:[
           {time:'08:15', label:'Olive Grove Studio'},
           {time:'09:15', label:'Olive Grove Studio'},
@@ -630,10 +640,54 @@
           {s:'2026-07-19', e:'2026-08-02', t:'Ksenija Selivanova',d:'Pilates',                          type:'Pilates'},
           {s:'2026-08-02', e:'2026-08-16', t:'Erin Dusek',        d:'Yoga, meditation & breathwork',    type:'Yoga'},
           {s:'2026-08-16', e:'2026-08-30', t:'Tiffany',           d:'Yoga, breathwork & Pilates',       type:'Yoga'},
-          {s:'2026-08-30', e:'2026-09-13', t:'Milou M Balo',      d:'Yoga & breathwork',                type:'Yoga'},
+          {s:'2026-08-30', e:'2026-09-13', t:'Milou M Balo',      d:'Pilates & breathwork',             type:'Yoga'},
           {s:'2026-09-13', e:'2026-09-27', t:'Céline Leach',      d:'Pilates',                          type:'Pilates'},
           {s:'2026-09-27', e:'2026-10-11', t:'Thea King',         d:'Barre & Pilates',                  type:'Barre'},
           {s:'2026-10-11', e:'2026-10-19', t:'Alice Padron',      d:'Barre, Pilates & yoga',            type:'Barre'}
+        ]
+      },
+      {
+        hotel:'Nido', loc:'Corfu, GR', web:'https://www.marbella.gr/hotels/marbella-nido/',
+        slots:[
+          {time:'08:45', label:'Yoga Deck'},
+          {time:'17:00', label:'Yoga Deck'},
+          {time:'18:15', label:'Yoga Deck', main:true}
+        ],
+        residencies:[
+          {s:'2026-05-18', e:'2026-05-31', t:'Georgia Chapman Costa', d:'Gym & Pilates',                             type:'Pilates'},
+          {s:'2026-06-07', e:'2026-06-21', t:'Marta De Carli',        d:'Yoga & Pilates',                            type:'Yoga'},
+          {s:'2026-07-06', e:'2026-07-19', t:'Gigi Delsante',         d:'Yoga & mindfulness',                        type:'Yoga'},
+          {s:'2026-08-03', e:'2026-08-16', t:'Maria Pacha',           d:'Yoga & mindfulness',                        type:'Yoga'},
+          {s:'2026-09-07', e:'2026-09-20', t:'Bella Wilson',          d:'Gym & Pilates',                             type:'Pilates'},
+          {s:'2026-09-21', e:'2026-10-06', t:'Sophie Allin',          d:'Vinyasa yoga, mobility & functional strength', type:'Fitness'}
+        ]
+      },
+      {
+        hotel:'Elix', loc:'Corfu, GR', web:'https://www.marbella.gr/hotels/marbella-elix/',
+        slots:[
+          {time:'08:45', label:'Amphitheatre Deck'},
+          {time:'17:00', label:'Amphitheatre Deck'},
+          {time:'18:15', label:'Amphitheatre Deck', main:true}
+        ],
+        residencies:[
+          {s:'2026-05-18', e:'2026-05-31', t:'Amelia Coutisson',    d:'Yoga & sound',       type:'Yoga'},
+          {s:'2026-06-08', e:'2026-06-21', t:'Myrthe van Gameren',  d:'Yoga, meditation & breathwork', type:'Yoga'},
+          {s:'2026-07-06', e:'2026-07-19', t:'Matteo Massaini',     d:'Fitness & breathwork', type:'Fitness'},
+          {s:'2026-09-21', e:'2026-10-04', t:'Vanessa Michielon',   d:'Pilates & somatic movement', type:'Pilates'}
+        ]
+      },
+      {
+        hotel:'Avali', loc:'Corfu, GR', web:'https://www.marbella.gr/hotels/avali-hotel/',
+        slots:[
+          {time:'08:00', label:'Grass Area'},
+          {time:'17:45', label:'Grass Area', main:true}
+        ],
+        residencies:[
+          {s:'2026-05-18', e:'2026-05-31', t:'Lucia Zanone',       d:'Yoga',                    type:'Yoga'},
+          {s:'2026-06-08', e:'2026-06-21', t:'Annabelle Williams', d:'Fitness & movement',      type:'Fitness'},
+          {s:'2026-07-06', e:'2026-07-19', t:'Cian Hughes',        d:'Pilates & fusion',        type:'Pilates'},
+          {s:'2026-08-03', e:'2026-08-16', t:'Kitti Gombos',       d:'Pilates & fusion',        type:'Pilates'},
+          {s:'2026-09-21', e:'2026-10-04', t:'Joelle Brabben',     d:'Fitness & movement',      type:'Fitness'}
         ]
       }
     ];
@@ -651,32 +705,126 @@
     function addDays(d,n){var x=new Date(d);x.setDate(x.getDate()+n);return x;}
     function key(d){return d.getFullYear()+'-'+d.getMonth()+'-'+d.getDate();}
     function mondayOf(d){var j=(d.getDay()+6)%7;return addDays(d,-j);}
+    function addDayISO(s){s=(s||'').trim();if(!/^\d{4}-\d{2}-\d{2}$/.test(s))return '';var p=s.split('-');var d=new Date(+p[0],+p[1]-1,+p[2]);d.setDate(d.getDate()+1);return iso(d);}
+    function igURL(ig){ig=(ig||'').trim();if(!ig)return '';if(/^https?:/i.test(ig))return ig;return 'https://www.instagram.com/'+ig.replace(/^@/,'');}
+
+    // ---- Data model: flat rows. Times filled = timetable; Times blank = roster (e.g. Peligoni). ----
+    // Fallback: the hard-coded SCHEDULE above. Live: a published Google Sheet CSV (set CSV_URL).
+    var CSV_URL=''; // ← paste the published Google Sheet CSV link here (ends with output=csv)
+    function flatten(sched){
+      var rows=[];
+      sched.forEach(function(r){
+        var venue=(r.slots[0]&&r.slots[0].label)||'';
+        var times=r.slots.map(function(s){return s.time;});
+        r.residencies.forEach(function(x){
+          rows.push({resort:r.hotel,venue:venue,trainer:x.t,ig:'',disc:x.d,type:x.type||'',times:times.slice(),special:'',web:r.web||'',loc:r.loc||'',start:x.s,endEx:x.e});
+        });
+      });
+      return rows;
+    }
+    function splitCSVLine(line){var out=[],cur='',q=false;for(var i=0;i<line.length;i++){var c=line[i];if(c==='"'){if(q&&line[i+1]==='"'){cur+='"';i++;}else q=!q;}else if(c===','&&!q){out.push(cur);cur='';}else cur+=c;}out.push(cur);return out;}
+    function fromCSV(text){
+      var lines=text.replace(/\r/g,'').split('\n').filter(function(l){return l.trim();});
+      if(lines.length<2)return [];
+      var H=splitCSVLine(lines[0]).map(function(h){return h.trim().toLowerCase();});
+      function ix(n){return H.indexOf(n);}
+      var iR=ix('resort'),iV=ix('venue'),iT=ix('trainer'),iI=ix('ig'),iS=ix('start'),iE=ix('end'),iD=ix('discipline'),iTy=ix('type'),iTi=ix('times'),iSp=ix('special'),iW=ix('web'),iL=ix('location');
+      var rows=[];
+      for(var i=1;i<lines.length;i++){
+        var c=splitCSVLine(lines[i]);
+        function g(k){return k>=0?(c[k]||'').trim():'';}
+        var resort=g(iR),start=g(iS),endEx=addDayISO(g(iE));
+        if(!resort||!/^\d{4}-\d{2}-\d{2}$/.test(start)||!endEx)continue;
+        rows.push({resort:resort,venue:g(iV),trainer:g(iT),ig:g(iI),disc:g(iD),type:g(iTy),times:g(iTi).split(/[;,\s]+/).map(function(s){return s.trim();}).filter(Boolean),special:g(iSp),web:g(iW),loc:g(iL),start:start,endEx:endEx});
+      }
+      return rows;
+    }
+
+    // Peligoni — rotating roster of guest trainers per week + special weeks (hand-entered from the club rota).
+    var PEL_WEB='https://www.peligoni.com', PEL_LOC='Zakynthos, GR';
+    // Each trainer entry: [name, ig, stream]  (stream 'Gym' | 'Studio' | '' for team/Pace weeks)
+    var PEL_WEEKS=[
+      {s:'2026-05-16',e:'2026-05-23',sp:'Pace 1',t:[['Uche Obi','',''],['Nickoll Flood','@nickolfloodx',''],['Omar Monsour','@MrOmg',''],['Victoria Leigh','',''],['Christie Knight','@christieknightyoga',''],['Gen Greensted','@the_barrecoach','']]},
+      {s:'2026-05-23',e:'2026-06-07',sp:'',t:[['Christina Demetriou','@christina_deme','Gym'],['Annie Archer','','Studio']]},
+      {s:'2026-06-06',e:'2026-06-21',sp:'',t:[['Carrie Baxter','@carriedaway','Gym'],['Alice Padron','','Studio']]},
+      {s:'2026-06-20',e:'2026-07-04',sp:'',t:[['Greta Evelyn','@gretaevelyn','Gym'],['Immy McAndrews','@immy.mcandrew','Studio']]},
+      {s:'2026-07-04',e:'2026-07-18',sp:'',t:[['Riley Forbes','','Gym'],['Hannah Buckley','@biog_by_hannah','Studio']]},
+      {s:'2026-07-18',e:'2026-08-01',sp:'',t:[['Anna Bye','@annabye','Gym'],['Dominika Zechmeiszter','@aftermoonyoga','Studio']]},
+      {s:'2026-08-01',e:'2026-08-14',sp:'',t:[['Kara Wagland','@karawagland','Gym']]},
+      {s:'2026-08-01',e:'2026-08-15',sp:'',t:[['Ilenia Fedele','@ileyoga','Studio']]},
+      {s:'2026-08-14',e:'2026-08-29',sp:'',t:[['Ruby Padwick','','Gym']]},
+      {s:'2026-08-15',e:'2026-08-29',sp:'',t:[['Tina Ivanova','@yogaclub.tina','Studio']]},
+      {s:'2026-08-29',e:'2026-09-12',sp:'',t:[['Eva Simanavicius','@evasimanavicius','Gym'],['Annie Archer','','Studio']]},
+      {s:'2026-09-12',e:'2026-09-20',sp:'',t:[['Abigail Skipper','','Gym'],['Rose Wild','@roseinthewildwellness','Studio']]},
+      {s:'2026-09-21',e:'2026-09-26',sp:'Gather',t:[['Abigail Skipper','','Gym'],['Rose Wild','@roseinthewildwellness','Studio']]},
+      {s:'2026-09-26',e:'2026-10-03',sp:'',t:[['Uche Obi','','Gym'],['Myrthe van Gameren','','Studio']]},
+      {s:'2026-10-03',e:'2026-10-10',sp:'Pace 2',t:[['Zoe Lou','',''],['Alex Castro','',''],['Naomi Heffernan','',''],['Victoria Leigh','',''],['Oliver James','',''],['Stephannie Warwick','','']]},
+      {s:'2026-10-10',e:'2026-10-17',sp:'Pace 3',t:[['Michelle Varchiona','@shalateacher',''],['Stephannie Warwick','@stephaniewarwick_',''],['Jordan M','@jordanmaeantoinette',''],['Carl Van Heerdan','',''],['Chris Millard','@chrismillardfit',''],['Leroy Williamson','@leroyelevates',''],["Laura 'Biceps'",'@laurabiceps','']]},
+      {s:'2026-10-17',e:'2026-11-01',sp:'',t:[['Jamilla Wittrup','@jamilla.wittrup','Gym'],['Laurie Bescond','@nymeriayoga','Studio']]}
+    ];
+    // Weekly class template per stream/venue. Weekday 1=Mon … 6=Sat (Sun off). [time, class]
+    var PEL_TT={
+      Gym:{
+        1:[['08:15','Cardio Conditioning'],['09:45','Hybrid Circuit Training']],
+        2:[['08:15','Tempo Sculpt'],['09:45','Cardio Conditioning']],
+        3:[['08:15','Hybrid Circuit Training'],['09:45','Slow Strength']],
+        4:[['08:15','Slow Strength'],['09:45','Cardio Conditioning']],
+        5:[['08:15','Abs & Glutes'],['09:45','Hybrid Circuit Training']],
+        6:[['08:15','Slow Strength · Upper Body'],['09:45','Cardio Conditioning']]
+      },
+      Studio:{
+        1:[['08:45','Vinyasa Flow Yoga'],['09:45','Slow Flow Yoga'],['16:00','Restore & Unwind']],
+        2:[['08:45','Slow Flow Yoga'],['09:45','Dynamic Yoga'],['16:00','Sculpt Pilates']],
+        3:[['08:45','Specialist class'],['09:45','Slow Flow · Standing Balances'],['16:00','Restore & Unwind · Hip Openers']],
+        4:[['08:45','Vinyasa Flow Yoga'],['09:45','Dynamic Vinyasa'],['16:00','Slow Flow']],
+        5:[['08:45','Specialist class'],['09:45','Slow Flow Yoga · Back Bends'],['16:00','Restore & Unwind']],
+        6:[['08:45','Vinyasa Flow Yoga'],['09:45','Specialist class'],['16:00','Slow Flow Yoga']]
+      }
+    };
+    function eachDate(sISO,eISO,cb){var p=sISO.split('-'),d=new Date(+p[0],+p[1]-1,+p[2]),q=eISO.split('-'),de=new Date(+q[0],+q[1]-1,+q[2]);while(d<=de){cb(new Date(d));d.setDate(d.getDate()+1);}}
+    var PELIGONI=[], pelSeen={};
+    PEL_WEEKS.forEach(function(w){
+      if(w.sp){ // special weeks (Pace/Gather): guest-trainer roster + badge, no per-class timetable
+        w.t.forEach(function(p){PELIGONI.push({resort:'Peligoni',venue:p[2]||'',trainer:p[0],ig:p[1],disc:'',type:'',times:[],special:w.sp,web:PEL_WEB,loc:PEL_LOC,start:w.s,endEx:addDayISO(w.e)});});
+        return;
+      }
+      w.t.forEach(function(p){ // regular weeks: generate per-day classes from the template, per stream
+        var stream=p[2]; if(stream!=='Gym'&&stream!=='Studio')return;
+        var tmpl=PEL_TT[stream];
+        eachDate(w.s,w.e,function(d){
+          var wd=d.getDay(); if(wd===0)return;
+          (tmpl[wd]||[]).forEach(function(c){
+            var day=iso(d), k=day+stream+c[0]; if(pelSeen[k])return; pelSeen[k]=1;
+            PELIGONI.push({resort:'Peligoni',venue:stream,trainer:p[0],ig:p[1],disc:c[1],type:'',times:[c[0]],special:'',web:PEL_WEB,loc:PEL_LOC,start:day,endEx:addDayISO(day)});
+          });
+        });
+      });
+    });
+
+    var ROWS=flatten(SCHEDULE).concat(PELIGONI);
 
     var today=new Date();today.setHours(0,0,0,0);
     var mode='month', view=new Date(today), selected=new Date(today);
 
     function fill(el,all,arr){el.innerHTML='<option value="">'+all+'</option>'+arr.map(function(v){return '<option value="'+v+'">'+v+'</option>';}).join('');}
-    var seenT={},typeList=[];
-    SCHEDULE.forEach(function(r){r.residencies.forEach(function(x){if(!seenT[x.type]){seenT[x.type]=1;typeList.push(x.type);}});});
-    fill(locEl,'All resorts',SCHEDULE.map(function(r){return r.hotel;}));
-    fill(typeEl,'All classes',typeList);
-
-    function sessionsOn(d){
-      var day=iso(d), out=[];
-      SCHEDULE.forEach(function(r){
-        r.residencies.forEach(function(res){
-          if(day>=res.s && day<res.e){
-            r.slots.forEach(function(sl){
-              out.push({time:sl.time,label:sl.label,main:sl.main,type:res.type,hotel:r.hotel,loc:r.loc,inst:res.t,disc:res.d,web:r.web});
-            });
-          }
-        });
-      });
-      return out
-        .filter(function(x){return !locEl.value || x.hotel===locEl.value;})
-        .filter(function(x){return !typeEl.value || x.type===typeEl.value;})
-        .sort(function(a,b){return a.time.localeCompare(b.time);});
+    function uniq(arr){var seen={},out=[];arr.forEach(function(v){if(v&&!seen[v]){seen[v]=1;out.push(v);}});return out;}
+    function populate(){
+      var cl=locEl.value,ct=typeEl.value;
+      fill(locEl,'All resorts',uniq(ROWS.map(function(r){return r.resort;})));
+      fill(typeEl,'All classes',uniq(ROWS.map(function(r){return r.type;})));
+      locEl.value=cl;typeEl.value=ct;
     }
+    populate();
+
+    function activeRows(d){
+      var day=iso(d);
+      return ROWS.filter(function(r){return day>=r.start && day<r.endEx;})
+        .filter(function(r){return !locEl.value || r.resort===locEl.value;})
+        .filter(function(r){return !typeEl.value || r.type===typeEl.value;});
+    }
+    function specialOn(rows){var s='';rows.forEach(function(r){if(r.special)s=r.special;});return s;}
+    var SPECIAL_DESC={'Pace 1':'Performance & fitness week','Pace 2':'Performance & fitness week','Pace 3':'Performance & fitness week','Gather':'Wellness & community week'};
+    function specialLabel(s){return /^Pace/.test(s)?s.replace('Pace','Pace Week'):(s==='Gather'?'Gather Week':s);}
 
     function renderMonth(){
       monthview.hidden=false; weekview.hidden=true;
@@ -684,8 +832,8 @@
       var first=new Date(view.getFullYear(),view.getMonth(),1), start=mondayOf(first), html='';
       for(var i=0;i<42;i++){
         var d=addDays(start,i), other=d.getMonth()!==view.getMonth();
-        var items=other?[]:sessionsOn(d), has=items.length>0;
-        var cls='cal-cell'+(other?' other':'')+(key(d)===key(today)?' today':'')+(key(d)===key(selected)?' sel':'');
+        var items=other?[]:activeRows(d), has=items.length>0, sp=has?specialOn(items):'';
+        var cls='cal-cell'+(other?' other':'')+(key(d)===key(today)?' today':'')+(key(d)===key(selected)?' sel':'')+(sp?' special':'');
         html+='<button type="button" class="'+cls+'"'+(other?' disabled':'')+' data-t="'+d.getTime()+'"><span class="cal-circle">'+d.getDate()+(has?'<span class="cal-dot"></span>':'')+'</span></button>';
       }
       gridEl.innerHTML=html;
@@ -697,24 +845,59 @@
       titleEl.textContent=fmtRange(start,addDays(start,6));
       var html='';
       for(var i=0;i<7;i++){
-        var d=addDays(start,i), isToday=key(d)===key(today), isSel=key(d)===key(selected), has=sessionsOn(d).length>0;
+        var d=addDays(start,i), isToday=key(d)===key(today), isSel=key(d)===key(selected), items=activeRows(d), has=items.length>0, sp=has?specialOn(items):'';
         var lab=isToday?'Today':WDL[i];
-        html+='<button type="button" class="cal-day'+(isSel?' on':'')+'" data-t="'+d.getTime()+'"><span class="cal-wd">'+lab+'</span><span class="cal-circle">'+d.getDate()+(has?'<span class="cal-dot"></span>':'')+'</span></button>';
+        html+='<button type="button" class="cal-day'+(isSel?' on':'')+(sp?' special':'')+'" data-t="'+d.getTime()+'"><span class="cal-wd">'+lab+'</span><span class="cal-circle">'+d.getDate()+(has?'<span class="cal-dot"></span>':'')+'</span></button>';
       }
       daysEl.innerHTML=html;
     }
     function renderDay(){
       dayheadEl.textContent=WDF[selected.getDay()]+', '+MONS[selected.getMonth()]+' '+selected.getDate();
-      var items=sessionsOn(selected);
-      if(!items.length){listEl.innerHTML='<p class="cal-empty">No Oyogo sessions on this day — <a href="mailto:studio@oyogo.co.uk" style="color:var(--olive);font-weight:600">enquire about a residency</a>.</p>';return;}
-      var rows=items.map(function(s){
-        var title=s.label;
-        return '<div class="cal-row"><div class="cal-time">'+s.time+'</div>'+
-          '<div class="cal-info"><div class="cal-cls">'+title+'</div><div class="cal-meta">'+s.disc+' · with '+s.inst+' · '+s.hotel+', '+s.loc+'</div></div></div>';
+      var rows=activeRows(selected);
+      if(!rows.length){listEl.innerHTML='<p class="cal-empty">No Oyogo sessions on this day — <a href="mailto:studio@oyogo.co.uk" style="color:var(--olive);font-weight:600">enquire about a residency</a>.</p>';return;}
+      var order=[],groups={};
+      rows.forEach(function(r){if(!groups[r.resort]){groups[r.resort]=[];order.push(r.resort);}groups[r.resort].push(r);});
+      listEl.innerHTML=order.map(function(resort){
+        var rs=groups[resort], special='',web='',loc='';
+        rs.forEach(function(r){if(r.special&&!special)special=r.special;if(r.web&&r.web!=='#'&&!web)web=r.web;if(r.loc&&!loc)loc=r.loc;});
+        var timed=[];rs.forEach(function(r){if(r.times.length)r.times.forEach(function(t){timed.push({time:t,venue:r.venue,trainer:r.trainer,disc:r.disc});});});
+        timed.sort(function(a,b){return a.time.localeCompare(b.time);});
+        var roster=rs.filter(function(r){return !r.times.length;});
+        var h='<div class="cal-group"><div class="cal-grp-head"><span class="cal-grp-name">'+resort+(loc?' · '+loc:'')+'</span>'+(special?'<span class="cal-badge">✦ '+specialLabel(special)+'</span>':'')+'</div>'+(special&&SPECIAL_DESC[special]?'<div class="cal-grp-desc">'+SPECIAL_DESC[special]+'</div>':'');
+        if(timed.length){
+          var torder=[],tmap={};
+          timed.forEach(function(s){var v=s.venue||'Classes';if(!tmap[v]){tmap[v]=[];torder.push(v);}tmap[v].push(s);});
+          var cols=torder.map(function(v){
+            var lab=(torder.length>1||v!=='Classes')?'<div class="cal-roster-lab">'+v+'</div>':'';
+            var rws=tmap[v].map(function(s){return '<div class="cal-row"><div class="cal-time">'+s.time+'</div><div class="cal-info"><div class="cal-cls">'+(s.disc||'Class')+'</div><div class="cal-meta">with '+s.trainer+'</div></div></div>';}).join('');
+            return '<div class="cal-col">'+lab+rws+'</div>';
+          }).join('');
+          h+='<div class="cal-cols'+(torder.length>1?' two':'')+'">'+cols+'</div>';
+        }
+        if(roster.length){
+          var rorder=[],rmap={};
+          roster.forEach(function(r){var v=r.venue||'Guest trainers this week';if(!rmap[v]){rmap[v]=[];rorder.push(v);}rmap[v].push(r);});
+          rorder.forEach(function(v){
+            h+='<div class="cal-roster"><div class="cal-roster-lab">'+v+'</div><div class="cal-roster-list">'+rmap[v].map(function(r){
+              var inner=r.trainer+(r.disc?' <span>'+r.disc+'</span>':'');
+              var u=igURL(r.ig);
+              return u?('<a href="'+u+'" target="_blank" rel="noopener">'+inner+'</a>'):('<span class="rn">'+inner+'</span>');
+            }).join('')+'</div></div>';
+          });
+        }
+        if(web){h+='<div class="cal-cta"><a class="cal-book" href="'+web+'" target="_blank" rel="noopener">Book your stay at '+resort+'</a></div>';}
+        return h+'</div>';
       }).join('');
-      listEl.innerHTML=rows+'<div class="cal-cta"><a class="cal-book" href="'+(items[0].web||'#')+'" target="_blank" rel="noopener">Book your stay at '+items[0].hotel+'</a></div>';
     }
     function render(){ if(mode==='month')renderMonth(); else renderWeek(); renderDay(); }
+
+    function loadCSV(){
+      if(!CSV_URL)return;
+      fetch(CSV_URL).then(function(r){return r.ok?r.text():Promise.reject();}).then(function(txt){
+        var parsed=fromCSV(txt);
+        if(parsed.length){ROWS=parsed;populate();render();}
+      }).catch(function(){});
+    }
 
     gridEl.addEventListener('click',function(e){
       var b=e.target.closest('.cal-cell');if(!b||b.classList.contains('other'))return;
@@ -741,6 +924,7 @@
     });
     [locEl,typeEl].forEach(function(el){el.addEventListener('change',render);});
     render();
+    loadCSV();
 
     // Rolling residency gallery — crossfade through the images
     var gimgs=document.querySelectorAll('.cal-gallery img');
