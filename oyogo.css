@@ -513,3 +513,7 @@
   .cal-detail .cal-grp-head{padding:14px 0 4px}
   .cal-detail .cal-cta{margin-top:16px}
   .cal-detail .cal-roster{padding:10px 0 2px}
+
+  /* Left-align calendar boxes with the section heading + filters */
+  .cal-main.cal-glass{margin:0}
+  .cal-detail.cal-glass{margin:clamp(16px,2vw,26px) 0 0}
