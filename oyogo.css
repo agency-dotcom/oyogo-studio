@@ -800,3 +800,6 @@
   .gnav:hover{background:#fff}
   .gprev{left:clamp(12px,3vw,44px)}
   .gnext{right:clamp(12px,3vw,44px)}
+
+  /* Services hero kicker */
+  .hero-kicker{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(246,244,235,0.85);margin-bottom:18px}
