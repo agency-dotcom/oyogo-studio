@@ -687,3 +687,9 @@
 
   /* Remove the play-button circle overlay on cards */
   .post .play{display:none}
+
+  /* Vertical hero title: site serif + Oyogo yellow (beat the generic .svc-hero h1 rule) */
+  .svc-hero h1.svc-vtitle{font-family:var(--serif);font-weight:400;color:var(--yellow);font-size:clamp(60px,12vw,150px);letter-spacing:-1px}
+  /* Keep the fixed header/menu above the full-bleed hero */
+  header{z-index:60}
+  .svc-hero{z-index:1}
