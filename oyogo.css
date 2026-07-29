@@ -470,3 +470,11 @@
   .cpill{font-size:10px;line-height:1.25;background:rgba(246,244,235,0.18);color:var(--cream);border-radius:5px;padding:2px 6px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .cmore{font-size:10px;color:rgba(246,244,235,0.6)}
   @media(max-width:760px){.cal-glass .cal-cell{min-height:60px}.cpill{font-size:9px;padding:1px 4px}}
+
+  /* Fix: class pills must stay inside the day cell + widen the calendar */
+  .cal-layout{grid-template-columns:minmax(0,1fr) 340px}
+  .cal-glass .cal-bar,.cal-glass .cal-dow,.cal-glass .cal-grid,.cal-glass .cal-days{max-width:none}
+  .cpills{display:block;margin-top:6px;min-width:0}
+  .cpill{display:block;max-width:100%;box-sizing:border-box;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-bottom:3px}
+  .cmore{display:block;margin-top:1px}
+  @media(max-width:1100px){.cal-layout{grid-template-columns:1fr}}
