@@ -599,3 +599,6 @@
   .ag-trainer{display:inline-block;background:var(--yellow);color:var(--ink);font-weight:600;font-size:12px;line-height:1;padding:5px 11px;border-radius:999px;text-decoration:none}
   a.ag-trainer:hover{opacity:.85}
   .ag-venue{font-size:12px;color:rgba(255,255,255,.55)}
+
+  /* Calendar: not full-bleed — bring it in, left-aligned to the heading */
+  .cal-agenda{max-width:1080px;width:auto;margin:0;padding:clamp(20px,2.6vw,30px) clamp(18px,2.6vw,32px)}
