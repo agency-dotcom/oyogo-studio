@@ -391,6 +391,11 @@
     });
     document.getElementById('cal-mprev').addEventListener('click',function(){view=new Date(view.getFullYear(),view.getMonth()-1,1);renderMonth();});
     document.getElementById('cal-mnext').addEventListener('click',function(){view=new Date(view.getFullYear(),view.getMonth()+1,1);renderMonth();});
+    document.addEventListener('click',function(e){
+      if(!monthOpen)return;
+      if(monthview.contains(e.target)||fullBtn.contains(e.target))return;
+      closeMonth();
+    });
     locEl.addEventListener('change',function(){fillInst();render();});
     [typeEl,instEl].forEach(function(el){el.addEventListener('change',render);});
     render();

@@ -569,3 +569,8 @@
     .ag-row{grid-template-columns:74px 1fr;gap:14px}
     .ag-loc{display:none}
   }
+
+  /* Full Calendar opens as a floating overlay over the class list */
+  .cal-agenda{position:relative}
+  .ag-monthpop{position:absolute;top:56px;right:clamp(16px,4vw,56px);z-index:60;margin:0;box-shadow:0 26px 70px rgba(0,0,0,.55)}
+  @media(max-width:480px){.ag-monthpop{left:clamp(12px,4vw,20px);right:clamp(12px,4vw,20px);width:auto}}
