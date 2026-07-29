@@ -517,3 +517,11 @@
   /* Left-align calendar boxes with the section heading + filters */
   .cal-main.cal-glass{margin:0}
   .cal-detail.cal-glass{margin:clamp(16px,2vw,26px) 0 0}
+
+  /* Calendar + detail side by side */
+  .cal-layout{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:clamp(16px,1.8vw,24px);align-items:start;max-width:1120px}
+  .cal-main.cal-glass{max-width:none;margin:0}
+  .cal-detail.cal-glass{max-width:none;margin:0}
+  @media (max-width:900px){
+    .cal-layout{grid-template-columns:1fr}
+  }
