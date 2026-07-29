@@ -498,3 +498,11 @@
     });
   });
 })();
+
+// Mobile menu toggle
+(function(){
+  var h=document.getElementById('site'); if(!h) return;
+  var t=h.querySelector('.nav-toggle'); if(!t) return;
+  t.addEventListener('click',function(){h.classList.toggle('menu-open');});
+  h.querySelectorAll('.nav-links a').forEach(function(a){a.addEventListener('click',function(){h.classList.remove('menu-open');});});
+})();
