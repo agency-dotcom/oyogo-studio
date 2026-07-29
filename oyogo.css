@@ -895,3 +895,8 @@
 
   /* Where to find us: remove upper line (keep the line under the section)  */
   .rgrid{border-top:none;padding-top:0}
+
+  /* Global partners: light names band (no image) */
+  body.np #work{background:var(--bg)}
+  body.np #work .clients-eyebrow{color:var(--muted)}
+  body.np #work .clients-names{color:var(--ink)}
