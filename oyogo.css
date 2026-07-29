@@ -881,3 +881,14 @@
   .rcol{border-top:none;padding-top:0}
   .rgrid{border-top:1px solid var(--line);padding-top:clamp(24px,2.4vw,32px)}
   #resorts{padding-bottom:clamp(14px,2vw,28px)}
+
+  /* Footer: off-white (dark text) */
+  .site-footer{background:var(--bg)}
+  .ft-lead h2{color:var(--ink)}
+  .ft-cta{color:var(--ink);border-bottom-color:var(--ink)}
+  .ft-h{color:var(--muted)}
+  .ft-col a{color:var(--ink)}
+  .ft-col a:hover{color:var(--olive)}
+  .ft-rule{background:var(--line)}
+  .ft-bottom div,.ft-bottom a{color:var(--muted)}
+  .ft-bottom a:hover{color:var(--ink)}
