@@ -428,3 +428,45 @@
   .cal-cell.special{background:rgba(180,84,46,0.08)}
   .cal-cell .cal-dots{justify-content:flex-start;margin-top:6px}
   @media(max-width:760px){.cal-cell{min-height:48px;padding:4px 5px}.cal-num{font-size:13px}.cal-cell.today .cal-num{width:20px;height:20px}}
+
+  /* ===== Frosted-glass calendar (single resort, bold numbers, class pills) ===== */
+  .cal-glass-sec{position:relative;overflow:hidden}
+  .cal-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .cal-bg-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,24,28,0.62),rgba(20,24,28,0.74));z-index:1}
+  .cal-glass-sec > .wrap{position:relative;z-index:2}
+  .cal-glass-sec .label{color:var(--yellow)}
+  .cal-glass-sec h2,.cal-glass-sec .sec-lede{color:var(--cream)}
+  .cal-glass-sec .cal-filters select{color:var(--cream);border-color:rgba(246,244,235,0.35);background-color:rgba(246,244,235,0.06);background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23F6F4EB' stroke-width='2' stroke-linecap='round'><path d='M6 9l6 6 6-6'/></svg>")}
+  .cal-glass-sec .cal-view{border-color:rgba(246,244,235,0.35)}
+  .cal-glass-sec .cal-view button{color:rgba(246,244,235,0.7)}
+  .cal-glass-sec .cal-view button.on{background:var(--cream);color:var(--ink)}
+  .cal-legend{display:none}
+
+  .cal-glass{background:rgba(38,42,46,0.30);backdrop-filter:blur(22px) saturate(120%);-webkit-backdrop-filter:blur(22px) saturate(120%);border:1px solid rgba(246,244,235,0.22);border-radius:22px;padding:clamp(18px,2.4vw,32px);color:var(--cream)}
+  .cal-glass .cal-title{color:var(--cream)}
+  .cal-glass .cal-nav,.cal-glass .cal-today{border-color:rgba(246,244,235,0.32);color:var(--cream);background:transparent}
+  .cal-glass .cal-nav:hover,.cal-glass .cal-today:hover{background:rgba(246,244,235,0.12)}
+  .cal-glass .cal-dow{border-bottom-color:rgba(246,244,235,0.5)}
+  .cal-glass .cal-dow span{color:rgba(246,244,235,0.7)}
+  .cal-glass .cal-grid{border-left-color:rgba(246,244,235,0.14)}
+  .cal-glass .cal-cell{border-right-color:rgba(246,244,235,0.14);border-bottom-color:rgba(246,244,235,0.14);min-height:88px}
+  .cal-glass .cal-cell:hover{background:rgba(246,244,235,0.06)}
+  .cal-glass .cal-num{color:var(--cream);font-weight:800;font-size:16px}
+  .cal-glass .cal-cell.other .cal-num{color:rgba(246,244,235,0.28)}
+  .cal-glass .cal-cell.today .cal-num{background:var(--yellow);color:var(--ink)}
+  .cal-glass .cal-cell.sel{box-shadow:inset 0 0 0 2px var(--yellow)}
+  .cal-glass .cal-cell.special{background:rgba(180,84,46,0.22)}
+  .cal-glass .cal-circle{border-color:rgba(246,244,235,0.35);color:var(--cream)}
+  .cal-glass .cal-day.on .cal-circle{background:var(--yellow);color:var(--ink);border-color:var(--yellow)}
+  .cal-glass .cal-wd{color:rgba(246,244,235,0.7)}
+  .cal-glass .cal-dayhead,.cal-glass .cal-time,.cal-glass .cal-cls,.cal-glass .cal-grp-name{color:var(--cream)}
+  .cal-glass .cal-tz,.cal-glass .cal-meta,.cal-glass .cal-roster-lab{color:rgba(246,244,235,0.62)}
+  .cal-glass .cal-row,.cal-glass .cal-empty,.cal-glass .cal-grp-head{border-top-color:rgba(246,244,235,0.16)}
+  .cal-glass .cal-empty{color:rgba(246,244,235,0.72)}
+  .cal-glass .cal-roster-list a,.cal-glass .cal-roster-list .rn{border-color:rgba(246,244,235,0.28);color:var(--cream)}
+
+  /* Class pills in month cells */
+  .cpills{display:flex;flex-wrap:wrap;gap:3px;margin-top:6px;width:100%}
+  .cpill{font-size:10px;line-height:1.25;background:rgba(246,244,235,0.18);color:var(--cream);border-radius:5px;padding:2px 6px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .cmore{font-size:10px;color:rgba(246,244,235,0.6)}
+  @media(max-width:760px){.cal-glass .cal-cell{min-height:60px}.cpill{font-size:9px;padding:1px 4px}}
