@@ -260,6 +260,9 @@
     function catsFor(text){text=text||'';var out=[];CAT_KEYS.forEach(function(k){if(k[1].test(text))out.push(k[0]);});return out;}
     ROWS.forEach(function(r){r.cats=catsFor((r.disc||'')+' '+(r.type||''));});
 
+    // Resorts confirmed but not yet live (shown in the dropdown with a coming-soon state).
+    var COMING={'Nesslerhof':{loc:'Großarl, Austria',web:'https://www.nesslerhof.at',note:'Oyogo residencies at Nesslerhof are coming in 2027.'}};
+
     var today=new Date();today.setHours(0,0,0,0);
     var view=new Date(today), selected=new Date(today), monthOpen=false;
 
@@ -281,7 +284,8 @@
       var cl=locEl.value,ct=typeEl.value,ci=instEl.value;
       var resorts=uniq(ROWS.map(function(r){return r.resort;}));
       var pi=resorts.indexOf('Peligoni'); if(pi>0){resorts.splice(pi,1);resorts.unshift('Peligoni');}
-      locEl.innerHTML='<option value="">All resorts</option>'+resorts.map(function(v){return '<option value="'+v+'">'+v+'</option>';}).join('');
+      Object.keys(COMING).forEach(function(n){if(resorts.indexOf(n)<0)resorts.push(n);});
+      locEl.innerHTML='<option value="">All resorts</option>'+resorts.map(function(v){return '<option value="'+v+'">'+(COMING[v]?v+' · 2027':v)+'</option>';}).join('');
       fill(typeEl,'All classes',CAT_ORDER.filter(function(c){return ROWS.some(function(r){return r.cats.indexOf(c)>=0;});}));
       locEl.value=(cl&&resorts.indexOf(cl)>=0)?cl:'';
       typeEl.value=ct;
@@ -413,6 +417,11 @@
     // Agenda: full-width class rows for the selected day.
     function renderDay(){
       dayheadEl.textContent=WDF[selected.getDay()]+', '+MONS[selected.getMonth()]+' '+selected.getDate();
+      if(COMING[locEl.value]){
+        var c=COMING[locEl.value];
+        listEl.innerHTML='<div class="ag-group"><div class="ag-ghead"><div class="ag-gtitle"><span class="ag-gname">'+locEl.value+(c.loc?' · '+c.loc:'')+'</span><span class="cal-badge">✦ From 2027</span></div>'+(c.web?'<a class="cal-book" href="'+c.web+'" target="_blank" rel="noopener">Book your stay</a>':'')+'</div><p class="cal-empty">'+c.note+' <a href="mailto:studio@oyogo.co.uk" style="color:var(--yellow);font-weight:600">Enquire about a residency</a>.</p></div>';
+        return;
+      }
       var lbl=filterLabel(), filterActive=!!(typeEl.value||instEl.value);
       var rows=activeRows(selected), order=[], groups={};
       rows.forEach(function(r){if(!groups[r.resort]){groups[r.resort]=[];order.push(r.resort);}groups[r.resort].push(r);});
