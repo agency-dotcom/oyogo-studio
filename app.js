@@ -246,6 +246,20 @@
 
     var ROWS=flatten(SCHEDULE).concat(PELIGONI);
 
+    // ---- Class-type categories: keyword-mapped from each class name / discipline ----
+    var CAT_ORDER=['Pilates','Barre','Yoga','Sound','Meditation','Breathwork','Fitness'];
+    var CAT_KEYS=[
+      ['Pilates',    /pilates|reformer/i],
+      ['Barre',      /barre/i],
+      ['Yoga',       /yoga|vinyasa|flow|restore|unwind|standing balances|back ?bends|hip openers/i],
+      ['Sound',      /sound/i],
+      ['Meditation', /medit|mindful/i],
+      ['Breathwork', /breath/i],
+      ['Fitness',    /fitness|gym|circuit|strength|cardio|conditioning|hiit|abs|glute|tempo|functional|mobility|movement|hybrid/i]
+    ];
+    function catsFor(text){text=text||'';var out=[];CAT_KEYS.forEach(function(k){if(k[1].test(text))out.push(k[0]);});return out;}
+    ROWS.forEach(function(r){r.cats=catsFor((r.disc||'')+' '+(r.type||''));});
+
     var today=new Date();today.setHours(0,0,0,0);
     var mode='month', view=new Date(today), selected=new Date(today);
 
@@ -260,7 +274,7 @@
       var cl=locEl.value,ct=typeEl.value;
       var resorts=uniq(ROWS.map(function(r){return r.resort;}));
       locEl.innerHTML=resorts.map(function(v){return '<option value="'+v+'">'+v+'</option>';}).join('');
-      fill(typeEl,'All classes',uniq(ROWS.map(function(r){return r.type;})));
+      fill(typeEl,'All classes',CAT_ORDER.filter(function(c){return ROWS.some(function(r){return r.cats.indexOf(c)>=0;});}));
       locEl.value=(cl&&resorts.indexOf(cl)>=0)?cl:resorts[0]; // always one resort
       typeEl.value=ct;
     }
@@ -278,7 +292,7 @@
       var day=iso(d);
       return ROWS.filter(function(r){return day>=r.start && day<r.endEx;})
         .filter(function(r){return !locEl.value || r.resort===locEl.value;})
-        .filter(function(r){return !typeEl.value || r.type===typeEl.value;});
+        .filter(function(r){return !typeEl.value || (r.cats&&r.cats.indexOf(typeEl.value)>=0);});
     }
     function specialOn(rows){var s='';rows.forEach(function(r){if(r.special)s=r.special;});return s;}
     var SPECIAL_DESC={'Pace 1':'Performance & fitness week','Pace 2':'Performance & fitness week','Pace 3':'Performance & fitness week','Gather':'Wellness & community week'};
