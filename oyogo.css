@@ -17,7 +17,6 @@
 
   /* Fixed header */
   header{position:fixed;top:0;left:0;right:0;z-index:30;border-bottom:1px solid transparent;transition:background .3s ease,border-color .3s ease}
-  header .wrap{max-width:none}
   .nav{display:flex;align-items:center;justify-content:space-between;height:62px}
   .brand{display:flex;align-items:baseline;gap:14px;min-width:0}
   .logo-img{height:22px;width:auto;display:block;filter:brightness(0) invert(1);transition:filter .3s ease;transform:translateY(3px)}
