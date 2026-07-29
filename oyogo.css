@@ -895,11 +895,3 @@
 
   /* Where to find us: remove upper line (keep the line under the section)  */
   .rgrid{border-top:none;padding-top:0}
-
-  /* Where to find us: navy section (yellow CTAs pop) */
-  #resorts{background:var(--dark)}
-  #resorts .label{color:rgba(246,244,235,0.6)}
-  #resorts .rname{color:var(--cream)}
-  #resorts .rloc{color:var(--sage)}
-  #resorts .rcol .btn{color:var(--yellow)}
-  #resorts .rsoon{color:var(--sage)}
