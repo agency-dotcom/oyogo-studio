@@ -892,3 +892,6 @@
   .ft-rule{background:var(--line)}
   .ft-bottom div,.ft-bottom a{color:var(--muted)}
   .ft-bottom a:hover{color:var(--ink)}
+
+  /* Where to find us: remove upper line (keep the line under the section)  */
+  .rgrid{border-top:none;padding-top:0}
