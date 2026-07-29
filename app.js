@@ -272,7 +272,8 @@
     }
     function fillInst(){
       var ci=instEl.value;
-      var list=uniq(ROWS.filter(function(r){return r.resort===locEl.value;}).map(function(r){return r.trainer;})).filter(Boolean).sort();
+      var src=locEl.value?ROWS.filter(function(r){return r.resort===locEl.value;}):ROWS;
+      var list=uniq(src.map(function(r){return r.trainer;})).filter(Boolean).sort();
       fill(instEl,'All instructors',list);
       instEl.value=(ci&&list.indexOf(ci)>=0)?ci:'';
     }
@@ -280,9 +281,9 @@
       var cl=locEl.value,ct=typeEl.value,ci=instEl.value;
       var resorts=uniq(ROWS.map(function(r){return r.resort;}));
       var pi=resorts.indexOf('Peligoni'); if(pi>0){resorts.splice(pi,1);resorts.unshift('Peligoni');}
-      locEl.innerHTML=resorts.map(function(v){return '<option value="'+v+'">'+v+'</option>';}).join('');
+      locEl.innerHTML='<option value="">All resorts</option>'+resorts.map(function(v){return '<option value="'+v+'">'+v+'</option>';}).join('');
       fill(typeEl,'All classes',CAT_ORDER.filter(function(c){return ROWS.some(function(r){return r.cats.indexOf(c)>=0;});}));
-      locEl.value=(cl&&resorts.indexOf(cl)>=0)?cl:resorts[0]; // always one resort
+      locEl.value=(cl&&resorts.indexOf(cl)>=0)?cl:'';
       typeEl.value=ct;
       fillInst(); instEl.value=(ci&&[].some.call(instEl.options,function(o){return o.value===ci;}))?ci:'';
     }
@@ -308,6 +309,19 @@
     function specialLabel(s){return /^Pace/.test(s)?s.replace('Pace','Pace Week'):(s==='Gather'?'Gather Week':s);}
 
     // Day-strip: the current week of `selected`, always visible.
+    // Label for the currently-active filter (type > instructor > resort).
+    function filterLabel(){
+      if(typeEl.value)return typeEl.value+' ';
+      if(instEl.value)return instEl.value+' ';
+      if(locEl.value)return locEl.value+' ';
+      return '';
+    }
+    // Next day (scanning forward) that has sessions matching the active filters.
+    function nextSessionDate(from){
+      var d=new Date(from);
+      for(var i=0;i<400;i++){d.setDate(d.getDate()+1);if(activeRows(d).length)return new Date(d);}
+      return null;
+    }
     function renderStrip(){
       titleEl.textContent=MON[selected.getMonth()]+' '+selected.getFullYear();
       var start=mondayOf(selected), html='';
@@ -334,7 +348,13 @@
     function renderDay(){
       dayheadEl.textContent=WDF[selected.getDay()]+', '+MONS[selected.getMonth()]+' '+selected.getDate();
       var rows=activeRows(selected);
-      if(!rows.length){listEl.innerHTML='<p class="cal-empty">No Oyogo sessions on this day — <a href="mailto:studio@oyogo.co.uk" style="color:var(--olive);font-weight:600">enquire about a residency</a>.</p>';return;}
+      if(!rows.length){
+        var lbl=filterLabel();
+        var nd=nextSessionDate(selected);
+        var pill=nd?'<button type="button" class="cal-nextpill" data-t="'+nd.getTime()+'">Next '+lbl+'session · '+WDL[(nd.getDay()+6)%7]+' '+MONS[nd.getMonth()]+' '+nd.getDate()+' →</button>':'';
+        listEl.innerHTML='<p class="cal-empty">No Oyogo '+lbl+'sessions on this day — <a href="mailto:studio@oyogo.co.uk" style="color:var(--yellow);font-weight:600">enquire about a residency</a>.</p>'+pill;
+        return;
+      }
       var order=[],groups={};
       rows.forEach(function(r){if(!groups[r.resort]){groups[r.resort]=[];order.push(r.resort);}groups[r.resort].push(r);});
       listEl.innerHTML=order.map(function(resort){
@@ -384,6 +404,10 @@
     });
     daysEl.addEventListener('click',function(e){
       var b=e.target.closest('.cal-day');if(!b)return;
+      selected=new Date(parseInt(b.getAttribute('data-t'),10));render();
+    });
+    listEl.addEventListener('click',function(e){
+      var b=e.target.closest('.cal-nextpill');if(!b)return;
       selected=new Date(parseInt(b.getAttribute('data-t'),10));render();
     });
     document.getElementById('cal-prev').addEventListener('click',function(){selected=addDays(mondayOf(selected),-7);render();});
