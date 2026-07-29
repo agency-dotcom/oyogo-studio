@@ -812,3 +812,7 @@
   .gt{font-size:clamp(15px,1.4vw,19px);font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--ink);line-height:1.2}
   .gs{font-size:clamp(14px,1.3vw,17px);color:var(--muted);margin-top:5px}
   @media(max-width:640px){.gslide{grid-template-columns:1fr;gap:26px}}
+
+  /* Services gallery: smaller card type */
+  .svc-grid-sec .scard .pill span{font-size:11px;letter-spacing:.3px}
+  .svc-grid-sec .scard .cap{font-size:13px;line-height:1.45;margin-top:12px}
