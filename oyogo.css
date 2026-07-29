@@ -590,3 +590,6 @@
   .ag-monthpop .cal-cell.sel{background:#fff;box-shadow:none}
   .ag-monthpop .cal-cell.sel .cal-num{color:var(--ink)}
   .ag-monthpop .cal-cell.special{background:rgba(180,84,46,.24)}
+
+  /* "From 2027" coming-soon badge on a resort card */
+  .rsoon{display:inline-block;vertical-align:middle;margin-left:8px;font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--olive);border:1px solid rgba(92,107,79,.4);border-radius:999px;padding:3px 8px}
