@@ -737,3 +737,23 @@
   .svc-big img{transition:transform .5s ease}
   @media(max-width:900px){.svc-lookbook{grid-template-columns:repeat(2,1fr)}.svc-big{grid-column:span 2}}
   @media(max-width:560px){.svc-lookbook{grid-template-columns:1fr}.svc-big{grid-column:span 1;aspect-ratio:1.35}}
+
+  /* Services lookbook: Smith-style divider lines */
+  .svc-lookbook{gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .svc-tile{padding:clamp(20px,1.6vw,28px) clamp(12px,1.2vw,20px)}
+  .svc-tile{border-right:1px solid var(--line)}
+  .svc-tile:first-child{padding-left:0}
+  .svc-tile:nth-child(4){border-right:none;padding-right:0}
+  .svc-tile-img{border-radius:3px}
+  .svc-big{border-radius:0;border-top:1px solid var(--line)}
+  .svc-big:nth-child(5){border-right:1px solid var(--line)}
+  @media(max-width:900px){
+    .svc-tile:nth-child(2){border-right:none;padding-right:0}
+    .svc-tile:nth-child(3){border-right:1px solid var(--line);padding-left:0}
+    .svc-tile:nth-child(3),.svc-tile:nth-child(4){border-top:1px solid var(--line)}
+  }
+  @media(max-width:560px){
+    .svc-tile{border-right:none!important;padding-left:0!important;padding-right:0!important;border-top:1px solid var(--line)}
+    .svc-tile:first-child{border-top:none}
+    .svc-big:nth-child(5){border-right:none}
+  }
