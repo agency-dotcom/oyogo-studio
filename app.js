@@ -322,6 +322,18 @@
       for(var i=0;i<400;i++){d.setDate(d.getDate()+1);if(activeRows(d).length)return new Date(d);}
       return null;
     }
+    // Next matching window: the contiguous run of matching days starting at the next match.
+    function nextSessionRange(from){
+      var s=nextSessionDate(from); if(!s)return null;
+      var e=new Date(s);
+      for(var i=0;i<400;i++){var n=new Date(e);n.setDate(n.getDate()+1);if(!activeRows(n).length)break;e=n;}
+      return {s:s,e:e};
+    }
+    function fmtWindow(a,b){
+      if(key(a)===key(b))return WDL[(a.getDay()+6)%7]+' '+MONS[a.getMonth()]+' '+a.getDate();
+      var end=(a.getMonth()===b.getMonth())?b.getDate():MONS[b.getMonth()]+' '+b.getDate();
+      return MONS[a.getMonth()]+' '+a.getDate()+' – '+end;
+    }
     function renderStrip(){
       titleEl.textContent=MON[selected.getMonth()]+' '+selected.getFullYear();
       var start=mondayOf(selected), html='';
@@ -350,8 +362,12 @@
       var rows=activeRows(selected);
       if(!rows.length){
         var lbl=filterLabel();
-        var nd=nextSessionDate(selected);
-        var pill=nd?'<button type="button" class="cal-nextpill" data-t="'+nd.getTime()+'">Next '+lbl+'session · '+WDL[(nd.getDay()+6)%7]+' '+MONS[nd.getMonth()]+' '+nd.getDate()+' →</button>':'';
+        var rng=nextSessionRange(selected);
+        var pill='';
+        if(rng){
+          var multi=key(rng.s)!==key(rng.e);
+          pill='<button type="button" class="cal-nextpill" data-t="'+rng.s.getTime()+'">Next '+lbl+(multi?'residency':'session')+' · '+fmtWindow(rng.s,rng.e)+' →</button>';
+        }
         listEl.innerHTML='<p class="cal-empty">No Oyogo '+lbl+'sessions on this day — <a href="mailto:studio@oyogo.co.uk" style="color:var(--yellow);font-weight:600">enquire about a residency</a>.</p>'+pill;
         return;
       }
