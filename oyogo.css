@@ -714,3 +714,7 @@
   .res-banner{display:block;background:var(--yellow);color:var(--ink);font-weight:700;letter-spacing:-.2px;padding:clamp(13px,1.6vw,20px) 0}
   .res-banner .wrap{display:block;font-size:clamp(15px,1.5vw,20px)}
   .res-banner:hover{opacity:.95}
+
+  /* Homepage: tighten the gap between the About statement and Services */
+  #about{padding-bottom:clamp(26px,3.2vw,44px)}
+  #services{padding-top:clamp(26px,3.2vw,44px)}
