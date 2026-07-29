@@ -660,3 +660,27 @@
     .svc-split-media{min-height:300px}
     .svc-split.rev .svc-split-media{order:0}
   }
+
+  /* Ticker separators: muted middot, no yellow star */
+  .ticker .tk-sep,.svc-ticker .tk-sep{color:rgba(246,244,235,0.38);opacity:1;font-size:12px}
+
+  /* Services hero: big vertical yellow title */
+  .svc-vtitle{position:absolute;z-index:2;left:50%;top:48%;transform:translate(-50%,-50%) rotate(180deg);writing-mode:vertical-rl;text-orientation:mixed;color:var(--yellow);font-family:var(--serif);font-weight:400;font-size:clamp(60px,12vw,150px);line-height:1;letter-spacing:-1px;margin:0}
+
+  /* Services lookbook — IG-style card grid (SLOW-style) */
+  .svc-grid-sec{background:var(--dark);padding:clamp(40px,6vw,88px) 0}
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.6vw,22px)}
+  @media(max-width:900px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.svc-grid{grid-template-columns:1fr}}
+  .svc-card{background:#fff;border-radius:16px;overflow:hidden}
+  .svc-card-bar{display:flex;align-items:center;gap:8px;padding:11px 14px}
+  .svc-card-bar .av{width:26px;height:26px;border-radius:50%;background:var(--dark);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:11px;flex:none}
+  .svc-card-bar .hn{font-weight:700;font-size:13px;color:var(--ink)}
+  .svc-card-bar .vf{width:15px;height:15px;flex:none}
+  .svc-card-media{position:relative;aspect-ratio:1;overflow:hidden}
+  .svc-card-media>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .svc-card-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,24,28,.1) 0%,rgba(20,24,28,.12) 50%,rgba(20,24,28,.6) 100%)}
+  .svc-card-logo{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:clamp(84px,10vw,124px);height:auto;filter:brightness(0) invert(1);opacity:.95}
+  .svc-card-meta{position:absolute;left:15px;right:15px;bottom:14px;display:flex;justify-content:space-between;align-items:flex-end;gap:10px}
+  .svc-card-meta .n{font-size:11px;font-weight:700;letter-spacing:1px;color:rgba(255,255,255,.7)}
+  .svc-card-meta .t{font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:#fff;text-align:right;max-width:64%;line-height:1.25}
