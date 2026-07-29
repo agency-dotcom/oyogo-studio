@@ -409,3 +409,7 @@
 
   /* Tighten gap between 'Recent work' teaser and the clients image band */
   #schedule{padding-bottom:clamp(20px,3vw,40px)}
+
+  /* Tighten gap between IG feed and the 'Our clients' teaser */
+  #feed{padding-bottom:clamp(22px,3vw,40px)}
+  #schedule{padding-top:clamp(28px,3.5vw,48px)}
