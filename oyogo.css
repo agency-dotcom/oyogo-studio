@@ -664,7 +664,7 @@
   .ticker .tk-sep,.svc-ticker .tk-sep{color:rgba(246,244,235,0.38);opacity:1;font-size:12px}
 
   /* Services hero: big vertical yellow title */
-  .svc-vtitle{position:absolute;z-index:2;left:50%;top:48%;transform:translate(-50%,-50%) rotate(180deg);writing-mode:vertical-rl;text-orientation:mixed;color:var(--yellow);font-family:var(--serif);font-weight:400;font-size:clamp(60px,12vw,150px);line-height:1;letter-spacing:-1px;margin:0}
+  .svc-vtitle{position:absolute;z-index:2;left:50%;top:48%;transform:translate(-50%,-50%) rotate(180deg);writing-mode:vertical-rl;text-orientation:mixed;color:var(--yellow);font-family:var(--sans);font-weight:800;font-size:clamp(60px,12vw,150px);line-height:1;letter-spacing:-1px;margin:0}
 
   /* Services lookbook — IG-style card grid (SLOW-style) */
   .svc-grid-sec{background:var(--bg);padding:clamp(40px,6vw,88px) 0}
@@ -688,7 +688,7 @@
   .post .play{display:none}
 
   /* Vertical hero title: site serif + Oyogo yellow (beat the generic .svc-hero h1 rule) */
-  .svc-hero h1.svc-vtitle{font-family:var(--serif);font-weight:400;color:var(--yellow);font-size:clamp(60px,12vw,150px);letter-spacing:-1px}
+  .svc-hero h1.svc-vtitle{font-family:var(--sans);font-weight:800;color:var(--yellow);font-size:clamp(60px,12vw,150px);letter-spacing:-3px}
   /* Keep the fixed header/menu above the full-bleed hero */
   header{z-index:200}
   .svc-hero{z-index:1}
