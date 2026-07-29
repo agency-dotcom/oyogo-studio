@@ -348,7 +348,7 @@
             var u=igURL(s.ig);
             var tname=u?('<a class="ag-trainer" href="'+u+'" target="_blank" rel="noopener">'+s.trainer+'</a>'):('<span class="ag-trainer">'+s.trainer+'</span>');
             var venue=(s.venue&&s.venue!=='Classes')?'<span class="ag-venue">'+s.venue+'</span>':'';
-            return '<div class="ag-row"><div class="ag-time">'+s.time+'</div><div class="ag-main"><div class="ag-cls">'+(s.disc||'Class')+'</div><div class="ag-sub">'+tname+venue+'</div></div><div class="ag-loc">'+resort+'</div></div>';
+            return '<div class="ag-row"><div class="ag-time">'+s.time+'</div><div class="ag-main"><div class="ag-cls">'+(s.disc||'Class')+'</div><div class="ag-sub">'+tname+'</div></div><div class="ag-loc"><span class="ag-resort">'+resort+'</span>'+venue+'</div></div>';
           }).join('')+'</div>';
         }
         if(roster.length){
