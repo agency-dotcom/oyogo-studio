@@ -478,3 +478,15 @@
   .cpill{display:block;max-width:100%;box-sizing:border-box;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-bottom:3px}
   .cmore{display:block;margin-top:1px}
   @media(max-width:1100px){.cal-layout{grid-template-columns:1fr}}
+
+  /* Calendar: no side gallery, capped + centred glass box, full-width rolling image strip */
+  #schedule .wrap{max-width:1240px;margin:0 auto;padding-left:44px;padding-right:44px}
+  @media(max-width:760px){#schedule .wrap{padding-left:22px;padding-right:22px}}
+  .cal-layout{display:block}
+  .cal-main.cal-glass{max-width:980px;margin:0 auto}
+  .imgroll{position:relative;z-index:2;overflow:hidden;width:100%;margin-top:clamp(30px,4vw,54px)}
+  .imgroll-track{display:flex;gap:12px;width:max-content;animation:imgroll 48s linear infinite}
+  .imgroll img{height:clamp(180px,22vw,300px);width:auto;border-radius:12px;object-fit:cover;display:block;flex:none}
+  .imgroll:hover .imgroll-track{animation-play-state:paused}
+  @keyframes imgroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media(prefers-reduced-motion:reduce){.imgroll-track{animation:none}}
