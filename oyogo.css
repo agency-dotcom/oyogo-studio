@@ -721,3 +721,19 @@
 
   /* Services hero: sub-text to the right side of the vertical title */
   .svc-hero .svc-hero-sub{position:absolute;z-index:3;right:clamp(24px,5vw,80px);top:50%;transform:translateY(-50%);left:auto;max-width:300px;margin:0;text-align:left}
+
+  /* ===== Services lookbook (Smith-style): 4 tiles + 2 big overlay cards ===== */
+  .svc-lookbook{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,2vw,32px) clamp(16px,1.8vw,26px)}
+  .svc-tile{display:block}
+  .svc-tile-img{aspect-ratio:1.12;border-radius:4px;overflow:hidden;background:#e6e1d7}
+  .svc-tile-img img{width:100%;height:100%;object-fit:cover;display:block}
+  .svc-tile-kicker{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-top:16px}
+  .svc-tile-title{font-size:clamp(16px,1.5vw,20px);font-weight:700;letter-spacing:-.2px;color:var(--ink);margin-top:5px;line-height:1.25}
+  .svc-big{position:relative;grid-column:span 2;border-radius:6px;overflow:hidden;aspect-ratio:1.62;display:block}
+  .svc-big img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .svc-big-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,24,28,.05) 40%,rgba(20,24,28,.6) 100%)}
+  .svc-big-title{position:absolute;left:clamp(22px,2.5vw,42px);bottom:clamp(20px,2.4vw,38px);z-index:2;font-family:var(--serif);font-weight:400;font-size:clamp(24px,3vw,44px);letter-spacing:-.5px;color:#fff;max-width:80%}
+  .svc-big:hover img{transform:scale(1.02)}
+  .svc-big img{transition:transform .5s ease}
+  @media(max-width:900px){.svc-lookbook{grid-template-columns:repeat(2,1fr)}.svc-big{grid-column:span 2}}
+  @media(max-width:560px){.svc-lookbook{grid-template-columns:1fr}.svc-big{grid-column:span 1;aspect-ratio:1.35}}
