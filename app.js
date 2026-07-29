@@ -488,3 +488,13 @@
     var gimgs=document.querySelectorAll('.cal-gallery img');
     if(gimgs.length>1){var gi=0;setInterval(function(){gimgs[gi].classList.remove('on');gi=(gi+1)%gimgs.length;gimgs[gi].classList.add('on');},4000);}
   })();
+
+// Flick-through work gallery arrows
+(function(){
+  document.querySelectorAll('.gnav').forEach(function(b){
+    b.addEventListener('click',function(){
+      var t=document.getElementById('gtrack'); if(!t) return;
+      t.scrollBy({left:(b.classList.contains('gnext')?1:-1)*t.clientWidth,behavior:'smooth'});
+    });
+  });
+})();
