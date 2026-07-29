@@ -525,3 +525,6 @@
   @media (max-width:900px){
     .cal-layout{grid-template-columns:1fr}
   }
+
+  /* Full-screen width for the two calendar boxes */
+  .cal-layout{max-width:none;width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);padding:0 clamp(16px,4vw,56px)}
