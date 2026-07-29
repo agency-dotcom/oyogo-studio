@@ -495,3 +495,7 @@
   .cal-cell{min-width:0}
   .cal-glass{overflow:hidden}
   .cal-glass .cal-grid,.cal-glass .cal-dow,.cal-glass .cal-days{width:100%}
+
+  /* Split calendar into two glass boxes + space image strip from footer */
+  .cal-detail.cal-glass{max-width:980px;margin:clamp(16px,2vw,26px) auto 0}
+  .imgroll{margin-bottom:clamp(44px,6vw,84px)}
