@@ -406,3 +406,6 @@
 
   /* Clients band: bigger names (kept full-width span) */
   .clients-names{font-size:clamp(28px,4.4vw,60px)}
+
+  /* Tighten gap between 'Recent work' teaser and the clients image band */
+  #schedule{padding-bottom:clamp(20px,3vw,40px)}
