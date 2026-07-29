@@ -499,3 +499,17 @@
   /* Split calendar into two glass boxes + space image strip from footer */
   .cal-detail.cal-glass{max-width:980px;margin:clamp(16px,2vw,26px) auto 0}
   .imgroll{margin-bottom:clamp(44px,6vw,84px)}
+
+  /* Rolling strip: IG-style cards */
+  .imgroll-track{gap:16px}
+  .imgroll .post{flex:0 0 clamp(230px,24vw,300px);scroll-snap-align:none}
+
+  /* Second glass box (day detail): tighter, less deep */
+  .cal-detail.cal-glass{padding:clamp(16px,2vw,26px)}
+  .cal-detail .cal-dayhead{margin:2px 0 2px}
+  .cal-detail .cal-tz{margin-bottom:4px}
+  .cal-detail .cal-row{padding:11px 0}
+  .cal-detail .cal-group+.cal-group{margin-top:6px}
+  .cal-detail .cal-grp-head{padding:14px 0 4px}
+  .cal-detail .cal-cta{margin-top:16px}
+  .cal-detail .cal-roster{padding:10px 0 2px}
