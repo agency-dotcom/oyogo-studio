@@ -199,7 +199,7 @@
   .contact .row a:hover{opacity:0.8}
 
   /* Schedule / calendar */
-  #schedule .wrap{max-width:none;padding-left:clamp(56px,6.5vw,150px)}
+  #schedule .wrap{max-width:1500px}
   .cal-filters{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
   .cal-filters select{appearance:none;-webkit-appearance:none;background-color:transparent;border:1px solid var(--line);border-radius:24px;padding:10px 36px 10px 16px;font-family:var(--sans);font-size:14px;color:var(--ink);cursor:pointer;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2314181C' stroke-width='2' stroke-linecap='round'><path d='M6 9l6 6 6-6'/></svg>");background-repeat:no-repeat;background-position:right 14px center}
   .cal-view{display:inline-flex;border:1px solid var(--line);border-radius:24px;overflow:hidden}
@@ -480,7 +480,7 @@
   @media(max-width:1100px){.cal-layout{grid-template-columns:1fr}}
 
   /* Calendar: no side gallery, capped + centred glass box, full-width rolling image strip */
-  #schedule .wrap{max-width:1240px;margin:0 auto;padding-left:44px;padding-right:44px}
+  #schedule .wrap{max-width:1500px;margin:0 auto;padding-left:44px;padding-right:44px}
   @media(max-width:760px){#schedule .wrap{padding-left:22px;padding-right:22px}}
   .cal-layout{display:block}
   .cal-main.cal-glass{max-width:980px;margin:0 auto}
@@ -702,10 +702,9 @@
   .svc-card-meta .cr{text-align:right}
 
   /* Services lookbook: full-screen width */
-  .svc-grid-sec>.wrap{max-width:none;padding:0 clamp(20px,3vw,52px)}
+  .svc-grid-sec>.wrap{max-width:1500px;margin:0 auto;padding:0 44px}
 
   /* Where to find us: all resorts on one row, CTA on its own second row */
-  #resorts .wrap{max-width:none;padding-left:clamp(20px,4vw,52px);padding-right:clamp(20px,4vw,52px)}
   @media(min-width:901px){.rgrid{grid-template-columns:repeat(6,1fr)}}
 
   /* Resort card CTA: yellow text link under the location (not a pill) */
