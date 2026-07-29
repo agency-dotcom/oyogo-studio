@@ -603,7 +603,6 @@
   /* Calendar: not full-bleed — bring it in, left-aligned to the heading */
   .cal-agenda{max-width:1080px;width:auto;margin:0;padding:clamp(20px,2.6vw,30px) clamp(18px,2.6vw,32px)}
 
-  /* "Your resort here" partner-enquiry card in the resort grid */
-  .rcol-cta{border:1px dashed rgba(20,24,28,.3);border-radius:16px;padding:18px 16px;background:rgba(92,107,79,.05);display:flex;flex-direction:column;justify-content:flex-start}
-  .rcol-cta .rname{color:var(--olive)}
-  .rcol-cta .btn{align-self:flex-start;margin-top:auto}
+  /* Partner-enquiry pill under the resort grid */
+  .respill{display:inline-flex;align-items:center;gap:8px;margin-top:34px;background:var(--dark);color:var(--cream);font-size:13px;font-weight:700;letter-spacing:.3px;padding:12px 24px;border-radius:26px;text-decoration:none}
+  .respill:hover{opacity:.9}
