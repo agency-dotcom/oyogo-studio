@@ -675,7 +675,7 @@
   .svc-card{background:#fff;border-radius:16px;overflow:hidden}
   .svc-card-bar{display:flex;align-items:center;gap:8px;padding:11px 14px}
   .svc-card-bar .av{width:26px;height:26px;border-radius:50%;background:var(--dark);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:11px;flex:none}
-  .svc-card-bar .hn{font-weight:700;font-size:13px;color:var(--ink)}
+  .svc-card-bar .hn{font-weight:700;font-size:15px;letter-spacing:-.2px;color:var(--ink)}
   .svc-card-bar .vf{width:15px;height:15px;flex:none}
   .svc-card-media{position:relative;aspect-ratio:1;overflow:hidden}
   .svc-card-media>img:not(.svc-card-logo){position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
