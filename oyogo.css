@@ -757,3 +757,16 @@
     .svc-tile:first-child{border-top:none}
     .svc-big:nth-child(5){border-right:none}
   }
+
+  /* Unified gallery tiles: image + pill + title under; big boxes span 2, larger */
+  .svc-lookbook{gap:clamp(24px,2.4vw,36px) clamp(18px,1.8vw,28px);border:none}
+  .svc-tile{padding:0;border:none!important}
+  .svc-tile:first-child{padding-left:0}
+  .svc-tile-img{aspect-ratio:1.1;border-radius:8px}
+  .svc-pill{display:inline-block;background:rgba(20,24,28,.05);border:1px solid var(--line);border-radius:999px;padding:5px 13px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--olive);margin-top:16px}
+  .svc-tile-title{margin-top:10px}
+  .svc-big{position:static;grid-column:span 2;display:block;overflow:visible;border:none!important;border-radius:0;aspect-ratio:auto}
+  .svc-big .svc-tile-img{aspect-ratio:1.9;border-radius:8px}
+  .svc-big .svc-tile-img img{position:static;width:100%;height:100%;object-fit:cover;transform:none}
+  .svc-big .svc-tile-title{position:static;left:auto;bottom:auto;max-width:none;font-family:var(--sans);font-weight:700;color:var(--ink);font-size:clamp(23px,2.3vw,36px);letter-spacing:-.4px}
+  @media(max-width:900px){.svc-tile:nth-child(3),.svc-tile:nth-child(4){border-top:none!important}}
