@@ -279,6 +279,7 @@
     function populate(){
       var cl=locEl.value,ct=typeEl.value,ci=instEl.value;
       var resorts=uniq(ROWS.map(function(r){return r.resort;}));
+      var pi=resorts.indexOf('Peligoni'); if(pi>0){resorts.splice(pi,1);resorts.unshift('Peligoni');}
       locEl.innerHTML=resorts.map(function(v){return '<option value="'+v+'">'+v+'</option>';}).join('');
       fill(typeEl,'All classes',CAT_ORDER.filter(function(c){return ROWS.some(function(r){return r.cats.indexOf(c)>=0;});}));
       locEl.value=(cl&&resorts.indexOf(cl)>=0)?cl:resorts[0]; // always one resort
