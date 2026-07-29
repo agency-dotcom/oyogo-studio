@@ -803,3 +803,12 @@
 
   /* Services hero kicker */
   .hero-kicker{font-family:var(--sans);font-weight:800;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(246,244,235,0.85);margin-bottom:18px}
+
+  /* Work gallery: two images per slide, caption below each */
+  .gslide{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2.4vw,44px)}
+  .gmedia img{height:clamp(280px,44vh,540px)}
+  .gpill{display:none}
+  .gcap{margin-top:16px}
+  .gt{font-size:clamp(15px,1.4vw,19px);font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--ink);line-height:1.2}
+  .gs{font-size:clamp(14px,1.3vw,17px);color:var(--muted);margin-top:5px}
+  @media(max-width:640px){.gslide{grid-template-columns:1fr;gap:26px}}
