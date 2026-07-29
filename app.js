@@ -339,14 +339,16 @@
       listEl.innerHTML=order.map(function(resort){
         var rs=groups[resort], special='',web='',loc='';
         rs.forEach(function(r){if(r.special&&!special)special=r.special;if(r.web&&r.web!=='#'&&!web)web=r.web;if(r.loc&&!loc)loc=r.loc;});
-        var timed=[];rs.forEach(function(r){if(r.times.length)r.times.forEach(function(t){timed.push({time:t,venue:r.venue,trainer:r.trainer,disc:r.disc});});});
+        var timed=[];rs.forEach(function(r){if(r.times.length)r.times.forEach(function(t){timed.push({time:t,venue:r.venue,trainer:r.trainer,disc:r.disc,ig:r.ig});});});
         timed.sort(function(a,b){return a.time.localeCompare(b.time);});
         var roster=rs.filter(function(r){return !r.times.length;});
         var h='<div class="ag-group"><div class="ag-ghead"><div class="ag-gtitle"><span class="ag-gname">'+resort+(loc?' · '+loc:'')+'</span>'+(special?'<span class="cal-badge">✦ '+specialLabel(special)+'</span>':'')+'</div>'+(web?'<a class="cal-book" href="'+web+'" target="_blank" rel="noopener">Book your stay</a>':'')+'</div>'+(special&&SPECIAL_DESC[special]?'<div class="cal-grp-desc">'+SPECIAL_DESC[special]+'</div>':'');
         if(timed.length){
           h+='<div class="ag-rows">'+timed.map(function(s){
-            var sub=s.trainer+(s.venue&&s.venue!=='Classes'?' <span class="ag-dot">·</span> '+s.venue:'');
-            return '<div class="ag-row"><div class="ag-time">'+s.time+'</div><div class="ag-main"><div class="ag-cls">'+(s.disc||'Class')+'</div><div class="ag-sub">'+sub+'</div></div><div class="ag-loc">'+resort+'</div></div>';
+            var u=igURL(s.ig);
+            var tname=u?('<a class="ag-trainer" href="'+u+'" target="_blank" rel="noopener">'+s.trainer+'</a>'):('<span class="ag-trainer">'+s.trainer+'</span>');
+            var venue=(s.venue&&s.venue!=='Classes')?'<span class="ag-venue">'+s.venue+'</span>':'';
+            return '<div class="ag-row"><div class="ag-time">'+s.time+'</div><div class="ag-main"><div class="ag-cls">'+(s.disc||'Class')+'</div><div class="ag-sub">'+tname+venue+'</div></div><div class="ag-loc">'+resort+'</div></div>';
           }).join('')+'</div>';
         }
         if(roster.length){
