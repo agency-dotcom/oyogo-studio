@@ -624,3 +624,7 @@
   .cal-agenda .cal-empty{color:rgba(255,255,255,.72);margin:8px 0 0}
   .cal-nextpill{display:inline-flex;align-items:center;gap:6px;margin-top:14px;background:var(--yellow);color:var(--ink);font-size:13px;font-weight:700;letter-spacing:.2px;padding:10px 18px;border-radius:22px;border:none;cursor:pointer;font-family:inherit}
   .cal-nextpill:hover{opacity:.9}
+
+  /* Absent-resort group (shows a "next residency" pill under a filter) */
+  .ag-group-empty .ag-gname{color:rgba(255,255,255,.72)}
+  .ag-group-empty{opacity:.92}

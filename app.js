@@ -306,6 +306,8 @@
     }
     function specialOn(rows){var s='';rows.forEach(function(r){if(r.special)s=r.special;});return s;}
     var SPECIAL_DESC={'Pace 1':'Performance & fitness week','Pace 2':'Performance & fitness week','Pace 3':'Performance & fitness week','Gather':'Wellness & community week'};
+    // Peligoni event pages (confirm exact URLs).
+    var SPECIAL_URL={'Pace 1':'https://www.peligoni.com/pace','Pace 2':'https://www.peligoni.com/pace','Pace 3':'https://www.peligoni.com/pace','Gather':'https://www.peligoni.com/gather'};
     function specialLabel(s){return /^Pace/.test(s)?s.replace('Pace','Pace Week'):(s==='Gather'?'Gather Week':s);}
 
     // Day-strip: the current week of `selected`, always visible.
@@ -334,6 +336,28 @@
       var end=(a.getMonth()===b.getMonth())?b.getDate():MONS[b.getMonth()]+' '+b.getDate();
       return MONS[a.getMonth()]+' '+a.getDate()+' – '+end;
     }
+    // Ordered resort list (Peligoni first).
+    function resortOrder(){
+      var rs=uniq(ROWS.map(function(r){return r.resort;}));
+      var pi=rs.indexOf('Peligoni'); if(pi>0){rs.splice(pi,1);rs.unshift('Peligoni');}
+      return rs;
+    }
+    // Matches for one resort on a day, respecting the type/instructor filters (ignores resort dropdown).
+    function matchesFor(d,resort){
+      var day=iso(d);
+      return ROWS.filter(function(r){return day>=r.start&&day<r.endEx;})
+        .filter(function(r){return r.resort===resort;})
+        .filter(function(r){return !typeEl.value||(r.cats&&r.cats.indexOf(typeEl.value)>=0);})
+        .filter(function(r){return !instEl.value||r.trainer===instEl.value;});
+    }
+    function nextResortRange(resort,from){
+      var d=new Date(from),s=null;
+      for(var i=0;i<400;i++){d.setDate(d.getDate()+1);if(matchesFor(d,resort).length){s=new Date(d);break;}}
+      if(!s)return null;
+      var e=new Date(s);
+      for(var j=0;j<400;j++){var n=new Date(e);n.setDate(n.getDate()+1);if(!matchesFor(n,resort).length)break;e=n;}
+      return {s:s,e:e};
+    }
     function renderStrip(){
       titleEl.textContent=MON[selected.getMonth()]+' '+selected.getFullYear();
       var start=mondayOf(selected), html='';
@@ -356,50 +380,57 @@
       }
       gridEl.innerHTML=html;
     }
+    function specialWeekName(s){return /^Pace/.test(s)?'Pace Week Festival':(s==='Gather'?'Gather':specialLabel(s));}
+    // Render one resort's day: timed classes + any guest-trainer roster.
+    function renderResortGroup(resort,rs){
+      var special='',web='',loc='';
+      rs.forEach(function(r){if(r.special&&!special)special=r.special;if(r.web&&r.web!=='#'&&!web)web=r.web;if(r.loc&&!loc)loc=r.loc;});
+      var timed=[];rs.forEach(function(r){if(r.times.length)r.times.forEach(function(t){timed.push({time:t,venue:r.venue,trainer:r.trainer,disc:r.disc,ig:r.ig});});});
+      timed.sort(function(a,b){return a.time.localeCompare(b.time);});
+      var roster=rs.filter(function(r){return !r.times.length;});
+      var cta='';
+      if(special&&SPECIAL_URL[special])cta='<a class="cal-book" href="'+SPECIAL_URL[special]+'" target="_blank" rel="noopener">Explore '+specialWeekName(special)+' →</a>';
+      else if(web)cta='<a class="cal-book" href="'+web+'" target="_blank" rel="noopener">Book your stay</a>';
+      var h='<div class="ag-group"><div class="ag-ghead"><div class="ag-gtitle"><span class="ag-gname">'+resort+(loc?' · '+loc:'')+'</span>'+(special?'<span class="cal-badge">✦ '+specialLabel(special)+'</span>':'')+'</div>'+cta+'</div>'+(special&&SPECIAL_DESC[special]?'<div class="cal-grp-desc">'+SPECIAL_DESC[special]+'</div>':'');
+      if(timed.length){
+        h+='<div class="ag-rows">'+timed.map(function(s){
+          var u=igURL(s.ig);
+          var tname=u?('<a class="ag-trainer" href="'+u+'" target="_blank" rel="noopener">'+s.trainer+'</a>'):('<span class="ag-trainer">'+s.trainer+'</span>');
+          var venue=(s.venue&&s.venue!=='Classes')?'<span class="ag-venue">'+s.venue+'</span>':'';
+          return '<div class="ag-row"><div class="ag-time">'+s.time+'</div><div class="ag-main"><div class="ag-cls">'+(s.disc||'Class')+'</div><div class="ag-sub">'+tname+'</div></div><div class="ag-loc"><span class="ag-resort">'+resort+'</span>'+venue+'</div></div>';
+        }).join('')+'</div>';
+      }
+      if(roster.length){
+        var rname=special?('Guest trainers this week for '+specialWeekName(special)):'Guest trainers this week';
+        h+='<div class="cal-roster"><div class="cal-roster-lab">'+rname+'</div><div class="cal-roster-list">'+roster.map(function(r){
+          var inner=r.trainer+(r.disc?' <span>'+r.disc+'</span>':'');
+          var u=igURL(r.ig);
+          return u?('<a href="'+u+'" target="_blank" rel="noopener">'+inner+'</a>'):('<span class="rn">'+inner+'</span>');
+        }).join('')+'</div></div>';
+      }
+      return h+'</div>';
+    }
     // Agenda: full-width class rows for the selected day.
     function renderDay(){
       dayheadEl.textContent=WDF[selected.getDay()]+', '+MONS[selected.getMonth()]+' '+selected.getDate();
-      var rows=activeRows(selected);
-      if(!rows.length){
-        var lbl=filterLabel();
-        var rng=nextSessionRange(selected);
-        var pill='';
-        if(rng){
-          var multi=key(rng.s)!==key(rng.e);
-          pill='<button type="button" class="cal-nextpill" data-t="'+rng.s.getTime()+'">Next '+lbl+(multi?'residency':'session')+' · '+fmtWindow(rng.s,rng.e)+' →</button>';
-        }
+      var lbl=filterLabel(), filterActive=!!(typeEl.value||instEl.value);
+      var rows=activeRows(selected), order=[], groups={};
+      rows.forEach(function(r){if(!groups[r.resort]){groups[r.resort]=[];order.push(r.resort);}groups[r.resort].push(r);});
+      // With a class filter on + all-resorts, show every resort (absent ones get a "next residency" pill).
+      var showList=(filterActive&&!locEl.value)?resortOrder():order;
+      if(!showList.length){
+        var rng=nextSessionRange(selected), pill='';
+        if(rng){var multi=key(rng.s)!==key(rng.e);pill='<button type="button" class="cal-nextpill" data-t="'+rng.s.getTime()+'">Next '+lbl+(multi?'residency':'session')+' · '+fmtWindow(rng.s,rng.e)+' →</button>';}
         listEl.innerHTML='<p class="cal-empty">No Oyogo '+lbl+'sessions on this day — <a href="mailto:studio@oyogo.co.uk" style="color:var(--yellow);font-weight:600">enquire about a residency</a>.</p>'+pill;
         return;
       }
-      var order=[],groups={};
-      rows.forEach(function(r){if(!groups[r.resort]){groups[r.resort]=[];order.push(r.resort);}groups[r.resort].push(r);});
-      listEl.innerHTML=order.map(function(resort){
-        var rs=groups[resort], special='',web='',loc='';
-        rs.forEach(function(r){if(r.special&&!special)special=r.special;if(r.web&&r.web!=='#'&&!web)web=r.web;if(r.loc&&!loc)loc=r.loc;});
-        var timed=[];rs.forEach(function(r){if(r.times.length)r.times.forEach(function(t){timed.push({time:t,venue:r.venue,trainer:r.trainer,disc:r.disc,ig:r.ig});});});
-        timed.sort(function(a,b){return a.time.localeCompare(b.time);});
-        var roster=rs.filter(function(r){return !r.times.length;});
-        var h='<div class="ag-group"><div class="ag-ghead"><div class="ag-gtitle"><span class="ag-gname">'+resort+(loc?' · '+loc:'')+'</span>'+(special?'<span class="cal-badge">✦ '+specialLabel(special)+'</span>':'')+'</div>'+(web?'<a class="cal-book" href="'+web+'" target="_blank" rel="noopener">Book your stay</a>':'')+'</div>'+(special&&SPECIAL_DESC[special]?'<div class="cal-grp-desc">'+SPECIAL_DESC[special]+'</div>':'');
-        if(timed.length){
-          h+='<div class="ag-rows">'+timed.map(function(s){
-            var u=igURL(s.ig);
-            var tname=u?('<a class="ag-trainer" href="'+u+'" target="_blank" rel="noopener">'+s.trainer+'</a>'):('<span class="ag-trainer">'+s.trainer+'</span>');
-            var venue=(s.venue&&s.venue!=='Classes')?'<span class="ag-venue">'+s.venue+'</span>':'';
-            return '<div class="ag-row"><div class="ag-time">'+s.time+'</div><div class="ag-main"><div class="ag-cls">'+(s.disc||'Class')+'</div><div class="ag-sub">'+tname+'</div></div><div class="ag-loc"><span class="ag-resort">'+resort+'</span>'+venue+'</div></div>';
-          }).join('')+'</div>';
-        }
-        if(roster.length){
-          var rorder=[],rmap={};
-          roster.forEach(function(r){var v=r.venue||'Guest trainers this week';if(!rmap[v]){rmap[v]=[];rorder.push(v);}rmap[v].push(r);});
-          rorder.forEach(function(v){
-            h+='<div class="cal-roster"><div class="cal-roster-lab">'+v+'</div><div class="cal-roster-list">'+rmap[v].map(function(r){
-              var inner=r.trainer+(r.disc?' <span>'+r.disc+'</span>':'');
-              var u=igURL(r.ig);
-              return u?('<a href="'+u+'" target="_blank" rel="noopener">'+inner+'</a>'):('<span class="rn">'+inner+'</span>');
-            }).join('')+'</div></div>';
-          });
-        }
-        return h+'</div>';
+      var LOC={};ROWS.forEach(function(r){if(r.loc&&!LOC[r.resort])LOC[r.resort]=r.loc;});
+      listEl.innerHTML=showList.map(function(resort){
+        if(groups[resort])return renderResortGroup(resort,groups[resort]);
+        var loc=LOC[resort]||'', rng=nextResortRange(resort,selected), body;
+        if(rng){var multi=key(rng.s)!==key(rng.e);body='<button type="button" class="cal-nextpill" data-t="'+rng.s.getTime()+'">Next '+lbl+(multi?'residency':'session')+' · '+fmtWindow(rng.s,rng.e)+' →</button>';}
+        else body='<p class="cal-empty">No upcoming '+lbl+'sessions — <a href="mailto:studio@oyogo.co.uk" style="color:var(--yellow);font-weight:600">enquire</a>.</p>';
+        return '<div class="ag-group ag-group-empty"><div class="ag-ghead"><div class="ag-gtitle"><span class="ag-gname">'+resort+(loc?' · '+loc:'')+'</span></div></div>'+body+'</div>';
       }).join('');
     }
     function render(){ renderStrip(); if(monthOpen)renderMonth(); renderDay(); }
