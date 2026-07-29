@@ -343,3 +343,43 @@
   .rrow-loc{font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted)}
   .rrow .btn{flex:none}
   @media(max-width:560px){.rrow{flex-direction:column;align-items:flex-start;gap:14px}}
+
+  /* Residencies: no-hero solid header + hotels across the width */
+  body.np{padding-top:62px}
+  body.np header{background:rgba(20,24,28,0.95);backdrop-filter:blur(10px);border-color:rgba(246,244,235,0.14)}
+  .rgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;margin-top:36px}
+  @media(max-width:900px){.rgrid{grid-template-columns:repeat(2,1fr);gap:34px 24px}}
+  @media(max-width:520px){.rgrid{grid-template-columns:1fr;gap:0}}
+  .rcol{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding-top:22px;border-top:1px solid var(--line)}
+  .rname{font-family:var(--serif);font-size:clamp(24px,2.4vw,32px);letter-spacing:-0.4px;line-height:1}
+  .rloc{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--olive)}
+  .rcol .btn{margin-top:12px}
+
+  /* Clients — image band with bold yellow names */
+  .clients-band{position:relative;overflow:hidden;color:var(--cream)}
+  .clients-band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .clients-band .scrim{position:absolute;inset:0;background:rgba(20,24,28,0.62)}
+  .clients-in{position:relative;z-index:2;padding:clamp(64px,10vw,120px) 0}
+  .clients-eyebrow{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(246,244,235,0.8);margin-bottom:24px}
+  .clients-names{font-family:var(--sans);font-weight:800;font-size:clamp(30px,5vw,66px);line-height:1.06;letter-spacing:-1.5px;color:var(--yellow);margin:0;max-width:1100px}
+
+  /* Footer: solid dark block (image removed) */
+  .ft-bg{display:none}
+  .site-footer{background:var(--dark);color:var(--cream);padding:clamp(56px,7vw,96px) 0}
+  .ft-card{background:transparent;border-radius:0;max-width:1240px;margin:0 auto;padding:0 44px}
+  .ft-lead h2{color:var(--cream)}
+  .ft-cta{color:var(--cream);border-bottom-color:rgba(246,244,235,0.5)}
+  .ft-h{color:rgba(246,244,235,0.55)}
+  .ft-col a{color:var(--cream)}
+  .ft-col a:hover{color:var(--yellow)}
+  .ft-rule{background:rgba(246,244,235,0.15)}
+  .ft-bottom div,.ft-bottom a{color:rgba(246,244,235,0.55)}
+  .ft-bottom a:hover{color:var(--cream)}
+  @media(max-width:760px){.ft-card{padding:0 22px}}
+
+  /* Calendar: coloured per-resort dots + legend */
+  .cal-dots{display:flex;gap:2px;margin-top:3px;justify-content:center}
+  .cd{width:4px;height:4px;border-radius:50%;display:inline-block;flex:none}
+  .cal-legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin:20px 0 0}
+  .cal-legend .lg{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:var(--muted)}
+  .cal-legend .cd{width:8px;height:8px}

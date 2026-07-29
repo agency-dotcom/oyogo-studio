@@ -251,11 +251,18 @@
 
     function fill(el,all,arr){el.innerHTML='<option value="">'+all+'</option>'+arr.map(function(v){return '<option value="'+v+'">'+v+'</option>';}).join('');}
     function uniq(arr){var seen={},out=[];arr.forEach(function(v){if(v&&!seen[v]){seen[v]=1;out.push(v);}});return out;}
+    var RES_COLORS={'Zelia':'#5c6b4f','Nido':'#4a76a8','Elix':'#b4542e','Avali':'#c9a24b','Peligoni':'#3f7c74'};
+    function dotsFor(items){
+      var rs=[];items.forEach(function(r){if(rs.indexOf(r.resort)<0)rs.push(r.resort);});
+      return rs.length?'<span class="cal-dots">'+rs.map(function(n){return '<span class="cd" style="background:'+(RES_COLORS[n]||'#5c6b4f')+'"></span>';}).join('')+'</span>':'';
+    }
     function populate(){
       var cl=locEl.value,ct=typeEl.value;
       fill(locEl,'All resorts',uniq(ROWS.map(function(r){return r.resort;})));
       fill(typeEl,'All classes',uniq(ROWS.map(function(r){return r.type;})));
       locEl.value=cl;typeEl.value=ct;
+      var lg=document.getElementById('cal-legend');
+      if(lg)lg.innerHTML=uniq(ROWS.map(function(r){return r.resort;})).map(function(n){return '<span class="lg"><span class="cd" style="background:'+(RES_COLORS[n]||'#5c6b4f')+'"></span>'+n+'</span>';}).join('');
     }
     populate();
 
@@ -277,7 +284,7 @@
         var d=addDays(start,i), other=d.getMonth()!==view.getMonth();
         var items=other?[]:activeRows(d), has=items.length>0, sp=has?specialOn(items):'';
         var cls='cal-cell'+(other?' other':'')+(key(d)===key(today)?' today':'')+(key(d)===key(selected)?' sel':'')+(sp?' special':'');
-        html+='<button type="button" class="'+cls+'"'+(other?' disabled':'')+' data-t="'+d.getTime()+'"><span class="cal-circle">'+d.getDate()+(has?'<span class="cal-dot"></span>':'')+'</span></button>';
+        html+='<button type="button" class="'+cls+'"'+(other?' disabled':'')+' data-t="'+d.getTime()+'"><span class="cal-circle">'+d.getDate()+dotsFor(items)+'</span></button>';
       }
       gridEl.innerHTML=html;
     }
@@ -290,7 +297,7 @@
       for(var i=0;i<7;i++){
         var d=addDays(start,i), isToday=key(d)===key(today), isSel=key(d)===key(selected), items=activeRows(d), has=items.length>0, sp=has?specialOn(items):'';
         var lab=isToday?'Today':WDL[i];
-        html+='<button type="button" class="cal-day'+(isSel?' on':'')+(sp?' special':'')+'" data-t="'+d.getTime()+'"><span class="cal-wd">'+lab+'</span><span class="cal-circle">'+d.getDate()+(has?'<span class="cal-dot"></span>':'')+'</span></button>';
+        html+='<button type="button" class="cal-day'+(isSel?' on':'')+(sp?' special':'')+'" data-t="'+d.getTime()+'"><span class="cal-wd">'+lab+'</span><span class="cal-circle">'+d.getDate()+dotsFor(items)+'</span></button>';
       }
       daysEl.innerHTML=html;
     }

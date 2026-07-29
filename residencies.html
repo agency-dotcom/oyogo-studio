@@ -23,7 +23,7 @@
 <script defer data-domain="oyogostudio.com" src="https://plausible.io/js/script.js"></script>
 <link rel="stylesheet" href="oyogo.css" />
 </head>
-<body>
+<body class="np">
 
 <header id="site">
   <div class="wrap nav">
@@ -32,8 +32,8 @@
     </div>
     <div class="nav-right">
       <nav class="nav-links">
-        <a href="index.html#services">Services</a>
-        <a href="residencies.html">Schedule</a>
+        <a href="services.html">Services</a>
+        <a href="residencies.html">Residencies</a>
         <a href="index.html#reach">Reach</a>
         <a href="index.html#work">Clients</a>
         <a href="index.html#contact">Contact</a>
@@ -51,25 +51,16 @@
 </header>
 
 <main>
-  <section class="res-hero">
-    <img src="band-still.jpg" alt="" />
-    <div class="scrim"></div>
-    <div class="wrap res-hero-in">
-      <div class="res-eyebrow">Wellness residencies</div>
-      <h1 class="res-h serif">Where to find us.</h1>
-      <div class="res-sub">Zelia / Nido / Elix / Avali / Peligoni</div>
-      <p class="res-body">Daily Oyogo classes across our EU partner hotels — all complimentary for staying guests.</p>
-    </div>
-  </section>
-
   <section class="blk" id="resorts">
     <div class="wrap">
-      <div class="rlist">
-        <div class="rrow"><div class="rrow-main"><span class="rrow-name serif">Zelia</span><span class="rrow-loc">Halkidiki, Greece</span></div><a class="btn" href="https://www.zeliaresort.gr/" target="_blank" rel="noopener">Book your stay</a></div>
-        <div class="rrow"><div class="rrow-main"><span class="rrow-name serif">Nido</span><span class="rrow-loc">Corfu, Greece</span></div><a class="btn" href="https://www.marbella.gr/hotels/marbella-nido/" target="_blank" rel="noopener">Book your stay</a></div>
-        <div class="rrow"><div class="rrow-main"><span class="rrow-name serif">Elix</span><span class="rrow-loc">Corfu, Greece</span></div><a class="btn" href="https://www.marbella.gr/hotels/marbella-elix/" target="_blank" rel="noopener">Book your stay</a></div>
-        <div class="rrow"><div class="rrow-main"><span class="rrow-name serif">Avali</span><span class="rrow-loc">Corfu, Greece</span></div><a class="btn" href="https://www.marbella.gr/hotels/avali-hotel/" target="_blank" rel="noopener">Book your stay</a></div>
-        <div class="rrow"><div class="rrow-main"><span class="rrow-name serif">Peligoni</span><span class="rrow-loc">Zakynthos, Greece</span></div><a class="btn" href="https://www.peligoni.com" target="_blank" rel="noopener">Book your stay</a></div>
+      <div class="label">Where to find us</div>
+      <p class="sec-lede" style="margin-top:10px">Daily Oyogo classes across our EU partner hotels — all complimentary for staying guests.</p>
+      <div class="rgrid">
+        <div class="rcol"><div class="rname serif">Zelia</div><div class="rloc">Halkidiki, Greece</div><a class="btn" href="https://www.zeliaresort.gr/" target="_blank" rel="noopener">Book your stay</a></div>
+        <div class="rcol"><div class="rname serif">Nido</div><div class="rloc">Corfu, Greece</div><a class="btn" href="https://www.marbella.gr/hotels/marbella-nido/" target="_blank" rel="noopener">Book your stay</a></div>
+        <div class="rcol"><div class="rname serif">Elix</div><div class="rloc">Corfu, Greece</div><a class="btn" href="https://www.marbella.gr/hotels/marbella-elix/" target="_blank" rel="noopener">Book your stay</a></div>
+        <div class="rcol"><div class="rname serif">Avali</div><div class="rloc">Corfu, Greece</div><a class="btn" href="https://www.marbella.gr/hotels/avali-hotel/" target="_blank" rel="noopener">Book your stay</a></div>
+        <div class="rcol"><div class="rname serif">Peligoni</div><div class="rloc">Zakynthos, Greece</div><a class="btn" href="https://www.peligoni.com" target="_blank" rel="noopener">Book your stay</a></div>
       </div>
     </div>
   </section>
@@ -79,8 +70,8 @@
     <div class="wrap">
       <div class="sec-head" style="align-items:flex-end">
         <div>
-          <div class="label">Wellness residencies</div>
-          <h2 class="serif" style="margin-top:14px">Where to find us.</h2>
+          <div class="label">Resort schedules</div>
+          <h2 class="serif" style="margin-top:14px">See what's on, day by day.</h2>
           <p class="sec-lede" style="margin-top:10px">Oyogo wellness residencies &amp; daily classes across our EU partner hotels — all complimentary for staying guests.</p>
         </div>
         <div class="cal-filters">
@@ -109,6 +100,7 @@
       <div id="cal-weekview" hidden>
         <div class="cal-days" id="cal-days"></div>
       </div>
+      <div id="cal-legend" class="cal-legend"></div>
 
       <div class="cal-dayhead" id="cal-dayhead">—</div>
       <div class="cal-tz">Times shown in each hotel's local timezone.</div>
@@ -123,9 +115,7 @@
   </section>
 </main>
 
-<footer class="site-footer" id="contact">
-  <img class="ft-bg" src="band-still.jpg" alt="" />
-  <div class="ft-card">
+<footer class="site-footer" id="contact">  <div class="ft-card">
     <div class="ft-top">
       <div class="ft-lead">
         <h2 class="serif">The future of travel is wellbeing.</h2>
@@ -134,17 +124,17 @@
       <div class="ft-cols">
         <div class="ft-col">
           <div class="ft-h">Explore</div>
-          <a href="index.html#services">Services</a>
+          <a href="services.html">Services</a>
           <a href="index.html#schedule">Schedule</a>
           <a href="index.html#reach">Reach</a>
           <a href="index.html#work">Clients</a>
         </div>
         <div class="ft-col">
           <div class="ft-h">Studio</div>
-          <a href="index.html#services">Strategy &amp; concept</a>
-          <a href="index.html#services">Programming</a>
-          <a href="index.html#services">Media</a>
-          <a href="index.html#services">Trainer network</a>
+          <a href="services.html">Strategy &amp; concept</a>
+          <a href="services.html">Programming</a>
+          <a href="services.html">Media</a>
+          <a href="services.html">Trainer network</a>
         </div>
         <div class="ft-col">
           <div class="ft-h">Connect</div>
