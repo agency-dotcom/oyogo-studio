@@ -793,7 +793,9 @@
   .gtrack{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none}
   .gtrack::-webkit-scrollbar{display:none}
   .gslide{flex:0 0 100%;scroll-snap-align:center;padding:0 clamp(8px,4vw,90px)}
-  .gslide img{width:100%;height:clamp(380px,64vh,760px);object-fit:cover;display:block;border-radius:12px}
+  .gmedia{position:relative;border-radius:12px;overflow:hidden}
+  .gmedia img{width:100%;height:clamp(380px,64vh,760px);object-fit:cover;display:block}
+  .gpill{position:absolute;left:clamp(14px,2vw,26px);bottom:clamp(14px,2vw,26px);z-index:2;background:var(--yellow);color:var(--ink);font-weight:700;font-size:13px;letter-spacing:.2px;padding:8px 16px;border-radius:999px}
   .gnav{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,.92);color:var(--ink);border:none;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 16px rgba(0,0,0,.16)}
   .gnav:hover{background:#fff}
   .gprev{left:clamp(12px,3vw,44px)}
