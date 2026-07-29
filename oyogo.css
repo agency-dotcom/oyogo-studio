@@ -490,3 +490,8 @@
   .imgroll:hover .imgroll-track{animation-play-state:paused}
   @keyframes imgroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
   @media(prefers-reduced-motion:reduce){.imgroll-track{animation:none}}
+
+  /* Fix: keep the month grid inside the glass box (long pills were forcing columns wider than the panel) */
+  .cal-cell{min-width:0}
+  .cal-glass{overflow:hidden}
+  .cal-glass .cal-grid,.cal-glass .cal-dow,.cal-glass .cal-days{width:100%}
