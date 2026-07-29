@@ -284,7 +284,7 @@
         var d=addDays(start,i), other=d.getMonth()!==view.getMonth();
         var items=other?[]:activeRows(d), has=items.length>0, sp=has?specialOn(items):'';
         var cls='cal-cell'+(other?' other':'')+(key(d)===key(today)?' today':'')+(key(d)===key(selected)?' sel':'')+(sp?' special':'');
-        html+='<button type="button" class="'+cls+'"'+(other?' disabled':'')+' data-t="'+d.getTime()+'"><span class="cal-circle">'+d.getDate()+dotsFor(items)+'</span></button>';
+        html+='<button type="button" class="'+cls+'"'+(other?' disabled':'')+' data-t="'+d.getTime()+'"><span class="cal-num">'+d.getDate()+'</span>'+dotsFor(items)+'</button>';
       }
       gridEl.innerHTML=html;
     }
