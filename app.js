@@ -25,16 +25,19 @@
     // and url (link to the actual IG post). Use vid:'clipN.mp4' for videos, img:'galN.jpg' for photos.
     var POSTS=[
       {vid:'clip1.mp4', cap:'A class I’ll never forget. 💙🇬🇷',           likes:'150', saves:'10', comments:'', url:'https://www.instagram.com/p/Da-fkFrov8h/'},
+      {img:'pg1.jpg',   cap:'The Oyogo Edit — Rome. 🇮🇹',                 likes:'',    saves:'',   comments:'', url:''},
       {img:'gal3.jpg',  cap:'Golden-hour mats, ready for practice.',      likes:'',    saves:'',   comments:'', url:''},
       {img:'gal6.jpg',  cap:'Boat pose on the jetty.',                    likes:'35',  saves:'10', comments:'', url:'https://www.instagram.com/p/DPn3rm4jKKs/?img_index=1'},
       {vid:'clip7.mp4', cap:'Reformer fun at Zelia. ☀️🌊',                likes:'',    saves:'',   comments:'', url:'https://www.instagram.com/p/DbQRgTdtvya/'},
       {img:'gal4.jpg',  cap:'Group flow by the sea.',                     likes:'',    saves:'',   comments:'', url:'https://www.instagram.com/p/DG7kRaCoGXg/'},
       {img:'gal7.jpg',  cap:'Good people, good energy.',                  likes:'',    saves:'',   comments:'', url:''},
       {img:'gal18.jpg', cap:'HIIT in the stone gym.',                     likes:'',    saves:'',   comments:'', url:''},
+      {img:'pg13.jpg',  cap:'The hotel turning farm-to-table into a full wellness ecosystem.', likes:'', saves:'', comments:'', url:''},
       {vid:'clip4.mp4', cap:'Hey babe — you don’t need to carry it all at once. 🫶🏼', likes:'', saves:'', comments:'', url:''},
       {img:'gal10.jpg', cap:'Strength session, Oyogo crew.',             likes:'',    saves:'',   comments:'', url:''},
       {img:'gal11.jpg', cap:'Sound bath by the water.',                   likes:'',    saves:'',   comments:'', url:''},
       {img:'gal2.jpg',  cap:'Open-water swim squad.',                     likes:'',    saves:'',   comments:'', url:''},
+      {img:'pg12.jpg',  cap:'The hotel brand shaping a new kind of social wellbeing.', likes:'', saves:'', comments:'', url:''},
       {img:'gal15.jpg', cap:'Gong bath smiles.',                          likes:'',    saves:'',   comments:'', url:''},
       {img:'gal16.jpg', cap:'Down dog over the dunes.',                   likes:'',    saves:'',   comments:'', url:''},
       {img:'gal17.jpg', cap:'Cold plunge, three tubs deep.',             likes:'',    saves:'',   comments:'', url:''},
@@ -44,20 +47,25 @@
     var IC={
       like:'<svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>',
       save:'<svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>',
-      comment:'<svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.6 8.6 0 0 1-3.9-.9L3 21l1.9-5.6A8.4 8.4 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.4 8.4 0 0 1 21 11.5z"/></svg>'
+      comment:'<svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.6 8.6 0 0 1-3.9-.9L3 21l1.9-5.6A8.4 8.4 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.4 8.4 0 0 1 21 11.5z"/></svg>',
+      share:'<svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>',
+      heartF:'<svg viewBox="0 0 24 24" fill="#fff"><path d="M12 21.6l-1.5-1.4C5.4 15.6 2 12.5 2 8.7 2 5.6 4.4 3.2 7.5 3.2c1.7 0 3.4.8 4.5 2.1 1.1-1.3 2.8-2.1 4.5-2.1 3.1 0 5.5 2.4 5.5 5.5 0 3.8-3.4 6.9-8.5 11.5L12 21.6z"/></svg>',
+      cmtF:'<svg viewBox="0 0 24 24" fill="#fff"><path d="M12 3C6.9 3 3 6.4 3 10.6c0 2.3 1.2 4.4 3.1 5.8L5 21l4.9-2.3c.7.1 1.4.2 2.1.2 5.1 0 9-3.4 9-7.6S17.1 3 12 3z"/></svg>'
     };
     var track=document.getElementById('feed-track');
     if(track){
       track.innerHTML=POSTS.map(function(p){
         var el=p.vid?('<video src="'+p.vid+'" muted loop playsinline preload="none"></video>')
                     :('<img src="'+p.img+'" alt="">');
-        var media='<div class="media">'+el+'<div class="grad"></div><div class="top"><span class="av">O</span><span class="hn">@oyogo.london</span></div></div>';
-        var s='';
-        if(p.likes)    s+='<span class="stat-i">'+IC.like+p.likes+'</span>';
-        if(p.saves)    s+='<span class="stat-i">'+IC.save+p.saves+'</span>';
-        if(p.comments) s+='<span class="stat-i">'+IC.comment+p.comments+'</span>';
-        var stats=s?('<div class="stats">'+s+'</div>'):'';
-        var inner=media+'<p class="cap">'+p.cap+'</p>'+stats;
+        var ov='';
+        if(p.likes||p.comments){
+          ov='<div class="igstats" aria-hidden="true">';
+          if(p.likes)    ov+='<span class="st">'+IC.heartF+p.likes+'</span>';
+          if(p.comments) ov+='<span class="st">'+IC.cmtF+p.comments+'</span>';
+          ov+='</div>';
+        }
+        var media='<div class="media">'+el+'<div class="grad"></div><div class="top"><span class="av">O</span><span class="hn">@oyogo.london</span></div>'+ov+'</div>';
+        var inner=media+'<p class="cap">'+p.cap+'</p>';
         if(p.url){inner='<a href="'+p.url+'" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">'+inner+'</a>';}
         return '<div class="post">'+inner+'</div>';
       }).join('');
@@ -528,4 +536,18 @@
     });
   },{threshold:0.25});
   vids.forEach(function(v){ io.observe(v); });
+})();
+
+/* Decorative IG engagement overlay on the residencies rolling gallery (look & feel only) */
+(function(){
+  var heart='<svg viewBox="0 0 24 24" fill="#fff"><path d="M12 21.6l-1.5-1.4C5.4 15.6 2 12.5 2 8.7 2 5.6 4.4 3.2 7.5 3.2c1.7 0 3.4.8 4.5 2.1 1.1-1.3 2.8-2.1 4.5-2.1 3.1 0 5.5 2.4 5.5 5.5 0 3.8-3.4 6.9-8.5 11.5L12 21.6z"/></svg>';
+  var cmt='<svg viewBox="0 0 24 24" fill="#fff"><path d="M12 3C6.9 3 3 6.4 3 10.6c0 2.3 1.2 4.4 3.1 5.8L5 21l4.9-2.3c.7.1 1.4.2 2.1.2 5.1 0 9-3.4 9-7.6S17.1 3 12 3z"/></svg>';
+  var fmt=function(n){return n.toLocaleString('en-US');};
+  var data=[[1696,72],[842,31],[2140,58],[1210,44],[963,27],[3480,96],[1875,63],[740,22],[2560,81],[1130,39],[2018,55],[1442,48],[905,29],[3110,88],[1680,51],[1290,37],[2230,66],[980,25]];
+  document.querySelectorAll('.imgroll .post .media').forEach(function(m,i){
+    var d=data[i%data.length];
+    var o=document.createElement('div'); o.className='igstats'; o.setAttribute('aria-hidden','true');
+    o.innerHTML='<span class="st">'+heart+fmt(d[0])+'</span><span class="st">'+cmt+fmt(d[1])+'</span>';
+    m.appendChild(o);
+  });
 })();

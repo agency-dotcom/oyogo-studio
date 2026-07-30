@@ -953,3 +953,14 @@
 #gallery .ptile .media .grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.22),transparent 35%,transparent 70%,rgba(0,0,0,.30))}
 #gallery .ptile .ph{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--serif);font-size:20px;color:rgba(30,30,28,0.22)}
 @media(max-width:760px){#gallery .pgrid{grid-template-columns:repeat(2,1fr);gap:10px}}
+
+/* v=14 — IG engagement overlay on gallery images (decorative, look & feel) */
+.post .media .igstats{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;gap:26px;background:rgba(0,0,0,.28);pointer-events:none}
+.post .media .igstats .st{display:flex;align-items:center;gap:9px;color:#fff;font-weight:700;font-size:clamp(15px,1.4vw,18px);letter-spacing:.3px;text-shadow:0 1px 4px rgba(0,0,0,.35)}
+.post .media .igstats .st svg{width:22px;height:22px;fill:#fff;flex:none}
+#feed-track .post .media img{object-position:center bottom}
+
+/* v=14 — services card highlight bullets */
+.svc-points{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;gap:8px}
+.svc-points li{position:relative;padding-left:18px;font-size:13.5px;line-height:1.45;color:var(--muted)}
+.svc-points li::before{content:"";position:absolute;left:2px;top:7px;width:5px;height:5px;border-radius:50%;background:var(--yellow)}
