@@ -31,6 +31,7 @@
       {img:'pg7.jpg',   cap:'Why connection is now one of the most important pillars of modern wellness.', likes:'1,696', comments:'72', saves:'', url:''},
       {vid:'clip7.mp4', cap:'Reformer fun at Zelia. ☀️🌊',                likes:'',    saves:'',   comments:'', url:'https://www.instagram.com/p/DbQRgTdtvya/'},
       {img:'gal4.jpg',  cap:'Group flow by the sea.',                     likes:'',    saves:'',   comments:'', url:'https://www.instagram.com/p/DG7kRaCoGXg/'},
+      {img:'pg1.jpg',   cap:'The Oyogo Edit — Rome. 🇮🇹',                 likes:'',    saves:'',   comments:'', url:''},
       {img:'gal7.jpg',  cap:'Good people, good energy.',                  likes:'',    saves:'',   comments:'', url:''},
       {img:'gal18.jpg', cap:'HIIT in the stone gym.',                     likes:'',    saves:'',   comments:'', url:''},
       {img:'pg13.jpg',  cap:'The hotel turning farm-to-table into a full wellness ecosystem.', views:'93K', likes:'3,786', saves:'1,800', shares:'1,751', url:''},
