@@ -924,3 +924,9 @@
     .rcol{border-top:1px solid var(--line);padding-top:22px;padding-bottom:10px;gap:6px}
     .rcol:first-child{border-top:none}
   }
+
+  /* Where to find us: two columns on mobile */
+  @media(max-width:520px){
+    .rgrid{grid-template-columns:repeat(2,1fr);gap:30px 18px}
+    .rcol{border-top:none;padding-top:0;padding-bottom:0}
+  }
