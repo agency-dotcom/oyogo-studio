@@ -2,7 +2,7 @@
     --bg:#f7f4ed; --ink:#14181C; --muted:rgba(20,24,28,0.55); --line:rgba(20,24,28,0.14);
     --yellow:#FAF5B2; --olive:#5c6b4f; --sage:#9FAA8E;
     --dark:#14181C; --cream:#F6F4EB;
-    --serif:'Times New Roman', Times, serif;
+    --serif:'Fraunces','Times New Roman',Times,serif;
     --sans:Helvetica, Arial, sans-serif;
   }
   *{box-sizing:border-box}
@@ -936,3 +936,9 @@
   .ticker .tk{font-size:12px;letter-spacing:0.6px;color:rgba(246,244,235,0.78)}
   .ticker .tk b{font-size:12.5px}
   .ticker .tk-sep{font-size:10px;margin:0 16px}
+
+  /* Option A: unify all headlines to the display serif */
+  .about-h{font-family:var(--serif);font-weight:400;letter-spacing:-0.5px;line-height:1.04}
+  .clients-names{font-family:var(--serif);font-weight:400;letter-spacing:-0.5px}
+  .rname{font-family:var(--serif);font-weight:400;letter-spacing:-0.3px}
+  .opp-stmt,.band-stmt{font-family:var(--serif);font-weight:400}
