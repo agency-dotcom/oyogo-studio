@@ -930,3 +930,9 @@
     .rgrid{grid-template-columns:repeat(2,1fr);gap:30px 18px}
     .rcol{border-top:none;padding-top:0;padding-bottom:0}
   }
+
+  /* Rolling tickers: thinner + more refined */
+  .ticker-track{padding:9px 0}
+  .ticker .tk{font-size:12px;letter-spacing:0.6px;color:rgba(246,244,235,0.78)}
+  .ticker .tk b{font-size:12.5px}
+  .ticker .tk-sep{font-size:10px;margin:0 16px}
