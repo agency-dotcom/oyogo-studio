@@ -900,3 +900,27 @@
   body.np #work{background:var(--bg)}
   body.np #work .clients-eyebrow{color:var(--muted)}
   body.np #work .clients-names{color:var(--ink)}
+
+  /* ============================ MOBILE FIXES ============================ */
+  @media(max-width:760px){
+    /* Clients band (Our collaborators / Global partners): restore side padding (was 0) */
+    .clients-in{padding-left:24px;padding-right:24px}
+    .clients-names{font-size:clamp(25px,6.6vw,40px);letter-spacing:-1px}
+
+    /* "Ways to work with us": horizontal swipe */
+    .scards{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin:8px -22px 0;padding:0 22px}
+    .scards::-webkit-scrollbar{display:none}
+    .scard{flex:0 0 80%;scroll-snap-align:start}
+
+    /* Rolling gallery: swipeable (marquee is often blocked on mobile) */
+    .imgroll{overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+    .imgroll::-webkit-scrollbar{display:none}
+    .imgroll-track{animation:none;width:max-content}
+    .imgroll .post{scroll-snap-align:start}
+  }
+  @media(max-width:520px){
+    /* Where to find us: clear divider + spacing between hotels */
+    .rgrid{grid-template-columns:1fr;gap:0}
+    .rcol{border-top:1px solid var(--line);padding-top:22px;padding-bottom:10px;gap:6px}
+    .rcol:first-child{border-top:none}
+  }
