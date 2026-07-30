@@ -25,7 +25,7 @@
     // and url (link to the actual IG post). Use vid:'clipN.mp4' for videos, img:'galN.jpg' for photos.
     var POSTS=[
       {vid:'clip1.mp4', cap:'A class I’ll never forget. 💙🇬🇷',           likes:'150', saves:'10', comments:'', url:'https://www.instagram.com/p/Da-fkFrov8h/'},
-      {img:'pg1.jpg',   cap:'The Oyogo Edit — Rome. 🇮🇹',                 likes:'',    saves:'',   comments:'', url:''},
+      {img:'pg3.jpg',   cap:'Wellness real estate is forecast to hit $1.8 trillion by 2030. 🌊', views:'263K', likes:'7,065', saves:'5,100', shares:'8,266', url:''},
       {img:'gal3.jpg',  cap:'Golden-hour mats, ready for practice.',      likes:'',    saves:'',   comments:'', url:''},
       {img:'gal6.jpg',  cap:'Boat pose on the jetty.',                    likes:'35',  saves:'10', comments:'', url:'https://www.instagram.com/p/DPn3rm4jKKs/?img_index=1'},
       {vid:'clip7.mp4', cap:'Reformer fun at Zelia. ☀️🌊',                likes:'',    saves:'',   comments:'', url:'https://www.instagram.com/p/DbQRgTdtvya/'},
@@ -50,22 +50,22 @@
       comment:'<svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.6 8.6 0 0 1-3.9-.9L3 21l1.9-5.6A8.4 8.4 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.4 8.4 0 0 1 21 11.5z"/></svg>',
       share:'<svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>',
       heartF:'<svg viewBox="0 0 24 24" fill="#fff"><path d="M12 21.6l-1.5-1.4C5.4 15.6 2 12.5 2 8.7 2 5.6 4.4 3.2 7.5 3.2c1.7 0 3.4.8 4.5 2.1 1.1-1.3 2.8-2.1 4.5-2.1 3.1 0 5.5 2.4 5.5 5.5 0 3.8-3.4 6.9-8.5 11.5L12 21.6z"/></svg>',
-      cmtF:'<svg viewBox="0 0 24 24" fill="#fff"><path d="M12 3C6.9 3 3 6.4 3 10.6c0 2.3 1.2 4.4 3.1 5.8L5 21l4.9-2.3c.7.1 1.4.2 2.1.2 5.1 0 9-3.4 9-7.6S17.1 3 12 3z"/></svg>'
+      cmtF:'<svg viewBox="0 0 24 24" fill="#fff"><path d="M12 3C6.9 3 3 6.4 3 10.6c0 2.3 1.2 4.4 3.1 5.8L5 21l4.9-2.3c.7.1 1.4.2 2.1.2 5.1 0 9-3.4 9-7.6S17.1 3 12 3z"/></svg>',
+      viewF:'<svg viewBox="0 0 24 24" fill="#fff"><path fill-rule="evenodd" d="M12 5C6 5 2 12 2 12s4 7 10 7 10-7 10-7-4-7-10-7zm0 10.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"/></svg>',
+      saveF:'<svg viewBox="0 0 24 24" fill="#fff"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4.6L5 21V4a1 1 0 0 1 1-1z"/></svg>',
+      shareF:'<svg viewBox="0 0 24 24" fill="#fff"><path d="M22 2 2 9.6l6.9 2.6L11.5 22l3-6.7L22 2z"/></svg>'
     };
     var track=document.getElementById('feed-track');
     if(track){
       track.innerHTML=POSTS.map(function(p){
         var el=p.vid?('<video src="'+p.vid+'" muted loop playsinline preload="none"></video>')
                     :('<img src="'+p.img+'" alt="">');
-        var ov='';
-        if(p.likes||p.comments){
-          ov='<div class="igstats" aria-hidden="true">';
-          if(p.likes)    ov+='<span class="st">'+IC.heartF+p.likes+'</span>';
-          if(p.comments) ov+='<span class="st">'+IC.cmtF+p.comments+'</span>';
-          ov+='</div>';
-        }
+        var METR=[['views',IC.viewF],['likes',IC.heartF],['comments',IC.cmtF],['saves',IC.saveF],['shares',IC.shareF]];
+        var parts='';
+        METR.forEach(function(m){ if(p[m[0]]) parts+='<span class="st">'+m[1]+p[m[0]]+'</span>'; });
+        var ov=parts?('<div class="igstats" aria-hidden="true">'+parts+'</div>'):'';
         var media='<div class="media">'+el+'<div class="grad"></div><div class="top"><span class="av">O</span><span class="hn">@oyogo.london</span></div>'+ov+'</div>';
-        var inner=media+'<p class="cap">'+p.cap+'</p>';
+        var inner=media;
         if(p.url){inner='<a href="'+p.url+'" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">'+inner+'</a>';}
         return '<div class="post">'+inner+'</div>';
       }).join('');
