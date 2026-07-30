@@ -65,9 +65,8 @@
         var METR=[['views',IC.viewF],['likes',IC.heartF],['comments',IC.cmtF],['saves',IC.saveF],['shares',IC.shareF]];
         var parts='';
         METR.forEach(function(m){ if(p[m[0]]) parts+='<span class="st">'+m[1]+p[m[0]]+'</span>'; });
-        var ov=parts?('<div class="igstats" aria-hidden="true">'+parts+'</div>'):'';
-        var media='<div class="media">'+el+'<div class="grad"></div><div class="top"><span class="av">O</span><span class="hn">@oyogo.london</span></div>'+ov+'</div>';
-        var inner=media;
+        var media='<div class="media">'+el+'<div class="grad"></div><div class="top"><span class="av">O</span><span class="hn">@oyogo.london</span></div></div>';
+        var inner=media+(parts?('<div class="igbar" aria-hidden="true">'+parts+'</div>'):'');
         if(p.url){inner='<a href="'+p.url+'" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">'+inner+'</a>';}
         return '<div class="post">'+inner+'</div>';
       }).join('');
@@ -546,10 +545,10 @@
   var cmt='<svg viewBox="0 0 24 24" fill="#fff"><path d="M12 3C6.9 3 3 6.4 3 10.6c0 2.3 1.2 4.4 3.1 5.8L5 21l4.9-2.3c.7.1 1.4.2 2.1.2 5.1 0 9-3.4 9-7.6S17.1 3 12 3z"/></svg>';
   var fmt=function(n){return n.toLocaleString('en-US');};
   var data=[[1696,72],[842,31],[2140,58],[1210,44],[963,27],[3480,96],[1875,63],[740,22],[2560,81],[1130,39],[2018,55],[1442,48],[905,29],[3110,88],[1680,51],[1290,37],[2230,66],[980,25]];
-  document.querySelectorAll('.imgroll .post .media').forEach(function(m,i){
+  document.querySelectorAll('.imgroll .post').forEach(function(post,i){
     var d=data[i%data.length];
-    var o=document.createElement('div'); o.className='igstats'; o.setAttribute('aria-hidden','true');
+    var o=document.createElement('div'); o.className='igbar'; o.setAttribute('aria-hidden','true');
     o.innerHTML='<span class="st">'+heart+fmt(d[0])+'</span><span class="st">'+cmt+fmt(d[1])+'</span>';
-    m.appendChild(o);
+    post.appendChild(o);
   });
 })();

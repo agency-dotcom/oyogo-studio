@@ -955,9 +955,9 @@
 @media(max-width:760px){#gallery .pgrid{grid-template-columns:repeat(2,1fr);gap:10px}}
 
 /* v=14 — IG engagement overlay on gallery images (decorative, look & feel) */
-.post .media .igstats{position:absolute;left:0;right:0;bottom:0;z-index:2;display:flex;flex-wrap:nowrap;align-items:center;justify-content:flex-start;gap:13px;padding:9px 14px 11px;background:linear-gradient(to top,rgba(0,0,0,.62),rgba(0,0,0,0));pointer-events:none}
-.post .media .igstats .st{display:flex;align-items:center;gap:5px;color:#fff;font-weight:700;font-size:clamp(11px,1.1vw,13px);letter-spacing:.2px;white-space:nowrap;text-shadow:0 1px 3px rgba(0,0,0,.5)}
-.post .media .igstats .st svg{width:16px;height:16px;fill:#fff;flex:none}
+.post .igbar{display:flex;flex-wrap:nowrap;align-items:center;gap:15px;padding:11px 2px 2px;pointer-events:none}
+.post .igbar .st{display:flex;align-items:center;gap:5px;color:var(--ink);font-weight:700;font-size:13px;letter-spacing:.2px;white-space:nowrap}
+.post .igbar .st svg{width:16px;height:16px;fill:var(--ink);flex:none}
 #feed-track .post .media img{object-position:center bottom}
 
 /* v=14 — services card highlight bullets */
