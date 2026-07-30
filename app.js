@@ -506,3 +506,17 @@
   t.addEventListener('click',function(){h.classList.toggle('menu-open');});
   h.querySelectorAll('.nav-links a').forEach(function(a){a.addEventListener('click',function(){h.classList.remove('menu-open');});});
 })();
+
+/* Residencies gallery: play videos only while on-screen (saves mobile CPU/battery) */
+(function(){
+  var vids=document.querySelectorAll('.imgroll video');
+  if(!vids.length||!('IntersectionObserver' in window)) return;
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      var v=e.target;
+      if(e.isIntersecting){ var p=v.play(); if(p&&p.catch) p.catch(function(){}); }
+      else { v.pause(); }
+    });
+  },{threshold:0.25});
+  vids.forEach(function(v){ io.observe(v); });
+})();
