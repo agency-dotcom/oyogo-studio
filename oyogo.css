@@ -945,3 +945,11 @@
 
 /* v=10 — video posts in the residencies rolling gallery */
 .post .media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+
+/* v=11 — Global partners 4-col gallery grid */
+#gallery .pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px}
+#gallery .ptile .media{position:relative;aspect-ratio:0.8;border-radius:12px;overflow:hidden;background:#e5e0d6}
+#gallery .ptile .media img,#gallery .ptile .media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+#gallery .ptile .media .grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.22),transparent 35%,transparent 70%,rgba(0,0,0,.30))}
+#gallery .ptile .ph{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--serif);font-size:20px;color:rgba(30,30,28,0.22)}
+@media(max-width:760px){#gallery .pgrid{grid-template-columns:repeat(2,1fr);gap:10px}}

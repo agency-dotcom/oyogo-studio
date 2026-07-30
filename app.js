@@ -21,18 +21,30 @@
     function onScroll(){h.classList.toggle('scrolled',window.scrollY>80);}
     onScroll();window.addEventListener('scroll',onScroll,{passive:true});
 
-    // Instagram feed — edit POSTS to swap in real content (image, caption, counts, url)
+    // Instagram feed — real content. For each post fill in real likes/saves/comments
+    // and url (link to the actual IG post). Use vid:'clipN.mp4' for videos, img:'galN.jpg' for photos.
     var POSTS=[
-      {img:'ig/1.jpg',  cap:'Morning miles before the heat hits.',   likes:'3,241',  saves:'412',   comments:'88',  url:''},
-      {img:'ig/2.jpg',  cap:'Sunrise flow, nothing but mountains.',  likes:'5,708',  saves:'903',   comments:'142', url:''},
-      {img:'ig/3.jpg',  cap:'Sound bath reset — save this one.',     likes:'8,102',  saves:'2,140', comments:'261', url:''},
-      {img:'ig/4.jpg',  cap:'That finish-line feeling.',            likes:'4,417',  saves:'356',   comments:'97',  url:''},
-      {img:'ig/5.jpg',  cap:'Five minutes of stillness, anywhere.', likes:'6,930',  saves:'1,405', comments:'180', url:''},
-      {img:'ig/6.jpg',  cap:'Cold plunge, sauna, repeat.',          likes:'12,304', saves:'3,612', comments:'410', url:''},
-      {img:'ig/7.jpg',  cap:'Strength work, no excuses.',           likes:'9,120',  saves:'1,860', comments:'205', url:''},
-      {img:'ig/8.jpg',  cap:'Golden hour, good people.',            likes:'7,540',  saves:'1,120', comments:'168', url:''},
-      {img:'ig/9.jpg',  cap:'Trail therapy.',                       likes:'5,980',  saves:'740',   comments:'121', url:''},
-      {img:'ig/10.jpg', cap:'Switch off. Reset. Repeat.',           likes:'8,760',  saves:'2,430', comments:'233', url:''}
+      {vid:'clip1.mp4', cap:'A class I’ll never forget. 💙🇬🇷',           likes:'',  saves:'',  comments:'', url:''},
+      {img:'gal3.jpg',  cap:'Golden-hour mats, ready for practice.',      likes:'',  saves:'',  comments:'', url:''},
+      {img:'gal6.jpg',  cap:'Boat pose on the jetty.',                    likes:'',  saves:'',  comments:'', url:''},
+      {img:'gal2.jpg',  cap:'Open-water swim squad.',                     likes:'',  saves:'',  comments:'', url:''},
+      {img:'gal4.jpg',  cap:'Group flow by the sea.',                     likes:'',  saves:'',  comments:'', url:''},
+      {vid:'clip7.mp4', cap:'Reformer fun at Zelia. ☀️🌊',                likes:'',  saves:'',  comments:'', url:''},
+      {img:'gal9.jpg',  cap:'Mat pilates, bands out.',                    likes:'',  saves:'',  comments:'', url:''},
+      {img:'gal12.jpg', cap:'Hands-on pilates cues.',                     likes:'',  saves:'',  comments:'', url:''},
+      {img:'gal18.jpg', cap:'HIIT in the stone gym.',                     likes:'',  saves:'',  comments:'', url:''},
+      {img:'gal10.jpg', cap:'Strength session, Oyogo crew.',             likes:'',  saves:'',  comments:'', url:''},
+      {vid:'clip4.mp4', cap:'Hey babe — you don’t need to carry it all at once. 🫶🏼', likes:'', saves:'', comments:'', url:''},
+      {img:'gal11.jpg', cap:'Sound bath by the water.',                   likes:'',  saves:'',  comments:'', url:''},
+      {img:'gal15.jpg', cap:'Gong bath smiles.',                          likes:'',  saves:'',  comments:'', url:''},
+      {img:'gal14.jpg', cap:'Sound healing, up close.',                   likes:'',  saves:'',  comments:'', url:''},
+      {img:'gal1.jpg',  cap:'Hands-on adjustments in the shala.',         likes:'',  saves:'',  comments:'', url:''},
+      {img:'gal5.jpg',  cap:'Breathwork under the linen sails.',          likes:'',  saves:'',  comments:'', url:''},
+      {img:'gal7.jpg',  cap:'Good people, good energy.',                  likes:'',  saves:'',  comments:'', url:''},
+      {img:'gal8.jpg',  cap:'Reformer play at ZEL Club.',                 likes:'',  saves:'',  comments:'', url:''},
+      {img:'gal13.jpg', cap:'Morning run through the hills.',             likes:'',  saves:'',  comments:'', url:''},
+      {img:'gal16.jpg', cap:'Down dog over the dunes.',                   likes:'',  saves:'',  comments:'', url:''},
+      {img:'gal17.jpg', cap:'Cold plunge, three tubs deep.',             likes:'',  saves:'',  comments:'', url:''}
     ];
     var IC={
       like:'<svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>',
@@ -42,12 +54,14 @@
     var track=document.getElementById('feed-track');
     if(track){
       track.innerHTML=POSTS.map(function(p){
-        var media='<div class="media"><img src="'+p.img+'" alt=""><div class="grad"></div><div class="top"><span class="av">O</span><span class="hn">@oyogo.london</span></div><div class="play"></div></div>';
-        var stats='<div class="stats">'+
-          '<span class="stat-i">'+IC.like+p.likes+'</span>'+
-          (p.saves?'<span class="stat-i">'+IC.save+p.saves+'</span>':'')+
-          '<span class="stat-i">'+IC.comment+p.comments+'</span>'+
-        '</div>';
+        var el=p.vid?('<video src="'+p.vid+'" muted loop playsinline preload="none"></video>')
+                    :('<img src="'+p.img+'" alt="">');
+        var media='<div class="media">'+el+'<div class="grad"></div><div class="top"><span class="av">O</span><span class="hn">@oyogo.london</span></div></div>';
+        var s='';
+        if(p.likes)    s+='<span class="stat-i">'+IC.like+p.likes+'</span>';
+        if(p.saves)    s+='<span class="stat-i">'+IC.save+p.saves+'</span>';
+        if(p.comments) s+='<span class="stat-i">'+IC.comment+p.comments+'</span>';
+        var stats=s?('<div class="stats">'+s+'</div>'):'';
         var inner=media+'<p class="cap">'+p.cap+'</p>'+stats;
         if(p.url){inner='<a href="'+p.url+'" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">'+inner+'</a>';}
         return '<div class="post">'+inner+'</div>';
@@ -509,7 +523,7 @@
 
 /* Residencies gallery: play videos only while on-screen (saves mobile CPU/battery) */
 (function(){
-  var vids=document.querySelectorAll('.imgroll video');
+  var vids=document.querySelectorAll('.imgroll video, #feed-track video');
   if(!vids.length||!('IntersectionObserver' in window)) return;
   var io=new IntersectionObserver(function(entries){
     entries.forEach(function(e){
