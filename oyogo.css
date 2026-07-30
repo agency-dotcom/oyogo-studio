@@ -942,3 +942,6 @@
   .clients-names{font-family:var(--serif);font-weight:400;letter-spacing:-0.5px}
   .rname{font-family:var(--serif);font-weight:400;letter-spacing:-0.3px}
   .opp-stmt,.band-stmt{font-family:var(--serif);font-weight:400}
+
+/* v=10 — video posts in the residencies rolling gallery */
+.post .media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
