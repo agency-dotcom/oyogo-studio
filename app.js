@@ -24,18 +24,22 @@
     // Instagram feed — real content. For each post fill in real likes/saves/comments
     // and url (link to the actual IG post). Use vid:'clipN.mp4' for videos, img:'galN.jpg' for photos.
     var POSTS=[
-      {vid:'clip1.mp4', cap:'A class I’ll never forget. 💙🇬🇷',           likes:'',  saves:'',  comments:'', url:''},
-      {img:'gal3.jpg',  cap:'Golden-hour mats, ready for practice.',      likes:'',  saves:'',  comments:'', url:''},
-      {img:'gal6.jpg',  cap:'Boat pose on the jetty.',                    likes:'',  saves:'',  comments:'', url:''},
-      {vid:'clip7.mp4', cap:'Reformer fun at Zelia. ☀️🌊',                likes:'',  saves:'',  comments:'', url:''},
-      {img:'gal4.jpg',  cap:'Group flow by the sea.',                     likes:'',  saves:'',  comments:'', url:''},
-      {img:'gal18.jpg', cap:'HIIT in the stone gym.',                     likes:'',  saves:'',  comments:'', url:''},
-      {img:'gal11.jpg', cap:'Sound bath by the water.',                   likes:'',  saves:'',  comments:'', url:''},
+      {vid:'clip1.mp4', cap:'A class I’ll never forget. 💙🇬🇷',           likes:'150', saves:'10', comments:'', url:'https://www.instagram.com/p/Da-fkFrov8h/'},
+      {img:'gal3.jpg',  cap:'Golden-hour mats, ready for practice.',      likes:'',    saves:'',   comments:'', url:''},
+      {img:'gal6.jpg',  cap:'Boat pose on the jetty.',                    likes:'35',  saves:'10', comments:'', url:'https://www.instagram.com/p/DPn3rm4jKKs/?img_index=1'},
+      {vid:'clip7.mp4', cap:'Reformer fun at Zelia. ☀️🌊',                likes:'',    saves:'',   comments:'', url:'https://www.instagram.com/p/DbQRgTdtvya/'},
+      {img:'gal4.jpg',  cap:'Group flow by the sea.',                     likes:'',    saves:'',   comments:'', url:'https://www.instagram.com/p/DG7kRaCoGXg/'},
+      {img:'gal7.jpg',  cap:'Good people, good energy.',                  likes:'',    saves:'',   comments:'', url:''},
+      {img:'gal18.jpg', cap:'HIIT in the stone gym.',                     likes:'',    saves:'',   comments:'', url:''},
       {vid:'clip4.mp4', cap:'Hey babe — you don’t need to carry it all at once. 🫶🏼', likes:'', saves:'', comments:'', url:''},
-      {img:'gal2.jpg',  cap:'Open-water swim squad.',                     likes:'',  saves:'',  comments:'', url:''},
-      {img:'gal16.jpg', cap:'Down dog over the dunes.',                   likes:'',  saves:'',  comments:'', url:''},
-      {img:'gal17.jpg', cap:'Cold plunge, three tubs deep.',             likes:'',  saves:'',  comments:'', url:''},
-      {img:'gal8.jpg',  cap:'Reformer play at ZEL Club.',                 likes:'',  saves:'',  comments:'', url:''}
+      {img:'gal10.jpg', cap:'Strength session, Oyogo crew.',             likes:'',    saves:'',   comments:'', url:''},
+      {img:'gal11.jpg', cap:'Sound bath by the water.',                   likes:'',    saves:'',   comments:'', url:''},
+      {img:'gal2.jpg',  cap:'Open-water swim squad.',                     likes:'',    saves:'',   comments:'', url:''},
+      {img:'gal15.jpg', cap:'Gong bath smiles.',                          likes:'',    saves:'',   comments:'', url:''},
+      {img:'gal16.jpg', cap:'Down dog over the dunes.',                   likes:'',    saves:'',   comments:'', url:''},
+      {img:'gal17.jpg', cap:'Cold plunge, three tubs deep.',             likes:'',    saves:'',   comments:'', url:''},
+      {img:'gal5.jpg',  cap:'Breathwork under the linen sails.',          likes:'',    saves:'',   comments:'', url:''},
+      {img:'gal8.jpg',  cap:'Reformer play at ZEL Club.',                 likes:'',    saves:'',   comments:'', url:''}
     ];
     var IC={
       like:'<svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>',
