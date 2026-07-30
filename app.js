@@ -1,4 +1,4 @@
-// Cookie consent — Plausible runs cookieless (always on, in <head>); GA4 loads only on Accept.
+// Cookie consent – Plausible runs cookieless (always on, in <head>); GA4 loads only on Accept.
   (function(){
     var GA_ID='G-XXXXXXXXXX'; // ← replace with your GA4 Measurement ID
     function loadGA(){
@@ -21,7 +21,7 @@
     function onScroll(){h.classList.toggle('scrolled',window.scrollY>80);}
     onScroll();window.addEventListener('scroll',onScroll,{passive:true});
 
-    // Instagram feed — real content. For each post fill in real likes/saves/comments
+    // Instagram feed – real content. For each post fill in real likes/saves/comments
     // and url (link to the actual IG post). Use vid:'clipN.mp4' for videos, img:'galN.jpg' for photos.
     var POSTS=[
       {vid:'clip1.mp4', cap:'A class I’ll never forget. 💙🇬🇷',           likes:'150', saves:'10', comments:'', url:'https://www.instagram.com/p/Da-fkFrov8h/'},
@@ -31,15 +31,15 @@
       {img:'pg7.jpg',   cap:'Why connection is now one of the most important pillars of modern wellness.', likes:'1,696', comments:'72', saves:'', url:''},
       {vid:'clip7.mp4', cap:'Reformer fun at Zelia. ☀️🌊',                likes:'',    saves:'',   comments:'', url:'https://www.instagram.com/p/DbQRgTdtvya/'},
       {img:'gal4.jpg',  cap:'Group flow by the sea.',                     likes:'',    saves:'',   comments:'', url:'https://www.instagram.com/p/DG7kRaCoGXg/'},
-      {img:'pg1.jpg',   cap:'The Oyogo Edit — Rome. 🇮🇹',                 likes:'',    saves:'',   comments:'', url:''},
+      {img:'pg1.jpg',   cap:'The Oyogo Edit – Rome. 🇮🇹',                 likes:'',    saves:'',   comments:'', url:''},
       {img:'gal7.jpg',  cap:'Good people, good energy.',                  likes:'',    saves:'',   comments:'', url:''},
       {img:'gal18.jpg', cap:'HIIT in the stone gym.',                     likes:'',    saves:'',   comments:'', url:''},
       {img:'pg13.jpg',  cap:'The hotel turning farm-to-table into a full wellness ecosystem.', views:'93K', likes:'3,786', saves:'1,800', shares:'1,751', url:''},
-      {vid:'clip4.mp4', cap:'Hey babe — you don’t need to carry it all at once. 🫶🏼', likes:'', saves:'', comments:'', url:''},
+      {vid:'clip4.mp4', cap:'Hey babe – you don’t need to carry it all at once. 🫶🏼', likes:'', saves:'', comments:'', url:''},
       {img:'gal10.jpg', cap:'Strength session, Oyogo crew.',             likes:'',    saves:'',   comments:'', url:''},
       {img:'gal11.jpg', cap:'Sound bath by the water.',                   likes:'',    saves:'',   comments:'', url:''},
       {img:'gal2.jpg',  cap:'Open-water swim squad.',                     likes:'',    saves:'',   comments:'', url:''},
-      {img:'pg12.jpg',  cap:'The hotel brand shaping a new kind of social wellbeing.', likes:'', saves:'', comments:'', url:''},
+      {img:'pg12.jpg',  cap:'The hotel brand shaping a new kind of social wellbeing.', views:'45K', likes:'1,102', saves:'624', shares:'475', url:''},
       {img:'gal15.jpg', cap:'Gong bath smiles.',                          likes:'',    saves:'',   comments:'', url:''},
       {img:'gal16.jpg', cap:'Down dog over the dunes.',                   likes:'',    saves:'',   comments:'', url:''},
       {img:'gal17.jpg', cap:'Cold plunge, three tubs deep.',             likes:'',    saves:'',   comments:'', url:''},
@@ -78,7 +78,7 @@
     });
   })();
 
-  // Schedule — Oyogo trainer residencies & daily studio classes, by resort.
+  // Schedule – Oyogo trainer residencies and daily studio classes, by resort.
   // Each resort has fixed daily studio slots + trainer residencies (date ranges).
   // Dates are ISO 'YYYY-MM-DD'; the departure day is exclusive (handover day = next trainer).
   // Add more resorts to SCHEDULE as their rotas come in.
@@ -92,19 +92,19 @@
           {time:'18:15', label:'Olive Grove Studio', main:true}
         ],
         residencies:[
-          {s:'2026-05-07', e:'2026-05-15', t:'Lucy Sesto',        d:'Yoga & meditation',                type:'Yoga'},
-          {s:'2026-05-15', e:'2026-05-24', t:'Erica B',           d:'Yoga & meditation',                type:'Yoga'},
-          {s:'2026-05-24', e:'2026-06-08', t:'Matea Hrustic',     d:'Pilates & yoga',                   type:'Pilates'},
+          {s:'2026-05-07', e:'2026-05-15', t:'Lucy Sesto',        d:'Yoga and meditation',                type:'Yoga'},
+          {s:'2026-05-15', e:'2026-05-24', t:'Erica B',           d:'Yoga and meditation',                type:'Yoga'},
+          {s:'2026-05-24', e:'2026-06-08', t:'Matea Hrustic',     d:'Pilates and yoga',                   type:'Pilates'},
           {s:'2026-06-08', e:'2026-06-21', t:'Maya Fields',       d:'Yoga',                             type:'Yoga'},
-          {s:'2026-06-21', e:'2026-07-05', t:'Mariana Moura',     d:'Yoga, meditation & breathwork',    type:'Yoga'},
-          {s:'2026-07-05', e:'2026-07-19', t:'Kasia Mizerska',    d:'Pilates (mat & reformer) & barre', type:'Pilates'},
+          {s:'2026-06-21', e:'2026-07-05', t:'Mariana Moura',     d:'Yoga, meditation and breathwork',    type:'Yoga'},
+          {s:'2026-07-05', e:'2026-07-19', t:'Kasia Mizerska',    d:'Pilates (mat and reformer) and barre', type:'Pilates'},
           {s:'2026-07-19', e:'2026-08-02', t:'Ksenija Selivanova',d:'Pilates',                          type:'Pilates'},
-          {s:'2026-08-02', e:'2026-08-16', t:'Erin Dusek',        d:'Yoga, meditation & breathwork',    type:'Yoga'},
-          {s:'2026-08-16', e:'2026-08-30', t:'Tiffany',           d:'Yoga, breathwork & Pilates',       type:'Yoga'},
-          {s:'2026-08-30', e:'2026-09-13', t:'Milou M Balo',      d:'Pilates & breathwork',             type:'Yoga'},
+          {s:'2026-08-02', e:'2026-08-16', t:'Erin Dusek',        d:'Yoga, meditation and breathwork',    type:'Yoga'},
+          {s:'2026-08-16', e:'2026-08-30', t:'Tiffany',           d:'Yoga, breathwork and Pilates',       type:'Yoga'},
+          {s:'2026-08-30', e:'2026-09-13', t:'Milou M Balo',      d:'Pilates and breathwork',             type:'Yoga'},
           {s:'2026-09-13', e:'2026-09-27', t:'Céline Leach',      d:'Pilates',                          type:'Pilates'},
-          {s:'2026-09-27', e:'2026-10-11', t:'Thea King',         d:'Barre & Pilates',                  type:'Barre'},
-          {s:'2026-10-11', e:'2026-10-19', t:'Alice Padron',      d:'Barre, Pilates & yoga',            type:'Barre'}
+          {s:'2026-09-27', e:'2026-10-11', t:'Thea King',         d:'Barre and Pilates',                  type:'Barre'},
+          {s:'2026-10-11', e:'2026-10-19', t:'Alice Padron',      d:'Barre, Pilates and yoga',            type:'Barre'}
         ]
       },
       {
@@ -115,12 +115,12 @@
           {time:'18:15', label:'Yoga Deck', main:true}
         ],
         residencies:[
-          {s:'2026-05-18', e:'2026-05-31', t:'Georgia Chapman Costa', d:'Gym & Pilates',                             type:'Pilates'},
-          {s:'2026-06-07', e:'2026-06-21', t:'Marta De Carli',        d:'Yoga & Pilates',                            type:'Yoga'},
-          {s:'2026-07-06', e:'2026-07-19', t:'Gigi Delsante',         d:'Yoga & mindfulness',                        type:'Yoga'},
-          {s:'2026-08-03', e:'2026-08-16', t:'Maria Pacha',           d:'Yoga & mindfulness',                        type:'Yoga'},
-          {s:'2026-09-07', e:'2026-09-20', t:'Bella Wilson',          d:'Gym & Pilates',                             type:'Pilates'},
-          {s:'2026-09-21', e:'2026-10-06', t:'Sophie Allin',          d:'Vinyasa yoga, mobility & functional strength', type:'Fitness'}
+          {s:'2026-05-18', e:'2026-05-31', t:'Georgia Chapman Costa', d:'Gym and Pilates',                             type:'Pilates'},
+          {s:'2026-06-07', e:'2026-06-21', t:'Marta De Carli',        d:'Yoga and Pilates',                            type:'Yoga'},
+          {s:'2026-07-06', e:'2026-07-19', t:'Gigi Delsante',         d:'Yoga and mindfulness',                        type:'Yoga'},
+          {s:'2026-08-03', e:'2026-08-16', t:'Maria Pacha',           d:'Yoga and mindfulness',                        type:'Yoga'},
+          {s:'2026-09-07', e:'2026-09-20', t:'Bella Wilson',          d:'Gym and Pilates',                             type:'Pilates'},
+          {s:'2026-09-21', e:'2026-10-06', t:'Sophie Allin',          d:'Vinyasa yoga, mobility and functional strength', type:'Fitness'}
         ]
       },
       {
@@ -131,10 +131,10 @@
           {time:'18:15', label:'Amphitheatre Deck', main:true}
         ],
         residencies:[
-          {s:'2026-05-18', e:'2026-05-31', t:'Amelia Coutisson',    d:'Yoga & sound',       type:'Yoga'},
-          {s:'2026-06-08', e:'2026-06-21', t:'Myrthe van Gameren',  d:'Yoga, meditation & breathwork', type:'Yoga'},
-          {s:'2026-07-06', e:'2026-07-19', t:'Matteo Massaini',     d:'Fitness & breathwork', type:'Fitness'},
-          {s:'2026-09-21', e:'2026-10-04', t:'Vanessa Michielon',   d:'Pilates & somatic movement', type:'Pilates'}
+          {s:'2026-05-18', e:'2026-05-31', t:'Amelia Coutisson',    d:'Yoga and sound',       type:'Yoga'},
+          {s:'2026-06-08', e:'2026-06-21', t:'Myrthe van Gameren',  d:'Yoga, meditation and breathwork', type:'Yoga'},
+          {s:'2026-07-06', e:'2026-07-19', t:'Matteo Massaini',     d:'Fitness and breathwork', type:'Fitness'},
+          {s:'2026-09-21', e:'2026-10-04', t:'Vanessa Michielon',   d:'Pilates and somatic movement', type:'Pilates'}
         ]
       },
       {
@@ -145,10 +145,10 @@
         ],
         residencies:[
           {s:'2026-05-18', e:'2026-05-31', t:'Lucia Zanone',       d:'Yoga',                    type:'Yoga'},
-          {s:'2026-06-08', e:'2026-06-21', t:'Annabelle Williams', d:'Fitness & movement',      type:'Fitness'},
-          {s:'2026-07-06', e:'2026-07-19', t:'Cian Hughes',        d:'Pilates & fusion',        type:'Pilates'},
-          {s:'2026-08-03', e:'2026-08-16', t:'Kitti Gombos',       d:'Pilates & fusion',        type:'Pilates'},
-          {s:'2026-09-21', e:'2026-10-04', t:'Joelle Brabben',     d:'Fitness & movement',      type:'Fitness'}
+          {s:'2026-06-08', e:'2026-06-21', t:'Annabelle Williams', d:'Fitness and movement',      type:'Fitness'},
+          {s:'2026-07-06', e:'2026-07-19', t:'Cian Hughes',        d:'Pilates and fusion',        type:'Pilates'},
+          {s:'2026-08-03', e:'2026-08-16', t:'Kitti Gombos',       d:'Pilates and fusion',        type:'Pilates'},
+          {s:'2026-09-21', e:'2026-10-04', t:'Joelle Brabben',     d:'Fitness and movement',      type:'Fitness'}
         ]
       }
     ];
@@ -201,7 +201,7 @@
       return rows;
     }
 
-    // Peligoni — rotating roster of guest trainers per week + special weeks (hand-entered from the club rota).
+    // Peligoni – rotating roster of guest trainers per week + special weeks (hand-entered from the club rota).
     var PEL_WEB='https://www.peligoni.com', PEL_LOC='Zakynthos, GR';
     // Each trainer entry: [name, ig, stream]  (stream 'Gym' | 'Studio' | '' for team/Pace weeks)
     var PEL_WEEKS=[
@@ -230,15 +230,15 @@
         2:[['08:15','Tempo Sculpt'],['09:45','Cardio Conditioning']],
         3:[['08:15','Hybrid Circuit Training'],['09:45','Slow Strength']],
         4:[['08:15','Slow Strength'],['09:45','Cardio Conditioning']],
-        5:[['08:15','Abs & Glutes'],['09:45','Hybrid Circuit Training']],
+        5:[['08:15','Abs and Glutes'],['09:45','Hybrid Circuit Training']],
         6:[['08:15','Slow Strength · Upper Body'],['09:45','Cardio Conditioning']]
       },
       Studio:{
-        1:[['08:45','Vinyasa Flow Yoga'],['09:45','Slow Flow Yoga'],['16:00','Restore & Unwind']],
+        1:[['08:45','Vinyasa Flow Yoga'],['09:45','Slow Flow Yoga'],['16:00','Restore and Unwind']],
         2:[['08:45','Slow Flow Yoga'],['09:45','Dynamic Yoga'],['16:00','Sculpt Pilates']],
-        3:[['08:45','Specialist class'],['09:45','Slow Flow · Standing Balances'],['16:00','Restore & Unwind · Hip Openers']],
+        3:[['08:45','Specialist class'],['09:45','Slow Flow · Standing Balances'],['16:00','Restore and Unwind · Hip Openers']],
         4:[['08:45','Vinyasa Flow Yoga'],['09:45','Dynamic Vinyasa'],['16:00','Slow Flow']],
-        5:[['08:45','Specialist class'],['09:45','Slow Flow Yoga · Back Bends'],['16:00','Restore & Unwind']],
+        5:[['08:45','Specialist class'],['09:45','Slow Flow Yoga · Back Bends'],['16:00','Restore and Unwind']],
         6:[['08:45','Vinyasa Flow Yoga'],['09:45','Specialist class'],['16:00','Slow Flow Yoga']]
       }
     };
@@ -327,7 +327,7 @@
         .filter(function(r){return !instEl.value || r.trainer===instEl.value;});
     }
     function specialOn(rows){var s='';rows.forEach(function(r){if(r.special)s=r.special;});return s;}
-    var SPECIAL_DESC={'Pace 1':'Performance & fitness week','Pace 2':'Performance & fitness week','Pace 3':'Performance & fitness week','Gather':'Wellness & community week'};
+    var SPECIAL_DESC={'Pace 1':'Performance and fitness week','Pace 2':'Performance and fitness week','Pace 3':'Performance and fitness week','Gather':'Wellness and community week'};
     // Peligoni event pages (confirm exact URLs).
     var SPECIAL_URL={'Pace 1':'https://www.peligoni.com/pace','Pace 2':'https://www.peligoni.com/pace','Pace 3':'https://www.peligoni.com/pace','Gather':'https://www.peligoni.com/gather'};
     function specialLabel(s){return /^Pace/.test(s)?s.replace('Pace','Pace Week'):(s==='Gather'?'Gather Week':s);}
@@ -448,7 +448,7 @@
       if(!showList.length){
         var rng=nextSessionRange(selected), pill='';
         if(rng){var multi=key(rng.s)!==key(rng.e);pill='<button type="button" class="cal-nextpill" data-t="'+rng.s.getTime()+'">Next '+lbl+(multi?'residency':'session')+' · '+fmtWindow(rng.s,rng.e)+' →</button>';}
-        listEl.innerHTML='<p class="cal-empty">No Oyogo '+lbl+'sessions on this day — <a href="mailto:studio@oyogo.co.uk" style="color:var(--yellow);font-weight:600">enquire about a residency</a>.</p>'+pill;
+        listEl.innerHTML='<p class="cal-empty">No Oyogo '+lbl+'sessions on this day – <a href="mailto:studio@oyogo.co.uk" style="color:var(--yellow);font-weight:600">enquire about a residency</a>.</p>'+pill;
         return;
       }
       var LOC={};ROWS.forEach(function(r){if(r.loc&&!LOC[r.resort])LOC[r.resort]=r.loc;});
@@ -456,7 +456,7 @@
         if(groups[resort])return renderResortGroup(resort,groups[resort]);
         var loc=LOC[resort]||'', rng=nextResortRange(resort,selected), body;
         if(rng){var multi=key(rng.s)!==key(rng.e);body='<button type="button" class="cal-nextpill" data-t="'+rng.s.getTime()+'">Next '+lbl+(multi?'residency':'session')+' · '+fmtWindow(rng.s,rng.e)+' →</button>';}
-        else body='<p class="cal-empty">No upcoming '+lbl+'sessions — <a href="mailto:studio@oyogo.co.uk" style="color:var(--yellow);font-weight:600">enquire</a>.</p>';
+        else body='<p class="cal-empty">No upcoming '+lbl+'sessions – <a href="mailto:studio@oyogo.co.uk" style="color:var(--yellow);font-weight:600">enquire</a>.</p>';
         return '<div class="ag-group ag-group-empty"><div class="ag-ghead"><div class="ag-gtitle"><span class="ag-gname">'+resort+(loc?' · '+loc:'')+'</span></div></div>'+body+'</div>';
       }).join('');
     }
@@ -502,7 +502,7 @@
     render();
     loadCSV();
 
-    // Rolling residency gallery — crossfade through the images
+    // Rolling residency gallery – crossfade through the images
     var gimgs=document.querySelectorAll('.cal-gallery img');
     if(gimgs.length>1){var gi=0;setInterval(function(){gimgs[gi].classList.remove('on');gi=(gi+1)%gimgs.length;gimgs[gi].classList.add('on');},4000);}
   })();
@@ -539,7 +539,7 @@
   vids.forEach(function(v){ io.observe(v); });
 })();
 
-/* Decorative IG engagement overlay on the residencies rolling gallery (look & feel only) */
+/* Decorative IG engagement overlay on the residencies rolling gallery (look and feel only) */
 (function(){
   var heart='<svg viewBox="0 0 24 24" fill="#fff"><path d="M12 21.6l-1.5-1.4C5.4 15.6 2 12.5 2 8.7 2 5.6 4.4 3.2 7.5 3.2c1.7 0 3.4.8 4.5 2.1 1.1-1.3 2.8-2.1 4.5-2.1 3.1 0 5.5 2.4 5.5 5.5 0 3.8-3.4 6.9-8.5 11.5L12 21.6z"/></svg>';
   var cmt='<svg viewBox="0 0 24 24" fill="#fff"><path d="M12 3C6.9 3 3 6.4 3 10.6c0 2.3 1.2 4.4 3.1 5.8L5 21l4.9-2.3c.7.1 1.4.2 2.1.2 5.1 0 9-3.4 9-7.6S17.1 3 12 3z"/></svg>';
