@@ -1,0 +1,13 @@
+# Netlify config for the Oyogo Studio static site.
+# The repo root IS the deployable site (plain HTML/CSS/JS + images/video),
+# so there's no build step — Netlify publishes the root on every push to `main`.
+[build]
+  publish = "."
+  command = ""
+
+# Redirect the Netlify subdomain to the primary domain (belt-and-braces; primary is set in the UI too)
+[[redirects]]
+  from = "https://oyogo-studio.netlify.app/*"
+  to = "https://oyogostudio.com/:splat"
+  status = 301
+  force = true
