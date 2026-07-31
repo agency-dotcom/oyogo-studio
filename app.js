@@ -1,6 +1,6 @@
 // Cookie consent – Plausible runs cookieless (always on, in <head>); GA4 loads only on Accept.
   (function(){
-    var GA_ID='G-XXXXXXXXXX'; // ← replace with your GA4 Measurement ID
+    var GA_ID='G-HERP90JDX4'; // GA4 Measurement ID (oyogostudio.com)
     function loadGA(){
       if(window.__ga)return;window.__ga=1;
       var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+GA_ID;document.head.appendChild(s);
