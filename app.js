@@ -1,4 +1,4 @@
-// Cookie consent – Plausible runs cookieless (always on, in <head>); GA4 loads only on Accept.
+// Cookie consent – GA4 (Google Analytics) loads only on Accept.
   (function(){
     var GA_ID='G-HERP90JDX4'; // GA4 Measurement ID (oyogostudio.com)
     function loadGA(){
@@ -61,7 +61,7 @@
     if(track){
       track.innerHTML=POSTS.map(function(p){
         var el=p.vid?('<video src="'+p.vid+'" muted loop playsinline preload="none"></video>')
-                    :('<img src="'+p.img+'" alt="">');
+                    :('<img loading="lazy" src="'+p.img+'" alt="">');
         var METR=[['views',IC.viewF],['likes',IC.heartF],['comments',IC.cmtF],['saves',IC.saveF],['shares',IC.shareF]];
         var parts='';
         METR.forEach(function(m){ if(p[m[0]]) parts+='<span class="st">'+m[1]+p[m[0]]+'</span>'; });
