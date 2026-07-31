@@ -236,10 +236,10 @@
       Studio:{
         1:[['08:45','Vinyasa Flow Yoga'],['09:45','Slow Flow Yoga'],['16:00','Restore and Unwind']],
         2:[['08:45','Slow Flow Yoga'],['09:45','Dynamic Yoga'],['16:00','Sculpt Pilates']],
-        3:[['08:45','Specialist class'],['09:45','Slow Flow · Standing Balances'],['16:00','Restore and Unwind · Hip Openers']],
-        4:[['08:45','Vinyasa Flow Yoga'],['09:45','Dynamic Vinyasa'],['16:00','Slow Flow']],
-        5:[['08:45','Specialist class'],['09:45','Slow Flow Yoga · Back Bends'],['16:00','Restore and Unwind']],
-        6:[['08:45','Vinyasa Flow Yoga'],['09:45','Specialist class'],['16:00','Slow Flow Yoga']]
+        3:[['08:45','Dynamic Vinyasa'],['09:45','Sound Healing'],['16:00','Restore and Unwind · Hip Openers']],
+        4:[['08:45','Vinyasa Flow Yoga'],['09:45','Slow Flow Yoga · Back Bends'],['16:00','Slow Flow']],
+        5:[['08:45','Vinyasa Flow Yoga · Spinal Twists'],['09:45','Sound Healing'],['16:00','Slow Flow Yoga']],
+        6:[['08:45','Vinyasa Flow Yoga'],['09:45','Pranayama Breath Practice'],['16:00','Slow Flow Yoga']]
       }
     };
     function eachDate(sISO,eISO,cb){var p=sISO.split('-'),d=new Date(+p[0],+p[1]-1,+p[2]),q=eISO.split('-'),de=new Date(+q[0],+q[1]-1,+q[2]);while(d<=de){cb(new Date(d));d.setDate(d.getDate()+1);}}

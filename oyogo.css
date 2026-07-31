@@ -850,6 +850,9 @@
   .cal-glass .cal-circle{border-color:rgba(20,24,28,0.22);color:var(--ink)}
   .cal-glass .cal-day.on .cal-circle{background:var(--ink);color:var(--cream);border-color:var(--ink)}
   .cal-glass .cal-wd{color:var(--muted)}
+  .cal-glass .cal-title,.cal-glass .cal-mtitle{color:var(--ink)}
+  .cal-glass .cal-nav,.cal-glass .cal-today{border-color:rgba(20,24,28,0.18);color:var(--ink)}
+  .cal-glass .cal-nav:hover,.cal-glass .cal-today:hover{background:rgba(20,24,28,0.05)}
   .ag-bar .cal-title{color:var(--ink)}
   .ag-fullcal{background:rgba(20,24,28,0.05);border-color:rgba(20,24,28,0.18);color:var(--ink)}
   .ag-fullcal:hover,.ag-fullcal.on{background:rgba(20,24,28,0.12)}
