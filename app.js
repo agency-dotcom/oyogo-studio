@@ -207,31 +207,31 @@
     var PEL_WEEKS=[
       {s:'2026-05-16',e:'2026-05-23',sp:'Pace 1',t:[['Uche Obi','',''],['Nickoll Flood','@nickolfloodx',''],['Omar Monsour','@MrOmg',''],['Victoria Leigh','',''],['Christie Knight','@christieknightyoga',''],['Gen Greensted','@the_barrecoach','']]},
       {s:'2026-05-23',e:'2026-06-07',sp:'',t:[['Christina Demetriou','@christina_deme','Gym'],['Annie Archer','','Studio']]},
-      {s:'2026-06-06',e:'2026-06-21',sp:'',t:[['Carrie Baxter','@carriedaway','Gym'],['Alice Padron','','Studio']]},
+      {s:'2026-06-06',e:'2026-06-21',sp:'',t:[['Carrie Baxter','@carriedaway__','Gym'],['Alice Padron','','Studio']]},
       {s:'2026-06-20',e:'2026-07-04',sp:'',t:[['Greta Evelyn','@gretaevelyn','Gym'],['Immy McAndrews','@immy.mcandrew','Studio']]},
       {s:'2026-07-04',e:'2026-07-18',sp:'',t:[['Riley Forbes','','Gym'],['Hannah Buckley','@biog_by_hannah','Studio']]},
       {s:'2026-07-18',e:'2026-08-01',sp:'',t:[['Anna Bye','@annabye','Gym'],['Dominika Zechmeiszter','@aftermoonyoga','Studio']]},
       {s:'2026-08-01',e:'2026-08-14',sp:'',t:[['Kara Wagland','@karawagland','Gym']]},
       {s:'2026-08-01',e:'2026-08-15',sp:'',t:[['Ilenia Fedele','@ileyoga','Studio']]},
-      {s:'2026-08-14',e:'2026-08-29',sp:'',t:[['Ruby Padwick','','Gym']]},
+      {s:'2026-08-14',e:'2026-08-29',sp:'',t:[['Riley Forbes','','Gym']]},
       {s:'2026-08-15',e:'2026-08-29',sp:'',t:[['Tina Ivanova','@yogaclub.tina','Studio']]},
       {s:'2026-08-29',e:'2026-09-12',sp:'',t:[['Eva Simanavicius','@evasimanavicius','Gym'],['Annie Archer','','Studio']]},
       {s:'2026-09-12',e:'2026-09-20',sp:'',t:[['Abigail Skipper','','Gym'],['Rose Wild','@roseinthewildwellness','Studio']]},
       {s:'2026-09-21',e:'2026-09-26',sp:'Gather',t:[['Abigail Skipper','','Gym'],['Rose Wild','@roseinthewildwellness','Studio']]},
       {s:'2026-09-26',e:'2026-10-03',sp:'',t:[['Uche Obi','','Gym'],['Myrthe van Gameren','','Studio']]},
-      {s:'2026-10-03',e:'2026-10-10',sp:'Pace 2',t:[['Zoe Lou','',''],['Alex Castro','',''],['Naomi Heffernan','',''],['Victoria Leigh','',''],['Oliver James','',''],['Stephannie Warwick','','']]},
-      {s:'2026-10-10',e:'2026-10-17',sp:'Pace 3',t:[['Michelle Varchiona','@shalateacher',''],['Stephannie Warwick','@stephaniewarwick_',''],['Jordan M','@jordanmaeantoinette',''],['Carl Van Heerdan','',''],['Chris Millard','@chrismillardfit',''],['Leroy Williamson','@leroyelevates',''],["Laura 'Biceps'",'@laurabiceps','']]},
+      {s:'2026-10-03',e:'2026-10-10',sp:'Pace 2',t:[['Zoe Lou','',''],['Alex Castro','',''],['Naomi Heffernan','',''],['Victoria Leigh','',''],['Oliver James','',''],['Stephannie Warwick','@stephaniewarwick_','']]},
+      {s:'2026-10-10',e:'2026-10-17',sp:'Pace 3',t:[['Michelle Varchiona','@shalateacher',''],['Stephannie Warwick','@stephaniewarwick_',''],['Jordan M','@jordanmaeantoinette',''],['Carl Van Heerdan','@carl_vanheerden',''],['Chris Millard','@chrismillardfit',''],['Leroy Williamson','@leroyelevates',''],["Laura 'Biceps'",'@laurabiceps','']]},
       {s:'2026-10-17',e:'2026-11-01',sp:'',t:[['Jamilla Wittrup','@jamilla.wittrup','Gym'],['Laurie Bescond','@nymeriayoga','Studio']]}
     ];
     // Weekly class template per stream/venue. Weekday 1=Mon … 6=Sat (Sun off). [time, class]
     var PEL_TT={
       Gym:{
-        1:[['08:15','Cardio Conditioning'],['09:45','Hybrid Circuit Training']],
-        2:[['08:15','Tempo Sculpt'],['09:45','Cardio Conditioning']],
-        3:[['08:15','Hybrid Circuit Training'],['09:45','Slow Strength']],
-        4:[['08:15','Slow Strength'],['09:45','Cardio Conditioning']],
-        5:[['08:15','Abs and Glutes'],['09:45','Hybrid Circuit Training']],
-        6:[['08:15','Slow Strength · Upper Body'],['09:45','Cardio Conditioning']]
+        1:[['08:15','Cardio Conditioning'],['09:45','Hybrid Circuit Training'],['11:00','Slow Strength · Lower Body']],
+        2:[['08:15','Tempo Sculpt'],['09:45','Cardio Conditioning'],['11:00','Stretch and Recovery']],
+        3:[['08:15','Hybrid Circuit Training'],['09:45','Slow Strength'],['11:00','Abs and Glutes']],
+        4:[['08:15','Slow Strength'],['09:45','Cardio Conditioning'],['11:00','Tempo Sculpt']],
+        5:[['08:15','Abs and Glutes'],['09:45','Hybrid Circuit Training'],['11:00','Stretch and Recovery']],
+        6:[['08:15','Slow Strength · Upper Body'],['09:45','Cardio Conditioning'],['11:00','Tempo Sculpt']]
       },
       Studio:{
         1:[['08:45','Vinyasa Flow Yoga'],['09:45','Slow Flow Yoga'],['16:00','Restore and Unwind']],
