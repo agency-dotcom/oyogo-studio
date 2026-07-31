@@ -49,7 +49,7 @@
   .credit b{font-weight:700}
   .credit span{color:rgba(246,244,235,0.82)}
   .scrollcue{font-size:11px;letter-spacing:1.4px;text-transform:uppercase;color:rgba(246,244,235,0.85);white-space:nowrap}
-  @media(max-width:760px){.hero-head{bottom:88px}.hero h1{font-size:38px;letter-spacing:-0.6px}.credit span{display:none}.scrollcue{display:none}}
+  @media(max-width:760px){.hero-head{bottom:88px}.hero h1{font-size:38px;letter-spacing:-0.6px}.credit b,.credit .sep{display:none}.scrollcue{display:none}}
 
   /* Marquee */
   .marquee{overflow:hidden;white-space:nowrap;border-bottom:1px solid var(--line);padding:20px 0}
