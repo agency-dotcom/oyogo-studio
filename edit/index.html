@@ -3,141 +3,108 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>The Oyogo Edit — the wellness hotels and residences worth knowing</title>
-<meta name="description" content="The Oyogo Edit — the wellness hotels and residences worth knowing about. One property, one thesis, every Sunday. Free, from Oyogo — the leading voice in wellbeing tourism." />
+<title>The Oyogo Edit – Oyogo</title>
+<meta name="description" content="The Oyogo Edit – the wellness hotels and residences worth knowing about. One property, one thesis, every Sunday. Free, from Oyogo – the leading voice in wellbeing tourism." />
 <link rel="canonical" href="https://oyogostudio.com/edit/" />
 <meta name="robots" content="index,follow" />
-<meta property="og:title" content="The Oyogo Edit" />
-<meta property="og:description" content="The wellness hotels and residences worth knowing about. One property, one thesis, every Sunday." />
+<meta property="og:title" content="The Oyogo Edit – Oyogo" />
+<meta property="og:description" content="The wellness hotels and residences worth knowing about. One property, one thesis, every Sunday. Free." />
 <meta property="og:type" content="website" />
+<meta property="og:site_name" content="Oyogo" />
 <meta property="og:url" content="https://oyogostudio.com/edit/" />
-<meta property="og:image" content="https://oyogostudio.com/pg18.jpg" />
+<meta property="og:image" content="https://oyogostudio.com/hero.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="The Oyogo Edit – Oyogo" />
+<meta name="twitter:description" content="The wellness hotels and residences worth knowing about. One property, one thesis, every Sunday. Free." />
+<meta name="twitter:image" content="https://oyogostudio.com/hero.jpg" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Oyogo","alternateName":"Oyogo Studio","description":"Wellbeing travel consultancy and media – strategy, concept and content for the world's most inspiring wellness destinations.","url":"https://oyogostudio.com/","logo":"https://oyogostudio.com/logo.png","email":"studio@oyogo.co.uk","sameAs":["https://www.instagram.com/oyogo.london","https://www.linkedin.com/company/oyogo-wellbeing"]}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/oyogo.css?v=38" />
 <style>
-  :root{
-    --bg:#f7f4ed; --ink:#14181C; --muted:rgba(20,24,28,.56); --line:rgba(20,24,28,.14);
-    --yellow:#FAF5B2; --olive:#5c6b4f;
-    --serif:'Playfair Display','Times New Roman',Times,serif;
-    --sans:Helvetica,Arial,sans-serif;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:var(--sans);color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
-  .wrap{min-height:100vh;min-height:100svh;display:flex;flex-direction:column}
-
-  /* ── site header (ink-on-cream variant, fixed) ── */
-  header{position:fixed;top:0;left:0;right:0;z-index:30;background:rgba(247,244,237,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-  .navwrap{max-width:1200px;margin:0 auto;padding:20px clamp(22px,4vw,44px);display:flex;align-items:center;justify-content:space-between}
-  .logo-img{height:22px;width:auto;display:block;transform:translateY(2px);filter:brightness(0)}
-  .nav-right{display:flex;align-items:center;gap:24px}
-  .nav-links{display:flex;align-items:center;gap:26px}
-  .nav-links a{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(20,24,28,.82);text-decoration:none;transition:color .2s}
-  .nav-links a:hover,.nav-links a.cur{color:var(--ink)}
-  .hicons{display:flex;align-items:center;gap:16px}
-  .hicons a{color:var(--ink);display:flex;transition:opacity .2s}
-  .hicons a:hover{opacity:.6}
-  .nav-toggle{display:none;background:none;border:none;cursor:pointer;color:var(--ink);flex-direction:column;justify-content:center;gap:5px;width:34px;height:34px;padding:0}
-  .nav-toggle span{display:block;height:2px;width:22px;background:currentColor;margin:0 auto;transition:transform .25s,opacity .2s}
-  header.menu-open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-  header.menu-open .nav-toggle span:nth-child(2){opacity:0}
-  header.menu-open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-  @media(max-width:900px){
-    .nav-toggle{display:flex}
-    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:flex-start;gap:20px;background:var(--bg);padding:24px clamp(22px,4vw,44px) 30px;border-bottom:1px solid var(--line);box-shadow:0 18px 40px rgba(20,24,28,.08)}
-    header.menu-open .nav-links{display:flex}
-    .nav-links a{font-size:14px;letter-spacing:1px}
-  }
-
-  /* ── main ── */
-  main{flex:1;display:flex;align-items:center;justify-content:center;padding:112px 22px 72px}
-  .inner{width:100%;max-width:620px;text-align:center}
-  .eyebrow{font-size:11.5px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--olive);margin-bottom:20px}
-  h1{font-family:var(--serif);font-weight:400;font-size:clamp(34px,6vw,58px);line-height:1.05;letter-spacing:-.6px}
-  .hl{background:linear-gradient(transparent 60%,var(--yellow) 60%);padding:0 .05em}
-  .promise{font-size:clamp(16px,1.9vw,19px);line-height:1.55;color:var(--muted);margin:22px auto 0;max-width:38ch}
-
-  .points{list-style:none;margin:34px auto 0;max-width:440px;text-align:left}
-  .points li{display:flex;gap:13px;align-items:flex-start;padding:15px 2px;border-top:1px solid var(--line);font-size:15px;line-height:1.5}
-  .points li:last-child{border-bottom:1px solid var(--line)}
-  .points .dot{flex:0 0 auto;width:7px;height:7px;border-radius:50%;background:var(--olive);margin-top:7px}
-  .points b{font-weight:700}
-
-  form{display:flex;gap:10px;margin:34px auto 0;max-width:460px}
-  input[type=email]{flex:1;min-width:0;font-family:var(--sans);font-size:15px;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:10px;padding:15px 16px;outline:none}
-  input[type=email]::placeholder{color:rgba(20,24,28,.4)}
-  input[type=email]:focus{border-color:var(--ink)}
-  button{font-family:var(--sans);font-size:15px;font-weight:600;letter-spacing:.2px;color:var(--bg);background:var(--ink);border:0;border-radius:10px;padding:15px 26px;cursor:pointer;white-space:nowrap;transition:opacity .15s}
-  button:hover{opacity:.86}
-
-  .fine{font-size:13px;color:var(--muted);margin-top:18px;line-height:1.5}
-  .alt{margin-top:8px;font-size:13px}
-  .alt a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
-
-  @media(max-width:520px){
-    main{padding:96px 20px 56px}
-    form{flex-direction:column}
-    .points{margin-top:28px}
-  }
+  .subform{display:flex;gap:10px;margin-top:28px;max-width:460px}
+  .subform input{flex:1;min-width:0;font-family:var(--sans);font-size:15px;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:10px;padding:15px 16px;outline:none}
+  .subform input::placeholder{color:rgba(20,24,28,.4)}
+  .subform input:focus{border-color:var(--ink)}
+  .subform button{font-family:var(--sans);font-size:15px;font-weight:600;letter-spacing:.2px;color:var(--cream);background:var(--ink);border:0;border-radius:10px;padding:15px 26px;cursor:pointer;white-space:nowrap;transition:opacity .15s}
+  .subform button:hover{opacity:.86}
+  .subnote{font-size:13px;color:var(--muted);margin-top:16px;line-height:1.5}
+  .subnote a{color:var(--ink);text-underline-offset:3px}
+  @media(max-width:520px){.subform{flex-direction:column}}
 </style>
 </head>
-<body>
-  <div class="wrap">
-    <header id="site">
-      <div class="navwrap">
-        <a class="brand" href="/" aria-label="Oyogo home"><img class="logo-img" src="/logo.png" alt="Oyogo" /></a>
-        <div class="nav-right">
-          <nav class="nav-links">
-            <a href="/services.html">Services</a>
-            <a href="/residencies.html">Residencies</a>
-            <a href="/partners.html">Global partners</a>
-            <a href="/edit/" class="cur">The Oyogo Edit</a>
-            <a href="/#contact">Contact</a>
-          </nav>
-          <div class="hicons">
-            <a href="mailto:studio@oyogo.co.uk" aria-label="Email">
-              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
-            </a>
-            <a href="https://instagram.com/oyogo.london" target="_blank" rel="noopener" aria-label="Instagram">
-              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-            </a>
-          </div>
-          <button class="nav-toggle" type="button" aria-label="Menu"><span></span><span></span><span></span></button>
-        </div>
+<body class="np">
+
+<header id="site">
+  <div class="wrap nav">
+    <div class="brand">
+      <a href="/index.html"><img class="logo-img" src="/logo.png" alt="Oyogo" /></a>
+    </div>
+    <div class="nav-right">
+      <nav class="nav-links">
+        <a href="/services.html">Services</a>
+        <a href="/residencies.html">Residencies</a>
+        <a href="/partners.html">Global partners</a>
+          <a href="/edit/">The Oyogo Edit</a>
+        <a href="/index.html#contact">Contact</a>
+      </nav>
+      <div class="hicons">
+        <a href="mailto:studio@oyogo.co.uk" aria-label="Email">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
+        </a>
+        <a href="https://instagram.com/oyogo.london" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
       </div>
-    </header>
+      <button class="nav-toggle" type="button" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
 
-    <main>
-      <div class="inner">
-        <div class="eyebrow">The Oyogo Edit</div>
-        <h1>The wellness hotels and residences <span class="hl">worth knowing about</span>.</h1>
-        <p class="promise">One property. One thesis. Every Sunday. Free, from the leading voice in wellbeing tourism.</p>
+<main>
+  <section class="blk" id="edit-intro">
+    <div class="wrap">
+      <div class="label">The Oyogo Edit</div>
+      <h1 class="about-h" style="margin-top:16px;max-width:940px">The wellness hotels and residences worth knowing about.</h1>
+      <p class="sec-lede" style="margin-top:16px;max-width:680px">One property. One thesis. Every Sunday. A free letter from Oyogo – the leading voice in wellbeing tourism – on the hotels and residences worth knowing, before everyone else does.</p>
+      <form class="subform" action="https://theoyogoedit.substack.com/subscribe" method="get">
+        <input type="email" name="email" placeholder="your@email.com" autocomplete="email" required aria-label="Email address" />
+        <button type="submit">Subscribe free</button>
+      </form>
+      <p class="subnote">No spam – unsubscribe anytime. Or <a href="https://theoyogoedit.substack.com/subscribe" target="_blank" rel="noopener">subscribe on Substack →</a></p>
+    </div>
+  </section>
 
-        <ul class="points">
-          <li><span class="dot"></span><span><b>One property, taken apart</b> — the wellness thesis, the numbers, the honest verdict.</span></li>
-          <li><span class="dot"></span><span><b>Hotels and residences worth knowing</b>, before everyone else does.</span></li>
-          <li><span class="dot"></span><span><b>Every Sunday. Free.</b> A two-minute read from a global community that lives wellness.</span></li>
-        </ul>
-
-        <form action="https://theoyogoedit.substack.com/subscribe" method="get">
-          <input type="email" name="email" placeholder="your@email.com" autocomplete="email" required aria-label="Email address" />
-          <button type="submit">Subscribe</button>
-        </form>
-
-        <p class="fine">No spam — unsubscribe anytime.</p>
-        <p class="alt"><a href="https://theoyogoedit.substack.com/subscribe" target="_blank" rel="noopener">Or subscribe on Substack &rarr;</a></p>
-      </div>
-    </main>
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span class="tk"><b>Every Sunday</b></span><span class="tk-sep">·</span><span class="tk">One property, taken apart</span><span class="tk-sep">·</span><span class="tk"><b>Free</b> to read</span><span class="tk-sep">·</span><span class="tk">The wellness thesis, the numbers, the honest verdict</span><span class="tk-sep">·</span><span class="tk">Hotels · Residences · Retreats · Spas</span><span class="tk-sep">·</span><span class="tk">From the leading voice in wellbeing tourism</span><span class="tk-sep">·</span><span class="tk">@oyogo.london</span><span class="tk-sep">·</span><span class="tk"><b>Every Sunday</b></span><span class="tk-sep">·</span><span class="tk">One property, taken apart</span><span class="tk-sep">·</span><span class="tk"><b>Free</b> to read</span><span class="tk-sep">·</span><span class="tk">The wellness thesis, the numbers, the honest verdict</span><span class="tk-sep">·</span><span class="tk">Hotels · Residences · Retreats · Spas</span><span class="tk-sep">·</span><span class="tk">From the leading voice in wellbeing tourism</span><span class="tk-sep">·</span><span class="tk">@oyogo.london</span><span class="tk-sep">·</span>
+    </div>
   </div>
 
-  <script>
-    (function(){
-      var h=document.getElementById('site'),t=h.querySelector('.nav-toggle');
-      if(!t) return;
-      t.addEventListener('click',function(){h.classList.toggle('menu-open');});
-      h.querySelectorAll('.nav-links a').forEach(function(a){a.addEventListener('click',function(){h.classList.remove('menu-open');});});
-    })();
-  </script>
+  <section class="blk" id="edit-what">
+    <div class="wrap">
+      <div class="label">In every edition</div>
+      <div class="rgrid" style="margin-top:20px">
+        <div class="rcol"><div class="rname serif">The property</div><div class="rloc">One hotel or residence, taken apart – the wellness thesis, the numbers, the honest verdict.</div></div>
+        <div class="rcol"><div class="rname serif">The shortlist</div><div class="rloc">The hotels and residences worth knowing, before everyone else does.</div></div>
+        <div class="rcol"><div class="rname serif">The cadence</div><div class="rloc">Every Sunday. Free. A two-minute read from a global community that lives wellness.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ybanner">
+    <div class="wrap">
+      <div class="ybanner-in">
+        <h2 class="serif">The Oyogo Edit lives on Substack – free every Sunday, and open to read in full anytime.</h2>
+        <a class="ybanner-cta" href="https://theoyogoedit.substack.com" target="_blank" rel="noopener">Read on Substack →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="/app.js?v=38" defer></script>
 </body>
 </html>
