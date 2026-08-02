@@ -17,42 +17,85 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{--ink:#20201E;--gold:#cdb100;--serif:'Playfair Display',Georgia,serif;--sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif}
+  :root{
+    --bg:#f7f4ed; --ink:#14181C; --muted:rgba(20,24,28,.56); --line:rgba(20,24,28,.14);
+    --yellow:#FAF5B2; --olive:#5c6b4f;
+    --serif:'Playfair Display','Times New Roman',Times,serif;
+    --sans:Helvetica,Arial,sans-serif;
+  }
   *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:var(--sans);color:#fff;background:var(--ink)}
-  .wrap{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:56px 22px;text-align:center;overflow:hidden}
-  .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
-  .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,15,13,.58),rgba(14,15,13,.34) 42%,rgba(14,15,13,.78))}
-  .back{position:absolute;top:22px;left:24px;z-index:3;color:rgba(255,255,255,.85);text-decoration:none;font-size:13px;letter-spacing:.4px}
-  .back:hover{color:#fff}
-  .inner{position:relative;z-index:2;max-width:660px}
-  .brand{font-family:var(--serif);font-size:19px;letter-spacing:.5px;margin-bottom:38px}
-  .eyebrow{font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
-  h1{font-family:var(--serif);font-weight:400;font-size:clamp(32px,5.6vw,56px);line-height:1.06;letter-spacing:-.5px}
-  .promise{font-size:clamp(16px,1.9vw,19px);line-height:1.55;color:rgba(255,255,255,.9);margin:20px auto 0;max-width:34ch}
-  .card{background:#fff;border-radius:14px;padding:8px;margin:32px auto 0;max-width:480px;box-shadow:0 22px 60px rgba(0,0,0,.32)}
-  .card iframe{width:100%;border:0;display:block;border-radius:9px}
-  .fine{font-size:13px;color:rgba(255,255,255,.72);margin-top:20px;line-height:1.5}
-  .alt{margin-top:14px;font-size:13px}
-  .alt a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+  body{font-family:var(--sans);color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+  .wrap{min-height:100vh;min-height:100svh;display:flex;flex-direction:column}
+
+  /* top bar */
+  .bar{display:flex;align-items:center;justify-content:space-between;padding:22px 26px}
+  .mark{font-family:var(--serif);font-size:20px;letter-spacing:.5px;color:var(--ink);text-decoration:none}
+  .back{font-size:13px;letter-spacing:.3px;color:var(--muted);text-decoration:none}
+  .back:hover{color:var(--ink)}
+
+  /* main */
+  main{flex:1;display:flex;align-items:center;justify-content:center;padding:24px 22px 64px}
+  .inner{width:100%;max-width:620px;text-align:center}
+  .eyebrow{font-size:11.5px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--olive);margin-bottom:20px}
+  h1{font-family:var(--serif);font-weight:400;font-size:clamp(34px,6vw,58px);line-height:1.05;letter-spacing:-.6px}
+  .hl{background:linear-gradient(transparent 60%,var(--yellow) 60%);padding:0 .05em}
+  .promise{font-size:clamp(16px,1.9vw,19px);line-height:1.55;color:var(--muted);margin:22px auto 0;max-width:38ch}
+
+  /* value list */
+  .points{list-style:none;margin:34px auto 0;max-width:440px;text-align:left}
+  .points li{display:flex;gap:13px;align-items:flex-start;padding:15px 2px;border-top:1px solid var(--line);font-size:15px;line-height:1.5}
+  .points li:last-child{border-bottom:1px solid var(--line)}
+  .points .dot{flex:0 0 auto;width:7px;height:7px;border-radius:50%;background:var(--olive);margin-top:7px}
+  .points b{font-weight:700}
+
+  /* subscribe form */
+  form{display:flex;gap:10px;margin:34px auto 0;max-width:460px}
+  input[type=email]{flex:1;min-width:0;font-family:var(--sans);font-size:15px;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:10px;padding:15px 16px;outline:none}
+  input[type=email]::placeholder{color:rgba(20,24,28,.4)}
+  input[type=email]:focus{border-color:var(--ink)}
+  button{font-family:var(--sans);font-size:15px;font-weight:600;letter-spacing:.2px;color:var(--bg);background:var(--ink);border:0;border-radius:10px;padding:15px 26px;cursor:pointer;white-space:nowrap;transition:opacity .15s}
+  button:hover{opacity:.86}
+
+  .fine{font-size:13px;color:var(--muted);margin-top:18px;line-height:1.5}
+  .alt{margin-top:8px;font-size:13px}
+  .alt a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+
+  @media(max-width:520px){
+    .bar{padding:18px 20px}
+    form{flex-direction:column}
+    button{padding:15px 26px}
+    .points{margin-top:28px}
+  }
 </style>
 </head>
 <body>
   <div class="wrap">
-    <img class="bg" src="/pg18.jpg" alt="" />
-    <div class="scrim"></div>
-    <a class="back" href="/">&larr; oyogostudio.com</a>
-    <div class="inner">
-      <div class="brand">oyogo</div>
-      <div class="eyebrow">The Oyogo Edit</div>
-      <h1>The wellness hotels and residences worth knowing about.</h1>
-      <p class="promise">One property. One thesis. Every Sunday. Free, from the leading voice in wellbeing tourism.</p>
-      <div class="card">
-        <iframe src="https://theoyogoedit.substack.com/embed" height="320" scrolling="no" title="Subscribe to The Oyogo Edit"></iframe>
-      </div>
-      <p class="fine">Join a global community that lives wellness. No spam — unsubscribe anytime.</p>
-      <p class="alt"><a href="https://theoyogoedit.substack.com/subscribe" target="_blank" rel="noopener">Or subscribe on Substack &rarr;</a></p>
+    <div class="bar">
+      <a class="mark" href="/">oyogo</a>
+      <a class="back" href="/">&larr; oyogostudio.com</a>
     </div>
+
+    <main>
+      <div class="inner">
+        <div class="eyebrow">The Oyogo Edit</div>
+        <h1>The wellness hotels and residences <span class="hl">worth knowing about</span>.</h1>
+        <p class="promise">One property. One thesis. Every Sunday. Free, from the leading voice in wellbeing tourism.</p>
+
+        <ul class="points">
+          <li><span class="dot"></span><span><b>One property, taken apart</b> — the wellness thesis, the numbers, the honest verdict.</span></li>
+          <li><span class="dot"></span><span><b>Hotels and residences worth knowing</b>, before everyone else does.</span></li>
+          <li><span class="dot"></span><span><b>Every Sunday. Free.</b> A two-minute read from a global community that lives wellness.</span></li>
+        </ul>
+
+        <form action="https://theoyogoedit.substack.com/subscribe" method="get">
+          <input type="email" name="email" placeholder="your@email.com" autocomplete="email" required aria-label="Email address" />
+          <button type="submit">Subscribe</button>
+        </form>
+
+        <p class="fine">No spam — unsubscribe anytime.</p>
+        <p class="alt"><a href="https://theoyogoedit.substack.com/subscribe" target="_blank" rel="noopener">Or subscribe on Substack &rarr;</a></p>
+      </div>
+    </main>
   </div>
 </body>
 </html>
