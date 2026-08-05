@@ -132,3 +132,31 @@
 .subblock p{color:var(--muted);font-size:15px;margin:14px 0 0}
 .subblock .subform{margin:22px auto 0}
 .subblock .subnote{max-width:520px;margin-left:auto;margin-right:auto}
+
+/* ---------- location edit ---------- */
+.loc-intro{font-family:var(--serif);font-size:clamp(19px,2vw,23px);line-height:1.45;
+  color:var(--ink);opacity:.82;margin:0 0 8px}
+
+.locsec{margin:52px 0 0;padding-top:28px;border-top:1px solid var(--line)}
+.locsec > .label{color:var(--muted)}
+.locsec h2{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3vw,38px);
+  line-height:1.12;letter-spacing:-0.9px;margin:12px 0 0;max-width:none}
+.locsec .intro{color:var(--muted);font-size:16.5px;line-height:1.62;margin:14px 0 0;max-width:60ch}
+
+.entries{margin:26px 0 0}
+.entry{padding:22px 0;border-top:1px solid var(--line)}
+.entry:first-child{border-top:0;padding-top:6px}
+.entry h3{font-family:var(--serif);font-weight:400;font-size:clamp(23px,2.4vw,30px);
+  line-height:1.1;letter-spacing:-0.6px;margin:0}
+.entry p{font-size:16.5px;line-height:1.62;color:var(--ink);opacity:.86;margin:10px 0 0;max-width:62ch}
+.entry .meta{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:1.3px;
+  text-transform:uppercase;color:var(--muted);margin-top:10px}
+
+.locfig{margin:26px 0 0}
+.locfig img{width:100%;height:auto;display:block}
+.locfig figcaption{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:1.2px;
+  text-transform:uppercase;color:var(--muted);padding-top:10px}
+
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:26px 0 0}
+.duo img{width:100%;height:100%;aspect-ratio:3/4;object-fit:cover;display:block}
+@media(max-width:600px){.duo{grid-template-columns:1fr}}
