@@ -160,3 +160,37 @@
 .duo{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:26px 0 0}
 .duo img{width:100%;height:100%;aspect-ratio:3/4;object-fit:cover;display:block}
 @media(max-width:600px){.duo{grid-template-columns:1fr}}
+
+/* ---------- property edit ---------- */
+.facts{display:grid;grid-template-columns:repeat(4,1fr);border-top:3px solid var(--olive);
+  background:#fff;margin:32px 0}
+.facts .f{padding:18px 16px 20px;border-right:1px solid var(--line)}
+.facts .f:last-child{border-right:0}
+.facts .f .k{font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:1.3px;
+  text-transform:uppercase;color:var(--muted);display:block}
+.facts .f .v{font-family:var(--serif);font-size:19px;letter-spacing:-0.4px;display:block;
+  margin-top:8px;line-height:1.25}
+@media(max-width:700px){
+  .facts{grid-template-columns:repeat(2,1fr)}
+  .facts .f{border-bottom:1px solid var(--line)}
+  .facts .f:nth-child(2n){border-right:0}
+}
+
+.tier{background:#fff;border:1px solid var(--line);padding:24px 26px 26px;margin:36px 0}
+.tier .lbl{font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:1.6px;
+  text-transform:uppercase;color:var(--muted);display:block;margin-bottom:12px}
+.tier .badge{display:inline-block;background:var(--olive);color:#fff;font-family:var(--sans);
+  font-size:11px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;
+  padding:7px 12px 6px;border-radius:3px}
+.tier p{font-size:15.5px;line-height:1.6;color:var(--muted);margin:14px 0 0}
+.tier .steps{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:1.2px;
+  text-transform:uppercase;color:var(--muted);margin-top:14px}
+.tier .steps b{color:var(--ink)}
+
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);margin:26px 0 0}
+.pillar{background:#fff;padding:18px 16px 20px}
+.pillar .n{font-family:var(--serif);font-size:18px;letter-spacing:-0.3px;display:block}
+.pillar .s{font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:1.2px;
+  text-transform:uppercase;color:var(--muted);display:block;margin-top:8px}
+@media(max-width:640px){.pillars{grid-template-columns:repeat(2,1fr)}}
