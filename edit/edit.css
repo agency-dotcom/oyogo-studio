@@ -1,0 +1,134 @@
+/* The Oyogo Edit — article + archive styles.
+   Layers on top of oyogo.css; uses its variables so the Edit always
+   matches the rest of the site. */
+
+/* ---------- shared: category tag ---------- */
+.etag{display:inline-block;font-family:var(--sans);font-size:10px;font-weight:700;
+  letter-spacing:1.6px;text-transform:uppercase;padding:6px 10px 5px;line-height:1;
+  background:var(--yellow);color:var(--ink);border-radius:3px}
+.etag.loc{background:var(--sage);color:#fff}
+.etag.prop{background:var(--olive);color:#fff}
+
+/* ---------- archive index ---------- */
+.feature{display:grid;grid-template-columns:1.05fr .95fr;gap:0;border:1px solid var(--line);
+  background:#fff;margin-top:28px;overflow:hidden}
+.feature-img{position:relative;min-height:340px;background:#e9e4d8}
+.feature-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.feature-body{padding:38px 38px 40px;display:flex;flex-direction:column;justify-content:center}
+.feature-body h2{font-family:var(--serif);font-weight:400;font-size:clamp(26px,2.6vw,38px);
+  line-height:1.1;letter-spacing:-0.8px;margin:16px 0 0;max-width:none}
+.feature-body .dek{color:var(--muted);font-size:16px;line-height:1.6;margin:16px 0 0;max-width:46ch}
+.feature-body .more{font-family:var(--sans);font-size:14px;font-weight:700;letter-spacing:.3px;
+  margin-top:24px;color:var(--ink);text-decoration:none;border-bottom:2px solid var(--yellow);
+  padding-bottom:2px;align-self:flex-start}
+.feature-body .more:hover{border-bottom-color:var(--ink)}
+@media(max-width:820px){
+  .feature{grid-template-columns:1fr}
+  .feature-img{min-height:220px}
+  .feature-body{padding:28px 24px 30px}
+}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:26px}
+.card{border:1px solid var(--line);background:#fff;display:flex;flex-direction:column;
+  text-decoration:none;color:var(--ink);transition:transform .16s ease, box-shadow .16s ease}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(20,24,28,.08)}
+.card-img{aspect-ratio:3/2;background:#e9e4d8;overflow:hidden}
+.card-img img{width:100%;height:100%;object-fit:cover;display:block}
+.card-body{padding:20px 20px 24px}
+.card-body h3{font-family:var(--serif);font-weight:400;font-size:21px;line-height:1.18;
+  letter-spacing:-0.4px;margin:14px 0 0}
+.card-body .dek{color:var(--muted);font-size:14px;line-height:1.55;margin:10px 0 0}
+.card-date{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:1.4px;
+  text-transform:uppercase;color:var(--muted);margin-top:14px}
+@media(max-width:900px){.cards{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.cards{grid-template-columns:1fr}}
+
+.soon{border:1px dashed var(--line);background:transparent;padding:34px 24px;text-align:center;
+  color:var(--muted);font-size:14px;line-height:1.6;display:flex;align-items:center;
+  justify-content:center;min-height:180px}
+
+/* ---------- article ---------- */
+.art{max-width:720px;margin:0 auto;padding:0 22px}
+.art-head{padding-top:52px}
+.art h1{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4.6vw,58px);line-height:1.05;
+  letter-spacing:-1.4px;margin:18px 0 0;color:var(--ink)}
+.art h1 .hl{background:var(--yellow);padding:0 .08em}
+.art-meta{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:1.6px;
+  text-transform:uppercase;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:22px}
+.art-rule{border-top:2px solid var(--ink);margin:16px 0 26px}
+.standfirst{font-family:var(--serif);font-size:clamp(19px,2vw,23px);line-height:1.45;
+  color:var(--ink);opacity:.82;margin:0 0 20px}
+
+.art p{font-size:17.5px;line-height:1.68;margin:0 0 20px;color:var(--ink)}
+.art p.lead::first-letter{float:left;font-family:var(--serif);font-size:62px;line-height:.82;
+  padding:.09em .14em .05em;margin:.05em 10px 0 0;background:var(--yellow);color:var(--ink)}
+.art h2.sub{font-family:var(--serif);font-weight:400;font-size:clamp(25px,2.8vw,34px);line-height:1.15;
+  letter-spacing:-0.7px;margin:44px 0 16px;padding-top:24px;border-top:1px solid var(--line);max-width:none}
+.art strong{font-weight:700}
+.art em{font-style:italic}
+.art a{color:var(--ink);text-decoration:none;box-shadow:inset 0 -.38em 0 var(--yellow)}
+.art a:hover{box-shadow:inset 0 -1em 0 var(--yellow)}
+
+.art figure{margin:32px 0}
+.art figure img{width:100%;height:auto;display:block}
+.art figcaption{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:1.2px;
+  text-transform:uppercase;color:var(--muted);line-height:1.5;padding-top:10px}
+
+.note{background:#fff;border-top:3px solid var(--olive);padding:26px 26px 28px;margin:32px 0}
+.note .lbl{font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:1.6px;
+  text-transform:uppercase;color:var(--muted);display:block;margin-bottom:14px}
+.note p{font-size:16px;line-height:1.6;margin:0 0 14px}
+.note p:last-child{margin-bottom:0}
+.note .sign{font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:.4px}
+
+.figures{display:grid;grid-template-columns:repeat(5,1fr);border-top:3px solid var(--olive);
+  background:#fff;margin:36px 0}
+.fig{padding:20px 16px 22px;border-right:1px solid var(--line)}
+.fig:last-child{border-right:0}
+.fig .n{font-family:var(--serif);font-size:26px;letter-spacing:-0.8px;display:block;line-height:1.1}
+.fig .l{font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:1.1px;
+  text-transform:uppercase;color:var(--muted);display:block;margin-top:9px;line-height:1.4}
+@media(max-width:760px){
+  .figures{grid-template-columns:repeat(2,1fr)}
+  .fig{border-bottom:1px solid var(--line)}
+  .fig:nth-child(2n){border-right:0}
+  .fig:last-child{grid-column:1/-1;border-bottom:0}
+}
+
+.pull{font-family:var(--serif);font-size:clamp(23px,2.6vw,31px);line-height:1.26;letter-spacing:-0.7px;
+  border-left:3px solid var(--olive);padding:4px 0 4px 22px;margin:36px 0}
+
+.fitbox{background:#fff;border-top:3px solid var(--olive);padding:24px 26px 26px;margin:34px 0}
+.fitbox p{font-size:16px;margin:0 0 10px}
+.fitbox p:last-child{margin-bottom:0}
+
+.verdict{background:var(--ink);color:var(--bg);padding:32px 30px 34px;margin:44px 0 0}
+.verdict .lbl{font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:1.6px;
+  text-transform:uppercase;color:var(--yellow);display:block;margin-bottom:14px}
+.verdict h2{font-family:var(--serif);font-weight:400;font-size:clamp(24px,2.8vw,33px);line-height:1.15;
+  letter-spacing:-0.7px;margin:0 0 16px;color:var(--bg);max-width:none}
+.verdict p{color:rgba(247,244,237,.88);font-size:16.5px;line-height:1.62;margin:0 0 14px}
+.verdict p:last-child{margin-bottom:0}
+
+.sources{margin:44px 0 0;padding-top:20px;border-top:1px solid var(--line)}
+.sources h3{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:1.6px;
+  text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+.sources ol{margin:0;padding-left:18px}
+.sources li{font-family:var(--sans);font-size:13px;line-height:1.6;color:var(--muted);margin-bottom:8px}
+.sources a{color:var(--ink);box-shadow:none;text-decoration:underline;text-underline-offset:2px}
+.method{font-family:var(--sans);font-size:12.5px;line-height:1.6;color:var(--muted);margin:16px 0 0}
+
+.art-foot{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:1.4px;
+  text-transform:uppercase;color:var(--muted);border-top:1px solid var(--line);
+  margin:36px 0 0;padding:18px 0 0;line-height:1.9}
+.backlink{font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:.4px;
+  color:var(--muted);text-decoration:none;display:inline-block;margin-top:34px}
+.backlink:hover{color:var(--ink)}
+
+/* inline subscribe block, reused on articles */
+.subblock{background:#fff;border:1px solid var(--line);padding:32px 30px 34px;margin:44px 0 0;text-align:center}
+.subblock h2{font-family:var(--serif);font-weight:400;font-size:clamp(23px,2.6vw,31px);
+  line-height:1.15;letter-spacing:-0.7px;margin:0 auto;max-width:20ch}
+.subblock p{color:var(--muted);font-size:15px;margin:14px 0 0}
+.subblock .subform{margin:22px auto 0}
+.subblock .subnote{max-width:520px;margin-left:auto;margin-right:auto}
