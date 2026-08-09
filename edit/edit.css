@@ -113,8 +113,10 @@
 .sources{margin:44px 0 0;padding-top:20px;border-top:1px solid var(--line)}
 .sources h3{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:1.6px;
   text-transform:uppercase;color:var(--muted);margin:0 0 14px}
-.sources ol{margin:0;padding-left:18px}
+.sources ol,.sources ul{margin:0;padding-left:18px}
 .sources li{font-family:var(--sans);font-size:13px;line-height:1.6;color:var(--muted);margin-bottom:8px}
+.art ul,.art ol{margin:0 0 20px;padding-left:22px}
+.art li{font-size:17px;line-height:1.6;margin:0 0 8px}
 .sources a{color:var(--ink);box-shadow:none;text-decoration:underline;text-underline-offset:2px}
 .method{font-family:var(--sans);font-size:12.5px;line-height:1.6;color:var(--muted);margin:16px 0 0}
 
