@@ -63,6 +63,23 @@ window.oyogoTrack=function(name,params){
       window.oyogoTrack('outbound_click',{destination:u.hostname,page_path:location.pathname});
     }
   },true);
+
+  /* The conversion. Listens on the subscribe form rather than living inside
+     the capture logic, so the two stay independent: the capture script owns
+     what gets written to the database, this owns what gets measured. Both
+     handlers receive the same submit event.
+
+     Invalid addresses never reach here — `required` + type="email" mean the
+     browser blocks submit before any handler runs. So this counts genuine
+     attempts, not typos. */
+  document.addEventListener('submit',function(e){
+    var f=e.target;
+    if(!f||!f.classList||!f.classList.contains('subform'))return;
+    window.oyogoTrack('lead_submit',{
+      source:f.getAttribute('data-source')||location.pathname,
+      page_path:location.pathname
+    });
+  },true);
 })();
 
 (function(){
