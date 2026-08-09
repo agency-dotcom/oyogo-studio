@@ -127,6 +127,18 @@
   color:var(--muted);text-decoration:none;display:inline-block;margin-top:34px}
 .backlink:hover{color:var(--ink)}
 
+/* dark panel — verdict treatment without the label */
+.panel{background:var(--ink);color:var(--bg);padding:30px 30px 32px;margin:30px 0}
+.panel p{color:rgba(247,244,237,.9);font-size:16.5px;line-height:1.62;margin:0 0 16px}
+.panel p:last-child{margin-bottom:0}
+.panel p.lead::first-letter{background:var(--yellow);color:var(--ink)}
+.panel strong{color:var(--bg)}
+.panel em{color:rgba(247,244,237,.75)}
+.panel .pull{border-left-color:var(--yellow);color:var(--bg);margin:24px 0}
+.panel blockquote{margin:0 0 16px}
+.panel a{color:var(--bg);box-shadow:inset 0 -.35em 0 rgba(250,245,178,.35)}
+@media(max-width:600px){.panel{padding:24px 20px 26px}}
+
 /* inline subscribe block, reused on articles */
 .subblock{background:#fff;border:1px solid var(--line);padding:32px 30px 34px;margin:44px 0 0;text-align:center}
 .subblock h2{font-family:var(--serif);font-weight:400;font-size:clamp(23px,2.6vw,31px);
