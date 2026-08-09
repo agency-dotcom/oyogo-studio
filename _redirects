@@ -1,0 +1,29 @@
+# Netlify redirects — short, UTM-tagged links for off-site placements.
+#
+# Why these exist: every link posted on Instagram currently lands in GA4 as one
+# undifferentiated "ig / social" bucket, so there's no way to tell whether the
+# bio link, a story sticker or a post link is doing the work. These short paths
+# carry the UTM tags for you, so the link you paste stays clean and you can
+# change where any of them points without editing your Instagram bio again.
+#
+# 302 (temporary) is deliberate — it keeps browsers from caching the
+# destination, so re-pointing a link takes effect immediately.
+#
+# NOTE: do not use /ig — there is an ig/ image directory at the repo root.
+
+# --- Instagram -------------------------------------------------------------
+# Bio link. Points at /edit (the capture page), not the homepage: the whole
+# point of the bio link is to convert reach into an email address.
+/bio      /edit/?utm_source=instagram&utm_medium=bio&utm_campaign=profile        302
+/story    /edit/?utm_source=instagram&utm_medium=story&utm_campaign=stories      302
+/post     /edit/?utm_source=instagram&utm_medium=post&utm_campaign=feed          302
+
+# Per-campaign links. Add one per post you want measured separately — the
+# campaign name is what shows up in GA4, so make it readable.
+/re       /edit/wellness-real-estate/?utm_source=instagram&utm_medium=post&utm_campaign=wellness-real-estate  302
+/girona   /edit/off-grid-girona/?utm_source=instagram&utm_medium=post&utm_campaign=off-grid-girona            302
+/lisbon   /edit/lisbon/?utm_source=instagram&utm_medium=post&utm_campaign=lisbon                              302
+
+# --- Other channels --------------------------------------------------------
+/li       /?utm_source=linkedin&utm_medium=social&utm_campaign=company-page      302
+/nl       /edit/?utm_source=substack&utm_medium=newsletter&utm_campaign=edit     302

@@ -163,11 +163,34 @@
 <script>
 /* Subscribe: capture the lead first-party (Supabase), then hand off to Substack.
    Fail-safe by design — if the capture errors or is slow, the visitor still
-   reaches Substack. Never block the signup on our own analytics. */
+   reaches Substack. Never block the signup on our own analytics.
+
+   UTMs are read off the URL and stored with the lead, so our own database can
+   tell bio traffic from story traffic — GA alone can't answer that for a
+   specific subscriber. Stored on first arrival so it survives navigation. */
 (function () {
   var SUPABASE_URL = 'https://wbgcwzesgvdentltnoec.supabase.co';
   var SUPABASE_KEY = 'sb_publishable_q-NawIouOeMJEnYdRobo6w_8fN4VnJm';
   var SUBSTACK = 'https://theoyogoedit.substack.com/subscribe';
+
+  // --- remember where they came from -------------------------------------
+  var UTM_KEY = 'oyogo_utm';
+  function readUtms() {
+    var p = new URLSearchParams(window.location.search);
+    var out = {};
+    ['utm_source', 'utm_medium', 'utm_campaign'].forEach(function (k) {
+      var v = p.get(k);
+      if (v) out[k] = v.slice(0, 60);
+    });
+    return Object.keys(out).length ? out : null;
+  }
+  function storedUtms() {
+    var fresh = readUtms();
+    try {
+      if (fresh) { sessionStorage.setItem(UTM_KEY, JSON.stringify(fresh)); return fresh; }
+      return JSON.parse(sessionStorage.getItem(UTM_KEY) || 'null');
+    } catch (e) { return fresh; }
+  }
 
   var form = document.querySelector('.subform');
   if (!form) return;
@@ -183,6 +206,14 @@
       window.location.href = SUBSTACK + '?email=' + encodeURIComponent(email);
     };
 
+    var u = storedUtms() || {};
+    // source stays readable in the CRM: edit / edit:bio / edit:story
+    var source = 'edit' + (u.utm_medium ? ':' + u.utm_medium : '');
+    var tags = [];
+    if (u.utm_source) tags.push('src:' + u.utm_source);
+    if (u.utm_medium) tags.push('med:' + u.utm_medium);
+    if (u.utm_campaign) tags.push('camp:' + u.utm_campaign);
+
     try {
       fetch(SUPABASE_URL + '/rest/v1/leads', {
         method: 'POST',
@@ -195,7 +226,8 @@
         body: JSON.stringify({
           email: email,
           consent: true,          // wording is stated under the form
-          source: 'edit',         // signed up via oyogostudio.com/edit
+          source: source,         // where on Instagram they came from
+          tags: tags,             // full UTM breakdown, queryable
           kind: 'stay'
         }),
         keepalive: true

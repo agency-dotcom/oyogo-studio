@@ -16,6 +16,55 @@
     if(r)r.addEventListener('click',function(){set('reject');});
   })();
 
+/* ---------------------------------------------------------------------------
+   Custom events.
+
+   GA4 was recording pageviews and nothing else — no key events were configured,
+   so there was no way to see a conversion rate for anything. These are the
+   events worth having; mark `lead_submit` as a Key Event in the GA4 UI
+   (Admin → Events) so it reports as a conversion.
+
+   Every call is guarded on window.gtag, which only exists after the visitor
+   accepts cookies. Events fired before that are dropped rather than queued —
+   holding them for a later Accept would defeat the point of asking.
+--------------------------------------------------------------------------- */
+window.oyogoTrack=function(name,params){
+  try{ if(window.gtag) window.gtag('event',name,params||{}); }catch(e){}
+};
+
+(function(){
+  // Scroll depth. GA4's enhanced measurement only fires at 90%, which almost
+  // nobody reaches on a long article; 50% is the honest "did they read it".
+  var fired=false;
+  function onScroll(){
+    if(fired)return;
+    var h=document.documentElement, max=(h.scrollHeight-h.clientHeight);
+    if(max<400)return;                       // too short for depth to mean anything
+    if((window.scrollY||h.scrollTop)/max<0.5)return;
+    fired=true;
+    window.oyogoTrack('scroll_depth',{percent:50,page_path:location.pathname});
+    window.removeEventListener('scroll',onScroll);
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href]');
+    if(!a)return;
+    var u; try{ u=new URL(a.href,location.href); }catch(err){ return; }
+
+    if(u.hostname===location.hostname){
+      // Journey into the capture funnel — the step that currently loses seven
+      // of every eight visitors.
+      if(u.pathname.indexOf('/edit')===0&&location.pathname.indexOf('/edit')!==0){
+        window.oyogoTrack('nav_to_edit',{from:location.pathname,link_text:(a.textContent||'').trim().slice(0,60)});
+      }
+    }else{
+      // Anything leaving the site: Substack direct, Instagram, partner hotels.
+      window.oyogoTrack('outbound_click',{destination:u.hostname,page_path:location.pathname});
+    }
+  },true);
+})();
+
 (function(){
     var h=document.getElementById('site');
     function onScroll(){h.classList.toggle('scrolled',window.scrollY>80);}
