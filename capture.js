@@ -1,7 +1,10 @@
 /* Oyogo — email capture for The Oyogo Edit.
  *
  * Replaces the four near-identical inline scripts that used to live on the
- * edit pages. Each page just needs <form class="subform" data-source="…">.
+ * edit pages. Each page needs only:
+ *
+ *   <form class="subform" data-source="edit">…</form>
+ *   <script src="/capture.js?v=41" defer></script>
  *
  * The order of operations is the whole design:
  *
@@ -27,14 +30,14 @@
      never cost a capture.
 
      Only the first question is asked today: at ~24 leads, volume is the binding
-     constraint, and every extra question trades conversion for detail you can't
-     yet use. Adding questions two and three later is an edit to this array —
-     the rendering below already walks it. */
+     constraint, and every extra question trades conversion for detail that
+     can't yet be used. Adding questions two and three later is an edit to this
+     array — the rendering below already walks it. */
   var QUESTIONS = [
     {
       id: 'why_here',
       prompt: 'One quick thing — what brings you to Oyogo?',
-      note: 'It shapes what we send you. Skip if you’d rather not.',
+      note: 'It shapes what we send you.',
       options: [
         { v: 'stay',     label: 'Somewhere to stay',      hint: 'Hotels, retreats, residencies' },
         { v: 'live',     label: 'Somewhere to live',      hint: 'Wellness real estate' },
@@ -46,13 +49,39 @@
   var ASK = QUESTIONS.slice(0, 1);
 
   // -------------------------------------------------------------------------
-  // Identity + attribution
+  // Attribution — carried over verbatim from the inline script this replaces.
+  //
+  // Written into `source` ('edit:bio') and `tags` (['src:instagram','med:bio'])
+  // rather than utm_* columns: those columns do not exist on the live `leads`
+  // table, and this shape is already in production. Do not "improve" it into
+  // dedicated columns without a migration first — posting an unknown column
+  // makes PostgREST reject the whole insert, which would silently lose the
+  // email rather than just the attribution.
   // -------------------------------------------------------------------------
+  var UTM_KEY = 'oyogo_utm';
 
-  /* A first-party id for this browser, minted on first visit. It is what lets
-     anonymous browsing be attached to an email address later, and lets the
-     platform seed a profile from the lead at sign-in. Not a tracking cookie:
-     first-party, no third party ever sees it. */
+  function readUtms() {
+    var p = new URLSearchParams(window.location.search);
+    var out = {};
+    ['utm_source', 'utm_medium', 'utm_campaign'].forEach(function (k) {
+      var v = p.get(k);
+      if (v) out[k] = v.slice(0, 60);
+    });
+    return Object.keys(out).length ? out : null;
+  }
+
+  function storedUtms() {
+    var fresh = readUtms();
+    try {
+      if (fresh) { sessionStorage.setItem(UTM_KEY, JSON.stringify(fresh)); return fresh; }
+      return JSON.parse(sessionStorage.getItem(UTM_KEY) || 'null');
+    } catch (e) { return fresh; }
+  }
+
+  /* A stable first-party id for this browser, minted on first visit. It is
+     what lets anonymous browsing be attached to an email address later, and
+     lets the platform seed a profile from the lead at sign-in. Not a tracking
+     cookie: first-party, and no third party ever sees it. */
   function anonId() {
     try {
       var k = 'oyogo-anon', v = localStorage.getItem(k);
@@ -63,44 +92,6 @@
       }
       return v;
     } catch (e) { return null; }   // private browsing / storage blocked
-  }
-
-  /* First-touch attribution. Stored on arrival so a visitor who lands on an
-     article from Instagram, reads, then subscribes three pages later still
-     credits Instagram rather than an internal referral. First touch wins —
-     it does not get overwritten by later visits. */
-  function attribution() {
-    var k = 'oyogo-attr';
-    try {
-      var saved = localStorage.getItem(k);
-      if (saved) return JSON.parse(saved);
-    } catch (e) {}
-
-    var q = {};
-    try {
-      new URLSearchParams(location.search).forEach(function (val, key) { q[key] = val; });
-    } catch (e) {}
-
-    var attr = {
-      utm_source:   q.utm_source   || null,
-      utm_medium:   q.utm_medium   || null,
-      utm_campaign: q.utm_campaign || null
-    };
-
-    /* No UTMs but an off-site referrer — infer what we can, so untagged links
-       are not simply lost. Tagged links are always better; this is a floor. */
-    if (!attr.utm_source && document.referrer) {
-      try {
-        var host = new URL(document.referrer).hostname.replace(/^www\./, '');
-        if (host && host !== location.hostname) {
-          attr.utm_source = host;
-          attr.utm_medium = 'referral';
-        }
-      } catch (e) {}
-    }
-
-    try { if (attr.utm_source) localStorage.setItem(k, JSON.stringify(attr)); } catch (e) {}
-    return attr;
   }
 
   function track(name, params) {
@@ -128,11 +119,7 @@
   if (!forms.length) return;
 
   Array.prototype.forEach.call(forms, function (form) {
-    /* Which page captured this. Falls back to the URL so a new article page
-       that forgets the attribute still records something useful. */
-    var source = form.getAttribute('data-source') ||
-      ('edit' + location.pathname.replace(/\/index\.html$/, '').replace(/\/$/, '')
-                                 .replace(/^\/edit/, '').replace(/\//g, '-'));
+    var base = form.getAttribute('data-source') || 'edit';
 
     form.addEventListener('submit', function (e) {
       var input = form.querySelector('input[name="email"]');
@@ -141,14 +128,20 @@
 
       e.preventDefault();
 
+      var u    = storedUtms() || {};
       var id   = anonId();
-      var attr = attribution();
       var done = false;
+
+      // Readable in the CRM: edit / edit:bio / edit-lisbon:story
+      var source = base + (u.utm_medium ? ':' + u.utm_medium : '');
+      var tags = [];
+      if (u.utm_source)   tags.push('src:'  + u.utm_source);
+      if (u.utm_medium)   tags.push('med:'  + u.utm_medium);
+      if (u.utm_campaign) tags.push('camp:' + u.utm_campaign);
 
       function go() {
         if (done) return;
         done = true;
-        track('substack_redirect', { source: source });
         window.location.href = SUBSTACK + '?email=' + encodeURIComponent(email);
       }
 
@@ -158,21 +151,17 @@
           email: email,
           consent: true,            // wording is stated under the form
           source: source,
+          tags: tags,
           kind: null,               // genuinely unknown here — the question fills it
-          anon_id: id,
-          utm_source: attr.utm_source,
-          utm_medium: attr.utm_medium,
-          utm_campaign: attr.utm_campaign
+          anon_id: id
         }).catch(function () {});
       } catch (err) {}
 
-      track('lead_submit', {
-        source: source,
-        utm_medium: attr.utm_medium || '(none)',
-        utm_campaign: attr.utm_campaign || '(none)'
-      });
+      // `lead_submit` itself is tracked by app.js, which listens on the same
+      // submit event — this only adds what app.js can't see.
+      track('lead_attributed', { source: source, medium: u.utm_medium || '(none)' });
 
-      // 2. Ask. If anything is missing, skip straight to Substack.
+      // 2. Ask. If anything is missing, go straight to Substack.
       if (!ASK.length || !id) { go(); return; }
       askQuestions(form, ASK, id, source, go);
     });

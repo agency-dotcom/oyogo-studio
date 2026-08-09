@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/oyogo.css?v=40" />
+<link rel="stylesheet" href="/oyogo.css?v=41" />
 <link rel="stylesheet" href="/edit/edit.css?v=3" />
 <style>
   .subform{display:flex;gap:10px;margin-top:28px;max-width:460px}
@@ -71,7 +71,7 @@
       <div class="label">The Oyogo Edit</div>
       <h1 class="about-h" style="margin-top:16px;max-width:940px">The wellness hotels and residences worth knowing about.</h1>
       <p class="sec-lede" style="margin-top:16px;max-width:680px">One property. One thesis. Every Sunday. A free letter from Oyogo – the leading voice in wellbeing tourism – on the hotels and residences worth knowing, before everyone else does.</p>
-      <form class="subform" action="https://theoyogoedit.substack.com/subscribe" method="get">
+      <form class="subform" data-source="edit" action="https://theoyogoedit.substack.com/subscribe" method="get">
         <input type="email" name="email" placeholder="your@email.com" autocomplete="email" required aria-label="Email address" />
         <button type="submit">Subscribe free</button>
       </form>
@@ -168,86 +168,8 @@
   </div>
 </div>
 
-<script src="/app.js?v=40" defer></script>
+<script src="/app.js?v=41" defer></script>
+<script src="/capture.js?v=41" defer></script>
 
-<script>
-/* Subscribe: capture the lead first-party (Supabase), then hand off to Substack.
-   Fail-safe by design — if the capture errors or is slow, the visitor still
-   reaches Substack. Never block the signup on our own analytics.
-
-   UTMs are read off the URL and stored with the lead, so our own database can
-   tell bio traffic from story traffic — GA alone can't answer that for a
-   specific subscriber. Stored on first arrival so it survives navigation. */
-(function () {
-  var SUPABASE_URL = 'https://wbgcwzesgvdentltnoec.supabase.co';
-  var SUPABASE_KEY = 'sb_publishable_q-NawIouOeMJEnYdRobo6w_8fN4VnJm';
-  var SUBSTACK = 'https://theoyogoedit.substack.com/subscribe';
-
-  // --- remember where they came from -------------------------------------
-  var UTM_KEY = 'oyogo_utm';
-  function readUtms() {
-    var p = new URLSearchParams(window.location.search);
-    var out = {};
-    ['utm_source', 'utm_medium', 'utm_campaign'].forEach(function (k) {
-      var v = p.get(k);
-      if (v) out[k] = v.slice(0, 60);
-    });
-    return Object.keys(out).length ? out : null;
-  }
-  function storedUtms() {
-    var fresh = readUtms();
-    try {
-      if (fresh) { sessionStorage.setItem(UTM_KEY, JSON.stringify(fresh)); return fresh; }
-      return JSON.parse(sessionStorage.getItem(UTM_KEY) || 'null');
-    } catch (e) { return fresh; }
-  }
-
-  var form = document.querySelector('.subform');
-  if (!form) return;
-
-  form.addEventListener('submit', function (e) {
-    var input = form.querySelector('input[name="email"]');
-    var email = (input && input.value || '').trim();
-    if (!email || email.indexOf('@') < 0) return; // let native validation handle it
-
-    e.preventDefault();
-
-    var go = function () {
-      window.location.href = SUBSTACK + '?email=' + encodeURIComponent(email);
-    };
-
-    var u = storedUtms() || {};
-    // source stays readable in the CRM: edit / edit:bio / edit:story
-    var source = 'edit' + (u.utm_medium ? ':' + u.utm_medium : '');
-    var tags = [];
-    if (u.utm_source) tags.push('src:' + u.utm_source);
-    if (u.utm_medium) tags.push('med:' + u.utm_medium);
-    if (u.utm_campaign) tags.push('camp:' + u.utm_campaign);
-
-    try {
-      fetch(SUPABASE_URL + '/rest/v1/leads', {
-        method: 'POST',
-        headers: {
-          'apikey': SUPABASE_KEY,
-          'Authorization': 'Bearer ' + SUPABASE_KEY,
-          'Content-Type': 'application/json',
-          'Prefer': 'return=minimal'
-        },
-        body: JSON.stringify({
-          email: email,
-          consent: true,          // wording is stated under the form
-          source: source,         // where on Instagram they came from
-          tags: tags,             // full UTM breakdown, queryable
-          kind: 'stay'
-        }),
-        keepalive: true
-      }).then(go, go);
-    } catch (err) { go(); }
-
-    // Don't let a hanging request strand the visitor.
-    setTimeout(go, 1200);
-  });
-})();
-</script>
 </body>
 </html>
