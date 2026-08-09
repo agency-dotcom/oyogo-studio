@@ -216,6 +216,14 @@
   var SUPABASE_URL = 'https://wbgcwzesgvdentltnoec.supabase.co';
   var SUPABASE_KEY = 'sb_publishable_q-NawIouOeMJEnYdRobo6w_8fN4VnJm';
   var SUBSTACK = 'https://theoyogoedit.substack.com/subscribe';
+  // Remember where they came from (see /edit/index.html for the rationale).
+  var UTM_KEY='oyogo_utm';
+  function readUtms(){var p=new URLSearchParams(window.location.search),o={};
+    ['utm_source','utm_medium','utm_campaign'].forEach(function(k){var v=p.get(k);if(v)o[k]=v.slice(0,60)});
+    return Object.keys(o).length?o:null}
+  function storedUtms(){var f=readUtms();
+    try{if(f){sessionStorage.setItem(UTM_KEY,JSON.stringify(f));return f}
+      return JSON.parse(sessionStorage.getItem(UTM_KEY)||'null')}catch(e){return f}}
   var form = document.querySelector('.subform');
   if (!form) return;
   form.addEventListener('submit', function (e) {
@@ -224,6 +232,12 @@
     if (!email || email.indexOf('@') < 0) return;
     e.preventDefault();
     var go = function () { window.location.href = SUBSTACK + '?email=' + encodeURIComponent(email); };
+    var u=storedUtms()||{};
+    var source='edit-lisbon'+(u.utm_medium?':'+u.utm_medium:'');
+    var tags=[];
+    if(u.utm_source)tags.push('src:'+u.utm_source);
+    if(u.utm_medium)tags.push('med:'+u.utm_medium);
+    if(u.utm_campaign)tags.push('camp:'+u.utm_campaign);
     try {
       fetch(SUPABASE_URL + '/rest/v1/leads', {
         method: 'POST',
@@ -233,7 +247,7 @@
           'Content-Type': 'application/json',
           'Prefer': 'return=minimal'
         },
-        body: JSON.stringify({ email: email, consent: true, source: 'edit-lisbon', kind: 'stay' }),
+        body: JSON.stringify({ email: email, consent: true, source: source, tags: tags, kind: 'stay' }),
         keepalive: true
       }).then(go, go);
     } catch (err) { go(); }
