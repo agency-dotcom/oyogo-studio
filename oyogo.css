@@ -981,7 +981,12 @@
 .qcard-lab{font-size:15px;font-weight:700;color:var(--ink)}
 .qcard-hint{font-size:12px;color:var(--muted)}
 .qcard-note{margin:14px 0 0;font-size:12px;line-height:1.5;color:var(--muted)}
-.qcard-skip{margin-top:6px;padding:4px 0;font-family:var(--sans);font-size:13px;font-weight:600;color:var(--muted);background:none;border:0;cursor:pointer}
+.qcard-opt.on{border-color:var(--ink);background:var(--yellow)}
+.qcard-opt.on .qcard-lab::after{content:" \2713";font-weight:700}
+.qcard-actions{display:flex;align-items:center;gap:14px;margin-top:16px}
+.qcard-go{font-family:var(--sans);font-size:14px;font-weight:700;color:var(--ink);background:var(--yellow);border:0;border-radius:10px;padding:12px 22px;cursor:pointer;transition:opacity .15s}
+.qcard-go:hover{opacity:.86}
+.qcard-skip{padding:4px 0;font-family:var(--sans);font-size:13px;font-weight:600;color:var(--muted);background:none;border:0;cursor:pointer}
 .qcard-skip:hover{color:var(--ink)}
 
 /* v=43 — shared editorial components.

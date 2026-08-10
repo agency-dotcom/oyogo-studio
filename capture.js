@@ -23,8 +23,9 @@
   var SUBSTACK     = 'https://theoyogoedit.substack.com/subscribe';
 
   /* Nobody reaches Substack if they answer nothing and sit there, and the
-     Substack subscription is the actual product. Continue for them. */
-  var AUTO_CONTINUE_MS = 15000;
+     Substack subscription is the actual product. Continue for them —
+     generously, since choosing several options takes longer than one tap. */
+  var AUTO_CONTINUE_MS = 25000;
 
   /* The question set. Deliberately asked AFTER the email is banked, so it can
      never cost a capture.
@@ -37,7 +38,7 @@
     {
       id: 'why_here',
       prompt: 'One quick thing — what brings you to Oyogo?',
-      note: 'It shapes what we send you.',
+      note: 'Choose as many as apply. It shapes what we send you.',
       options: [
         { v: 'stay',     label: 'Somewhere to stay',      hint: 'Hotels, retreats, residencies' },
         { v: 'live',     label: 'Somewhere to live',      hint: 'Wellness real estate' },
@@ -189,43 +190,74 @@
       var q = questions[i];
       if (!q) { finish(); return; }
 
+      /* Multi-select: people arrive for more than one reason, and forcing a
+         single answer would make the data neater than the truth. Each choice
+         is stored as its own row, which the append-only table takes without
+         any change. */
+      var chosen = {};
+
       host.innerHTML =
         '<p class="qcard-eyebrow">✓ You’re on the list</p>' +
         '<p class="qcard-q">' + q.prompt + '</p>' +
         '<div class="qcard-opts">' +
           q.options.map(function (o) {
-            return '<button type="button" class="qcard-opt" data-v="' + o.v + '">' +
+            return '<button type="button" class="qcard-opt" data-v="' + o.v + '" aria-pressed="false">' +
                      '<span class="qcard-lab">' + o.label + '</span>' +
                      (o.hint ? '<span class="qcard-hint">' + o.hint + '</span>' : '') +
                    '</button>';
           }).join('') +
         '</div>' +
         (q.note ? '<p class="qcard-note">' + q.note + '</p>' : '') +
-        '<button type="button" class="qcard-skip">Skip →</button>';
+        '<div class="qcard-actions">' +
+          '<button type="button" class="qcard-go">Continue →</button>' +
+          '<button type="button" class="qcard-skip">Skip</button>' +
+        '</div>';
+
+      var go = host.querySelector('.qcard-go');
 
       host.querySelectorAll('.qcard-opt').forEach(function (b) {
         b.addEventListener('click', function () {
           var v = b.getAttribute('data-v');
+          if (chosen[v]) { delete chosen[v]; } else { chosen[v] = true; }
+          var on = !!chosen[v];
+          b.classList.toggle('on', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+          go.textContent = Object.keys(chosen).length ? 'Continue →' : 'Continue without answering →';
+        });
+      });
+
+      function submit(skipped) {
+        var picked = Object.keys(chosen);
+        picked.forEach(function (v) {
           try {
             post('lead_answers', {
               anon_id: id, question: q.id, answer: v, source: source
             }).catch(function () {});
           } catch (e) {}
-          track('lead_question_answered', { question: q.id, answer: v, source: source });
-          i++;
-          if (i < questions.length) render(); else finish();
         });
-      });
+        if (picked.length) {
+          track('lead_question_answered', {
+            question: q.id, answer: picked.join(','), count: picked.length, source: source
+          });
+        } else {
+          track('lead_question_skipped', { question: q.id, source: source, reason: skipped || 'empty' });
+        }
+        i++;
+        if (i < questions.length) render(); else finish();
+      }
 
+      go.addEventListener('click', function () { submit('continue'); });
       host.querySelector('.qcard-skip').addEventListener('click', function () {
-        track('lead_question_skipped', { question: q.id, source: source });
-        finish();
+        chosen = {};
+        submit('skip');
       });
 
       /* Safety net: an unanswered question must never cost the Substack
-         subscription, which is the thing the visitor actually asked for. */
+         subscription, which is the thing the visitor actually asked for.
+         Goes through submit() rather than finish() so anything already
+         selected is still saved rather than thrown away. */
       if (timer) clearTimeout(timer);
-      timer = setTimeout(finish, AUTO_CONTINUE_MS);
+      timer = setTimeout(function () { submit('timeout'); }, AUTO_CONTINUE_MS);
     }
 
     render();
