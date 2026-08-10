@@ -2,3 +2,6 @@ User-agent: *
 Allow: /
 
 Sitemap: https://oyogostudio.com/sitemap.xml
+
+# The article template is not a page.
+Disallow: /edit/_template.html

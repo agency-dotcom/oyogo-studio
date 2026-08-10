@@ -1,0 +1,208 @@
+<!doctype html>
+<!--
+  ============================================================================
+  THE OYOGO EDIT — ARTICLE TEMPLATE
+  ============================================================================
+
+  Copy this file to edit/<slug>/index.html and fill it in. Do NOT copy the
+  previous edition: that is how the 10 August edition shipped with no cookie
+  bar, no tracking, a broken note block and a stale nav.
+
+  HOW TO PUBLISH A NEW EDITION
+  ----------------------------
+  1.  mkdir edit/<slug> && cp edit/_template.html edit/<slug>/index.html
+  2.  Replace everything marked {{ }} — search for "{{" and you have them all.
+  3.  Delete the <meta name="robots" content="noindex,nofollow" /> line.
+      It is only here so the template itself never gets indexed.
+  4.  Drop images into edit/img/. Use <slug>-cover.jpg for the lead image.
+  5.  Add the edition to BOTH:
+        - edit/index.html  → "Latest edition" feature card + the archive grid
+        - index.html       → the homepage feature card (block 01)
+      Miss the second and the homepage quietly advertises an old edition.
+  6.  Add the URL to sitemap.xml.
+  7.  Bump ?v=NN across the site if you changed any shared CSS or JS.
+
+  WHAT NOT TO CHANGE
+  ------------------
+  The <head> asset links, the cookie bar, and the two <script> tags at the
+  bottom. capture.js binds to any .subform on the page and handles the lead
+  capture, the anon_id and the follow-up question — the form needs no script
+  of its own. Article pages must never carry their own inline Supabase code.
+
+  DO NOT paste straight from Substack or Word. Both leave markdown and smart
+  characters behind — the 10 August edition shipped with literal _underscores_
+  rendering on the page. Check for: _italics_, **bold**, "curly quotes".
+
+  COMPONENT VOCABULARY (all styled in edit/edit.css)
+  -------------------------------------------------
+    .art-head       header block: etag, h1, meta, rule, standfirst
+    .etag           category chip — add .loc (location edit) or .prop (property edit)
+    .standfirst     one or two large intro paragraphs, inside .art-head
+    figure          image + figcaption
+    .note/.lbl/.sign  the boxed "A note to start". THE house device — use it
+    .lead           a single larger opening paragraph, outside the note
+    .figures/.fig   the statistics strip (.n = number, .l = label)
+    .pull           a reader quote or pull quote
+    h2.sub          a section heading
+    .panel          the dark verdict block
+    .duo            two-up image row
+    .facts          the where/airport/rooms/rates key-facts strip
+    .sources        source list wrapper
+    .subblock       the subscribe block — keep it, it is the capture point
+  ============================================================================
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{{HEADLINE}} | The Oyogo Edit</title>
+<meta name="description" content="{{STANDFIRST — 150-160 characters}}" />
+<link rel="canonical" href="https://oyogostudio.com/edit/{{SLUG}}/" />
+<meta name="robots" content="noindex,nofollow" /><!-- DELETE THIS LINE when publishing -->
+<meta property="og:title" content="{{HEADLINE}}" />
+<meta property="og:description" content="{{STANDFIRST}}" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Oyogo" />
+<meta property="og:url" content="https://oyogostudio.com/edit/{{SLUG}}/" />
+<meta property="og:image" content="https://oyogostudio.com/edit/img/{{SLUG}}-cover.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="{{HEADLINE}}" />
+<meta name="twitter:description" content="{{STANDFIRST}}" />
+<meta name="twitter:image" content="https://oyogostudio.com/edit/img/{{SLUG}}-cover.jpg" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"{{HEADLINE}}","description":"{{STANDFIRST}}","image":"https://oyogostudio.com/edit/img/{{SLUG}}-cover.jpg","datePublished":"{{YYYY-MM-DD}}","author":{"@type":"Organization","name":"Oyogo"},"publisher":{"@type":"Organization","name":"Oyogo","logo":{"@type":"ImageObject","url":"https://oyogostudio.com/logo.png"}},"mainEntityOfPage":"https://oyogostudio.com/edit/{{SLUG}}/"}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/oyogo.css?v=44" />
+<link rel="stylesheet" href="/edit/edit.css?v=5" />
+</head>
+<body class="np">
+
+<header id="site">
+  <div class="wrap nav">
+    <div class="brand"><a href="/index.html"><img class="logo-img" src="/logo.png" alt="Oyogo" /></a></div>
+    <div class="nav-right">
+      <nav class="nav-links">
+        <a href="/edit/">The Oyogo Edit</a>
+        <a href="/services.html">Services</a>
+        <a href="/residencies.html">Residencies</a>
+        <a href="/partners.html">Global partners</a>
+        <a href="/index.html#contact">Contact</a>
+      </nav>
+      <div class="hicons">
+        <a href="mailto:studio@oyogo.co.uk" aria-label="Email">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
+        </a>
+        <a href="https://instagram.com/oyogo.london" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+      </div>
+      <button class="nav-toggle" type="button" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+<article class="art">
+
+  <div class="art-head">
+    <!-- .etag alone = Sunday insight · add .loc for a location edit · .prop for a property edit -->
+    <span class="etag">Sunday insight</span>
+    <h1>{{HEADLINE}}</h1>
+    <div class="art-meta">
+      <span>{{Sunday 17 August 2026}}</span>
+      <span>{{The thesis}}</span>
+      <span>&asymp; {{6}} min read</span>
+    </div>
+    <div class="art-rule"></div>
+    <p class="standfirst">{{The claim, in one sentence.}}</p>
+    <p class="standfirst">{{The turn — the fact that makes it matter. Optional.}}</p>
+  </div>
+
+  <figure>
+    <img src="/edit/img/{{SLUG}}-cover.jpg" alt="{{Describe the image for someone who cannot see it}}" />
+    <figcaption>{{Caption}}</figcaption>
+  </figure>
+
+  <!-- Optional: a short lead before the note — what prompted this edition. -->
+  <p class="lead">{{One sentence on why we are writing this now.}}</p>
+
+  <!-- The note to start. The house device: keep the label and the sign-off. -->
+  <div class="note">
+    <span class="lbl">A note to start</span>
+    <p>{{Hannah, first person, why this one is close to home.}}</p>
+    <p>{{Second paragraph.}}</p>
+    <p class="sign">&ndash; Hannah Paradise, Founder, Oyogo &middot; <a href="https://instagram.com/hann_oyogo">@hann_oyogo</a></p>
+  </div>
+
+  <!-- The numbers. Three to five reads best; more and they stop landing. -->
+  <div class="figures">
+    <div class="fig"><span class="n">{{84%}}</span><span class="l">{{What it measures}}</span></div>
+    <div class="fig"><span class="n">{{$31.8tn}}</span><span class="l">{{What it measures}}</span></div>
+    <div class="fig"><span class="n">{{131%}}</span><span class="l">{{What it measures}}</span></div>
+  </div>
+
+  <h2 class="sub">{{First section}}</h2>
+  <p>{{Body.}}</p>
+
+  <!-- A reader quote or pull quote. Introduce it in a normal <p> first. -->
+  <p>{{Who said it:}}</p>
+  <div class="pull">{{The quote, verbatim, without names.}}</div>
+
+  <h2 class="sub">{{Second section}}</h2>
+  <p>{{Body.}}</p>
+
+  <!-- The verdict. Best for / Less suited to is the house device — the honest
+       mismatch is the point, so do not drop the second half. -->
+  <h2 class="sub">The Oyogo verdict</h2>
+  <div class="panel">
+    <p><strong>{{Recommendation.}}</strong> {{Why.}}</p>
+    <p><strong>Best for:</strong> {{who this suits}}</p>
+    <p><strong>Less suited to:</strong> {{who it does not — say it plainly}}</p>
+  </div>
+
+  <h2 class="sub">Sources &amp; data references</h2>
+  <ul>
+    <li>{{Claim &mdash; source, date}}</li>
+  </ul>
+  <p><em>Researched and drafted with AI assistance. Every source is named above; the editorial judgement and verdicts are ours. Reader comments are quoted from our own Instagram post, without names.</em></p>
+
+  <!-- The capture point. capture.js wires this automatically — no script here.
+       data-source must be unique per edition: it is how leads are attributed. -->
+  <div class="subblock">
+    <h2>The wellness hotels and residences worth knowing about.</h2>
+    <p>A property edit every month, a location edit and a Sunday insight every week. Free.</p>
+    <form class="subform" data-source="edit-{{SLUG}}" action="https://theoyogoedit.substack.com/subscribe" method="get">
+      <input type="email" name="email" placeholder="your@email.com" autocomplete="email" required aria-label="Email address" />
+      <button type="submit">Subscribe free</button>
+    </form>
+    <p class="subnote">Delivered by <strong>Substack</strong>, who create your subscription. <strong>Oyogo</strong> also keeps your email for occasional platform updates. Unsubscribe from either any time &ndash; see our <a href="/privacy.html">privacy policy</a>.</p>
+  </div>
+
+  <a class="backlink" href="/edit/">&larr; All editions</a>
+
+  <div class="art-foot">
+    The Oyogo Edit &middot; {{Sunday insight}}<br>
+    The leading voice in wellbeing tourism &middot; @oyogo.london &middot; @hann_oyogo
+  </div>
+
+</article>
+</main>
+
+<div id="cc" class="cc" hidden>
+  <div class="cc-inner">
+    <p class="cc-text">We use cookies to measure and improve the site. See our <a href="/privacy.html">Privacy Policy</a>.</p>
+    <div class="cc-btns">
+      <button id="cc-reject" class="cc-btn" type="button">Reject</button>
+      <button id="cc-accept" class="cc-btn cc-accept" type="button">Accept</button>
+    </div>
+  </div>
+</div>
+
+<script src="/app.js?v=44" defer></script>
+<script src="/capture.js?v=44" defer></script>
+
+</body>
+</html>
