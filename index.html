@@ -26,7 +26,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="oyogo.css?v=40" />
+<link rel="stylesheet" href="/oyogo.css?v=43" />
 </head>
 <body>
 
@@ -37,10 +37,10 @@
     </div>
     <div class="nav-right">
       <nav class="nav-links">
+        <a href="/edit/">The Oyogo Edit</a>
         <a href="services.html">Services</a>
         <a href="residencies.html">Residencies</a>
         <a href="partners.html">Global partners</a>
-          <a href="/edit/">The Oyogo Edit</a>
         <a href="#contact">Contact</a>
       </nav>
       <div class="hicons">
@@ -71,8 +71,44 @@
 </section>
 
 <main>
-  <!-- 01 Who we are -->
-  <section class="blk" id="about">
+  <!-- 01 The Oyogo Edit — publication first.
+       Sits directly under the hero because the strategy is publication-led and
+       the homepage is where 86% of Instagram traffic lands. Previously the Edit
+       was fourth in the nav and reached by roughly one visitor in eight.
+       The form is picked up automatically by capture.js (any .subform);
+       data-source="home" so homepage conversion can be compared with /edit. -->
+  <section class="blk" id="edit">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="label"><span class="i">01</span>The Oyogo Edit</div>
+      </div>
+
+      <a class="feature" href="/edit/wellness-real-estate/" style="text-decoration:none;color:inherit">
+        <div class="feature-img">
+          <img loading="lazy" src="edit01-cover.jpg" alt="A low-slung contemporary residence with an infinity pool in a wildflower meadow" />
+        </div>
+        <div class="feature-body">
+          <span class="etag">Sunday insight</span>
+          <h2>Wellness real estate is forecast to hit $1.8 trillion. The question is whether any of it works.</h2>
+          <p class="dek">The fastest-compounding corner of global real estate isn't offices, logistics or data centres. It's wellbeing – and it's growing 23.6% a year since 2019.</p>
+          <span class="more">Read the edition →</span>
+        </div>
+      </a>
+
+      <p class="sec-lede" style="margin-top:34px;max-width:640px">One property. One thesis. Every Sunday. A free letter on the wellness hotels and residences worth knowing about, before everyone else does.</p>
+
+      <form class="subform" data-source="home" action="https://theoyogoedit.substack.com/subscribe" method="get">
+        <input type="email" name="email" placeholder="your@email.com" autocomplete="email" required aria-label="Email address" />
+        <button type="submit">Subscribe free</button>
+      </form>
+      <p class="subnote">Delivered by <strong>Substack</strong>, who create your subscription. <strong>Oyogo</strong> also keeps your email for occasional platform updates. Unsubscribe from either any time – see our <a href="/privacy.html">privacy policy</a>. Or <a href="https://theoyogoedit.substack.com/subscribe" target="_blank" rel="noopener">subscribe on Substack directly →</a></p>
+
+      <div style="margin-top:34px"><a class="btn" href="/edit/">Read every edition →</a></div>
+    </div>
+  </section>
+
+  <!-- 02 Who we are -->
+  <section class="blk rule" id="about">
     <div class="wrap about-grid">
       <h2 class="about-h">To win at hospitality you have to win at wellbeing.</h2>
       <p class="about-body">Oyogo is a female-founded wellbeing tourism consultancy, redefining how the world experiences wellness-travel destinations. We elevate your wellness offering and put it in front of a global audience of high-spending, health-conscious travellers – positioning you as a leader in the evolving wellness-tourism market.</p>
@@ -83,7 +119,7 @@
   <section class="blk rule" id="services">
     <div class="wrap">
       <div class="sec-head">
-        <div class="label"><span class="i">03</span>Ways to work with us</div>
+        <div class="label"><span class="i">02</span>Ways to work with us</div>
       </div>
       <div class="scards">
         <div class="scard"><div class="imgwrap"><img loading="lazy" src="svc1.jpg" alt="Wellness destination strategy and concept design" /><a class="pill" href="services.html"><span>Strategy and concept</span></a></div></div>
@@ -178,6 +214,7 @@
   </div>
 </div>
 
-<script src="app.js?v=40" defer></script>
+<script src="/app.js?v=43" defer></script>
+<script src="/capture.js?v=43" defer></script>
 </body>
 </html>
