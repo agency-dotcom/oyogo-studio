@@ -20,9 +20,19 @@
 
 # Per-campaign links. Add one per post you want measured separately — the
 # campaign name is what shows up in GA4, so make it readable.
-/re       /edit/wellness-real-estate/?utm_source=instagram&utm_medium=post&utm_campaign=wellness-real-estate  302
-/girona   /edit/off-grid-girona/?utm_source=instagram&utm_medium=post&utm_campaign=off-grid-girona            302
-/lisbon   /edit/lisbon/?utm_source=instagram&utm_medium=post&utm_campaign=lisbon                              302
+#
+# Two per edition, because the same edition gets posted to the feed AND to
+# stories, and those convert very differently. Same destination, different
+# utm_medium, so GA4 can tell them apart. Use the plain one in a caption or
+# the bio, the -story one in a link sticker.
+/re             /edit/wellness-real-estate/?utm_source=instagram&utm_medium=post&utm_campaign=wellness-real-estate   302
+/re-story       /edit/wellness-real-estate/?utm_source=instagram&utm_medium=story&utm_campaign=wellness-real-estate  302
+/girona         /edit/off-grid-girona/?utm_source=instagram&utm_medium=post&utm_campaign=off-grid-girona             302
+/girona-story   /edit/off-grid-girona/?utm_source=instagram&utm_medium=story&utm_campaign=off-grid-girona            302
+/lisbon         /edit/lisbon/?utm_source=instagram&utm_medium=post&utm_campaign=lisbon                               302
+/lisbon-story   /edit/lisbon/?utm_source=instagram&utm_medium=story&utm_campaign=lisbon                              302
+/solo           /edit/capital-buys-protocols/?utm_source=instagram&utm_medium=post&utm_campaign=solo-travellers       302
+/solo-story     /edit/capital-buys-protocols/?utm_source=instagram&utm_medium=story&utm_campaign=solo-travellers      302
 
 # --- Other channels --------------------------------------------------------
 /li       /?utm_source=linkedin&utm_medium=social&utm_campaign=company-page      302
